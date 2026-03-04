@@ -1,0 +1,11 @@
+title: "Eldur Studio"
+url: "https://eldur.studio"
+baseurl: ""
+permalink: /resources/:slug/
+twitter_username: eldur_studio
+exclude: [README.md, scripts/, package.json, package-lock.json, node_modules/]
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+plugins:
+  - jekyll-seo-tag
