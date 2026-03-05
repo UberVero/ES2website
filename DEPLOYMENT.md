@@ -26,7 +26,10 @@ eldur.studio/resources/[slug]/   ← individual posts
 1. Open the **Eldur Blog** database in Notion
 2. Create a new entry — fill in **Title**, **Slug**, **Published Date**, **Status = Draft**
 3. Write content in the page body (headings, paragraphs, lists, blockquotes all convert cleanly)
-4. Add a **Featured Image URL** — paste a stable CDN URL (Cloudinary, Unsplash, etc.)
+4. Add a **Featured Image URL** — use one of these stable sources:
+   - **GitHub repo** (preferred): add image to `resources/images/`, commit to main, use the raw URL:
+     `https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/your-image.png`
+   - External CDN: Cloudinary, Unsplash, etc.
    - ⚠️ Do NOT upload images directly to Notion — those S3 URLs expire in ~1 hour
 5. Set **Status → Published** when ready
 6. Trigger a manual sync (see below) or wait up to 2 hours
@@ -57,7 +60,7 @@ Database ID: `ce0d53fdc6a2489a8201330e13bd3515`
 | Post Type | Select | | Article, Guide, Case Study, Tutorial |
 | Category | Select | | Guides, Case Studies, AI & Automation, Strategy |
 | Tags | Multi-select | | AI Agents, B2B Marketing, One-Person Team, Strategy, Automation |
-| Featured Image URL | URL | | Stable CDN URL only — Notion S3 URLs expire |
+| Featured Image URL | URL | | Stable URL only — use `resources/images/` in repo or external CDN. Notion S3 URLs expire. |
 | Last Modified Date | Date | | Optional, for `dateModified` in schema.org |
 
 ---
@@ -88,6 +91,7 @@ Change **Status → Draft** in Notion. The sync will no longer update the post, 
 | `_config.yml` | Jekyll config: permalinks, plugins, excludes |
 | `_layouts/post.html` | Post template with JSON-LD schema and og: tags |
 | `resources/index.html` | Listing page at `/resources/` |
+| `resources/images/` | Blog images committed to repo — served via GitHub raw URLs |
 | `_posts/` | Auto-generated files — do not edit manually |
 | `styles.css` | All styles including post prose and resource cards |
 
@@ -132,7 +136,8 @@ If you ever need to rebuild this from scratch:
 - Repo Settings → Actions → General → Workflow permissions → Read and write permissions
 
 **Images broken**
-- Notion S3 URLs expire — replace with a stable CDN URL in Featured Image URL
+- Notion S3 URLs expire — replace with a stable URL in Featured Image URL
+- Use `resources/images/` in the repo: add file, commit to main, paste the `raw.githubusercontent.com` URL into Notion
 
 **Fonts broken on post pages**
 - Font paths in `styles.css` must be root-relative: `url('/fonts/...')` not `url('fonts/...')`
