@@ -49,17 +49,17 @@ The difference from a simple automation: agents handle ambiguity. They don't jus
 **Follow-up sequences.** A prospect downloads your guide. An agent checks their company size, industry, and engagement score — then decides which follow-up sequence to trigger and personalizes the first message.
 
 
-## What this means for one-person teams
+## What this means for marketing teams
 
 
-The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at.
+While agent replace tasks, not people, we can build an large number of agents running in parallel. The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at.
 
 
 The trap is trying to automate everything at once. Start with one high-value, high-repetition workflow. Get it working. Then expand.
 
 > The best AI agent is the one that runs quietly in the background and surfaces only when something actually needs your attention.
 
-## What to do next
+## Find the low hanging fruit
 
 
 Map your last five workdays. Find the task you did most often that required the least judgment. That's your first agent.
