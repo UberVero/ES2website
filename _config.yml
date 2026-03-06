@@ -9,3 +9,4 @@ defaults:
     values: { layout: post }
 plugins:
   - jekyll-seo-tag
+  - jekyll-sitemap
