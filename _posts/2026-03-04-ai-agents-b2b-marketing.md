@@ -9,6 +9,7 @@ tags:
   - "AI Agents"
   - "B2B Marketing"
   - "One-Person Team"
+image: "https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/eldur-ai-agents-hero.png"
 date: "2026-03-04"
 status: "published"
 notion_id: "31961616-8253-81d3-961d-c46441ed5f1f"
