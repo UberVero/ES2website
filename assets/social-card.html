@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1200">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+    }
+    body {
+      background: #000;
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      position: relative;
+    }
+    .card {
+      width: 1200px;
+      height: 630px;
+      padding: 72px 88px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    /* subtle grid texture */
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,122,0,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,122,0,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .top {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: relative;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .wordmark {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: #fff;
+    }
+    .middle {
+      position: relative;
+    }
+    .eyebrow {
+      font-size: 18px;
+      font-weight: 500;
+      color: #ff7a00;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .headline {
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #fff;
+      max-width: 860px;
+    }
+    .headline em {
+      font-style: normal;
+      background: linear-gradient(90deg, #ff7a00 0%, #ee0f0f 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      position: relative;
+    }
+    .url {
+      font-size: 18px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.02em;
+    }
+    /* gradient bar */
+    .bar {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, #ff7a00 0%, #ee0f0f 100%);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="logo">
+        <svg height="36" viewBox="488 316 133 148" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.045 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+        </svg>
+        <span class="wordmark">Eldur Studio</span>
+      </div>
+    </div>
+
+    <div class="middle">
+      <p class="eyebrow">Custom AI Agents for B2B Growth</p>
+      <h1 class="headline">Build the <em>one-person</em><br>marketing team.</h1>
+    </div>
+
+    <div class="bottom">
+      <span class="url">eldur.studio</span>
+    </div>
+  </div>
+  <div class="bar"></div>
+</body>
+</html>

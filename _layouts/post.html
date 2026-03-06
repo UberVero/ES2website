@@ -36,7 +36,8 @@
     {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
     "author": {
       "@type": "Person",
-      "name": {{ page.author | default: "Veronica" | jsonify }}
+      "name": {{ page.author | default: "Veronica" | jsonify }},
+      "url": "https://www.eldur.studio"
     },
     "publisher": {
       "@type": "Organization",
@@ -47,7 +48,20 @@
       "@type": "WebPage",
       "@id": "{{ page.url | absolute_url }}"
     },
+    "wordCount": {{ content | number_of_words }},
+    "inLanguage": "en",
     "articleBody": {{ content | strip_html | truncatewords: 5000 | jsonify }}
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eldur.studio/" },
+      { "@type": "ListItem", "position": 2, "name": "Resources", "item": "https://eldur.studio/resources/" },
+      { "@type": "ListItem", "position": 3, "name": {{ page.title | jsonify }}, "item": "{{ page.url | absolute_url }}" }
+    ]
   }
   </script>
 </head>
