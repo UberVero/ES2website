@@ -11,9 +11,13 @@ import { NotionToMarkdown } from 'notion-to-md';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import sharp from 'sharp';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const POSTS_DIR = path.join(__dirname, '..', '_posts');
+const IMAGES_DIR = path.join(__dirname, '..', 'resources', 'images', 'blog');
+const MAX_WIDTH = 1200;
+const WEBP_QUALITY = 80;
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const n2m = new NotionToMarkdown({ notionClient: notion });
@@ -96,6 +100,99 @@ function buildFrontMatter(fields) {
   return lines.join('\n');
 }
 
+// ── image pipeline ────────────────────────────────────────────────────────
+
+/** Download an image from a URL and return the buffer */
+async function downloadImage(url) {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to download image: ${res.status} ${url}`);
+  return Buffer.from(await res.arrayBuffer());
+}
+
+/** Optimize an image buffer: resize to max width, convert to WebP */
+async function optimizeImage(buffer) {
+  const image = sharp(buffer);
+  const metadata = await image.metadata();
+
+  let pipeline = image;
+  if (metadata.width && metadata.width > MAX_WIDTH) {
+    pipeline = pipeline.resize(MAX_WIDTH);
+  }
+
+  // Animated GIFs: keep as-is (sharp WebP doesn't support animation well)
+  if (metadata.format === 'gif' && metadata.pages && metadata.pages > 1) {
+    return { buffer: buffer, ext: 'gif' };
+  }
+
+  const webpBuffer = await pipeline.webp({ quality: WEBP_QUALITY }).toBuffer();
+  return { buffer: webpBuffer, ext: 'webp' };
+}
+
+/**
+ * Download, optimize, and save an image locally.
+ * Returns the relative path from the repo root for use in markdown.
+ */
+async function processImage(url, slug, index) {
+  const slugDir = path.join(IMAGES_DIR, slug);
+  fs.mkdirSync(slugDir, { recursive: true });
+
+  try {
+    const rawBuffer = await downloadImage(url);
+    const { buffer: optimized, ext } = await optimizeImage(rawBuffer);
+    const filename = `img-${index}.${ext}`;
+    const localPath = path.join(slugDir, filename);
+    fs.writeFileSync(localPath, optimized);
+
+    // Return path relative to repo root (for markdown/front matter)
+    return `/resources/images/blog/${slug}/${filename}`;
+  } catch (err) {
+    console.warn(`  Warning: could not process image ${index}: ${err.message}`);
+    return null; // Keep original URL if download fails
+  }
+}
+
+/**
+ * Scan markdown body for image references, download and optimize each one,
+ * and rewrite the markdown to point to local files.
+ */
+async function processBodyImages(markdown, slug) {
+  const imageRegex = /!\[([^\]]*)\]\((https?:\/\/[^)]+)\)/g;
+  const matches = [...markdown.matchAll(imageRegex)];
+  if (matches.length === 0) return markdown;
+
+  let result = markdown;
+  let index = 0;
+
+  for (const match of matches) {
+    const [fullMatch, altText, imageUrl] = match;
+    index++;
+    console.log(`    Processing inline image ${index}/${matches.length}...`);
+    const localPath = await processImage(imageUrl, slug, index);
+    if (localPath) {
+      result = result.replace(fullMatch, `![${altText}](${localPath})`);
+    }
+  }
+
+  return result;
+}
+
+/**
+ * Download and optimize a featured image from Notion.
+ * Returns the local path for use in front matter.
+ */
+async function processFeaturedImage(imageUrl, slug) {
+  if (!imageUrl) return null;
+
+  // Skip images already hosted in the repo (raw.githubusercontent.com)
+  if (imageUrl.includes('raw.githubusercontent.com') && imageUrl.includes('ES2website')) {
+    return imageUrl;
+  }
+
+  console.log(`    Processing featured image...`);
+  const localPath = await processImage(imageUrl, slug, 'featured');
+  return localPath || imageUrl; // Fall back to original URL if processing fails
+}
+
 // ── main ───────────────────────────────────────────────────────────────────
 
 async function main() {
@@ -164,6 +261,11 @@ async function main() {
       console.warn(`Warning: could not convert body for "${title}": ${err.message}`);
     }
 
+    // Image pipeline: download, optimize, and rewrite image references
+    console.log(`  Processing images for "${title}"...`);
+    bodyMarkdown = await processBodyImages(bodyMarkdown, slug);
+    const localImage = await processFeaturedImage(image, slug);
+
     // Build front matter
     const frontMatter = buildFrontMatter({
       title,
@@ -173,7 +275,7 @@ async function main() {
       post_type: postType,
       category,
       tags: tags.length ? tags : null,
-      image,
+      image: localImage,
       date: publishedDate,
       last_modified_at: lastModified,
       status: 'published',

@@ -110,7 +110,12 @@
   <main class="post-body">
     <div class="container--narrow">
       {% if page.image %}
-      <img src="{{ page.image }}" alt="{{ page.title }}" loading="lazy">
+      <picture>
+        {% if page.image contains '.webp' %}
+        <source srcset="{{ page.image }}" type="image/webp">
+        {% endif %}
+        <img src="{{ page.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200">
+      </picture>
       {% endif %}
       {{ content }}
     </div>
