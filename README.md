@@ -14,11 +14,14 @@ Static marketing site for **Eldur Studio** — Custom AI Agents for B2B Growth.
 | Markup | HTML5 (single page, all sections) |
 | Styles | Vanilla CSS (custom properties, no framework) |
 | Fonts | Basier Circle — self-hosted OTF |
+| Blog | Jekyll (GitHub Pages native) |
+| Blog sync | Notion → GitHub Actions → `_posts/` (every 2h) |
+| Image pipeline | `sharp` — auto-downloads + optimizes blog images to WebP |
 | Hosting | GitHub Pages (main branch, root `/`) |
 | Domain | eldur.studio via DNS A records |
 | Analytics | Fathom (site ID: `FYROQRHW`) |
 
-No build step. No frameworks. No dependencies.
+No build step for the marketing site. Blog sync uses Node.js (`scripts/notion-sync.js`).
 
 ---
 
@@ -41,11 +44,33 @@ ES2website/
 ├── styles.css           # All styles, brand tokens, animations
 ├── CNAME                # Custom domain for GitHub Pages → eldur.studio
 ├── README.md
+├── DEPLOYMENT.md        # Blog operations guide
+├── _config.yml          # Jekyll config (plugins, permalinks, excludes)
+├── package.json         # Node deps for sync script (sharp, notion libs)
+│
+├── .github/workflows/
+│   └── notion-sync.yml  # GitHub Action: 2h schedule + manual trigger
+│
+├── scripts/
+│   └── notion-sync.js   # Notion → Markdown + image pipeline
+│
+├── _posts/              # Auto-generated blog posts (do not edit)
+├── _layouts/
+│   └── post.html        # Blog post template + JSON-LD schema
+│
+├── resources/
+│   ├── index.html       # Blog listing page at /resources/
+│   └── images/
+│       ├── blog/        # Auto-generated: optimized blog images (WebP)
+│       │   └── [slug]/  # One folder per post, created by sync
+│       └── *.png        # Manually added homepage/hero images
+│
 ├── assets/
-│   ├── favicon.png
-│   ├── fold-image.svg   # Decorative hero graphic (bottom-right)
+│   ├── favicon.svg
 │   ├── logo-nav.png     # Nav logo
-│   └── logo-white.png   # Footer logo (white version)
+│   ├── logo-white.png   # Footer logo (white version)
+│   └── social-card.png  # OG image (1200×630)
+│
 └── fonts/
     ├── BasierCircle-Regular.otf
     ├── BasierCircle-RegularItalic.otf
@@ -180,6 +205,15 @@ Registrar: Namecheap (or check registrar for eldur.studio)
 ---
 
 ## Changelog
+
+### 2026-03-31
+- Added auto-image pipeline to blog sync: downloads images from Notion, optimizes with `sharp` (WebP, max 1200px), saves locally in `resources/images/blog/[slug]/`
+- Fixes broken images caused by expired Notion S3 URLs (1-hour TTL)
+- Animated GIFs preserved as-is (not converted to WebP)
+- Updated `_layouts/post.html` to use `<picture>` element with WebP support
+- Added `sharp` dependency to `package.json`
+- Updated GitHub Action to commit `resources/images/blog/` alongside `_posts/`
+- Compressed existing hero images to WebP (hero: 112→19KB, webflow: 109→26KB, hipaa: 543→50KB)
 
 ### 2026-02-27
 - Built before/after org chart illustration in pure HTML/CSS (hero section)
