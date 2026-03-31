@@ -10,7 +10,7 @@ tags:
   - "Automation"
   - "Strategy"
   - "Healthcare"
-image: "https://cdn.prod.website-files.com/630337db6e4dd644cb1f5d81/6435542cb5bd557bbc8c345c_4OsT0UuMpoiEVbx8-rB0gr_wnnSLUcPJAqTMjiH2TVNYWcpuXvJa2gDlIMf_bAFpP6PkopGgpcQDYP5Q0OJOrdfeqM4LiV-0FxwFydGsfkjf8WkLURVloTqPNPWUsnnxWCEdg83-L4YXh-RrUI09p-g.png"
+image: "/resources/images/blog/building-hipaa-compliant-ai-agents/img-featured.webp"
 date: "2026-03-31"
 status: "published"
 notion_id: "1cd7e6fb-9112-4c9c-83bf-77d9e67c72f6"
@@ -77,7 +77,7 @@ Agent upgrade:
 - Flags missing fields or contradictory answers
 - Creates a case/ticket for the care team with a structured summary
 
-![ai-generated-image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e1c2efbf-ecd2-4450-91b9-a6f818ef34bf/5509a5ed-310e-4f8c-af71-bd81c9ea3755/ai-generated-image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WZAVYP7Q%2F20260331%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260331T223717Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aCXVzLXdlc3QtMiJHMEUCIQCCcFepItMHMXBucB2evPmPeb7af8RXFAKAxp5KIwM84wIgfbpy%2FAWtx7bgg9PteU2tQTu4ttYtDpWumnGzroe1a%2BUq%2FwMIRxAAGgw2Mzc0MjMxODM4MDUiDBmjPhD9%2BAqGzSLR1ircAxVqHcLefHeHWdgaqI8zgaMjDoZDEYHxxRZLD%2BHAKX9uvoMEA%2FIYwymFNtAMVi2q9yNIQjbfY4fjeR%2FFIvJM7qP0aiz2ZKx36B4Kj75AD2xJ9u5Y9ka62iVIEj0EEDljJX2wXz7xngDVlSJpllu3dbHbEnEJWwBNqXh6OGUTh2QRwaES%2FZX4Aw4sWoMPH3M8QHLQChUmUnaYFQm4807UohYqtokddSUB%2B31Zo37nnDao1U%2FGLDbsobI8dlrPziGbcCGryG0sUKoG83sIdYUjwEqZXOTynWjYxzSTYZjun5YOo0vT2CzPyXYoiqOtBjDCC9O4hmiV%2FBxOqaBtbWBaV%2BOvluqPDBFuyZVB6M5KKslzUgMq4YwiTBOx1Jp3kEryf9ilVsl4%2B2ySRLMk%2FFQdlUQhrEXPR5BGjKhbtSvLVOYkPH%2Bf0HhF1UoXuW3dY4lyv2K1TaehClg%2FqY9dIt7V36CKZbTyYce6SCl6q08e3ou4mHXO%2FKxeMD5JDUnfPnth9mQTGoA34TUj2cAuII2kqYnHInPlzWLSpHRrHo1OZTYDNiF9zGf8Fbb0BMz8oXcqV2%2F8ZcRymnZ96PXsZSKzUb8m1rou0Bd7P48S0FQlLM5uwRA7trxGwjrPvH9aMPGBsc4GOqUBpaZ%2FGp7S2TuHrXRz1RJk00mTATDtzy63QaBU%2FKV3HjIGoBwTeC1bSD4DSZ%2B%2FQ3Jo8A7gEVDVgpg0O3fNjQZijTQpWP2CdOpny%2BIL%2Fh4bv3nLhHcl21t3QquAoQE5vseMc%2FZHWIJXfZSSC%2BpTIKNhVHSMsjrl5w7UA0gs041R%2BLnWNaD6MEeDunhZ0FL3vqMvnGHfQQlc67i1cG22ZWvwH%2FISWBLQ&X-Amz-Signature=662b285601d4e84e74a949147856ad94158e9af7e3b83b20c2bf1bfe0a5d866c&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![ai-generated-image.png](/resources/images/blog/building-hipaa-compliant-ai-agents/img-1.webp)
 
 
 ### 3) Care-team copilot for “one person supports hundreds of patients” operations
@@ -104,7 +104,7 @@ Agent upgrade:
 - Generates operational reports, reminders, and dashboards in non-PHI systems
 - Maintains a mapping only inside the HIPAA boundary
 
-![ai-generated-image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e1c2efbf-ecd2-4450-91b9-a6f818ef34bf/b10c7eb6-a635-4d9e-9c08-62f6d2063812/ai-generated-image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WZAVYP7Q%2F20260331%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260331T223717Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aCXVzLXdlc3QtMiJHMEUCIQCCcFepItMHMXBucB2evPmPeb7af8RXFAKAxp5KIwM84wIgfbpy%2FAWtx7bgg9PteU2tQTu4ttYtDpWumnGzroe1a%2BUq%2FwMIRxAAGgw2Mzc0MjMxODM4MDUiDBmjPhD9%2BAqGzSLR1ircAxVqHcLefHeHWdgaqI8zgaMjDoZDEYHxxRZLD%2BHAKX9uvoMEA%2FIYwymFNtAMVi2q9yNIQjbfY4fjeR%2FFIvJM7qP0aiz2ZKx36B4Kj75AD2xJ9u5Y9ka62iVIEj0EEDljJX2wXz7xngDVlSJpllu3dbHbEnEJWwBNqXh6OGUTh2QRwaES%2FZX4Aw4sWoMPH3M8QHLQChUmUnaYFQm4807UohYqtokddSUB%2B31Zo37nnDao1U%2FGLDbsobI8dlrPziGbcCGryG0sUKoG83sIdYUjwEqZXOTynWjYxzSTYZjun5YOo0vT2CzPyXYoiqOtBjDCC9O4hmiV%2FBxOqaBtbWBaV%2BOvluqPDBFuyZVB6M5KKslzUgMq4YwiTBOx1Jp3kEryf9ilVsl4%2B2ySRLMk%2FFQdlUQhrEXPR5BGjKhbtSvLVOYkPH%2Bf0HhF1UoXuW3dY4lyv2K1TaehClg%2FqY9dIt7V36CKZbTyYce6SCl6q08e3ou4mHXO%2FKxeMD5JDUnfPnth9mQTGoA34TUj2cAuII2kqYnHInPlzWLSpHRrHo1OZTYDNiF9zGf8Fbb0BMz8oXcqV2%2F8ZcRymnZ96PXsZSKzUb8m1rou0Bd7P48S0FQlLM5uwRA7trxGwjrPvH9aMPGBsc4GOqUBpaZ%2FGp7S2TuHrXRz1RJk00mTATDtzy63QaBU%2FKV3HjIGoBwTeC1bSD4DSZ%2B%2FQ3Jo8A7gEVDVgpg0O3fNjQZijTQpWP2CdOpny%2BIL%2Fh4bv3nLhHcl21t3QquAoQE5vseMc%2FZHWIJXfZSSC%2BpTIKNhVHSMsjrl5w7UA0gs041R%2BLnWNaD6MEeDunhZ0FL3vqMvnGHfQQlc67i1cG22ZWvwH%2FISWBLQ&X-Amz-Signature=257b4f479d5ab6687ba79b4b4d51b32e469a35e86e19af8a3a9dd0699e7bd2eb&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![ai-generated-image.png](/resources/images/blog/building-hipaa-compliant-ai-agents/img-2.webp)
 
 
 ### 5) Documentation and training agent (keeps you audit-ready)
@@ -188,7 +188,7 @@ If you want a usable mental model, start here:
 - Tool gateway: enforces allowlists, input schemas, and approvals.
 - Audit store: immutable, access controlled logs of decisions and tool calls.
 
-![ai-generated-image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/e1c2efbf-ecd2-4450-91b9-a6f818ef34bf/cd82e2ae-9854-4f1e-a2f3-be0bc2f9e2a7/ai-generated-image.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=ASIAZI2LB466WZAVYP7Q%2F20260331%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260331T223717Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEH4aCXVzLXdlc3QtMiJHMEUCIQCCcFepItMHMXBucB2evPmPeb7af8RXFAKAxp5KIwM84wIgfbpy%2FAWtx7bgg9PteU2tQTu4ttYtDpWumnGzroe1a%2BUq%2FwMIRxAAGgw2Mzc0MjMxODM4MDUiDBmjPhD9%2BAqGzSLR1ircAxVqHcLefHeHWdgaqI8zgaMjDoZDEYHxxRZLD%2BHAKX9uvoMEA%2FIYwymFNtAMVi2q9yNIQjbfY4fjeR%2FFIvJM7qP0aiz2ZKx36B4Kj75AD2xJ9u5Y9ka62iVIEj0EEDljJX2wXz7xngDVlSJpllu3dbHbEnEJWwBNqXh6OGUTh2QRwaES%2FZX4Aw4sWoMPH3M8QHLQChUmUnaYFQm4807UohYqtokddSUB%2B31Zo37nnDao1U%2FGLDbsobI8dlrPziGbcCGryG0sUKoG83sIdYUjwEqZXOTynWjYxzSTYZjun5YOo0vT2CzPyXYoiqOtBjDCC9O4hmiV%2FBxOqaBtbWBaV%2BOvluqPDBFuyZVB6M5KKslzUgMq4YwiTBOx1Jp3kEryf9ilVsl4%2B2ySRLMk%2FFQdlUQhrEXPR5BGjKhbtSvLVOYkPH%2Bf0HhF1UoXuW3dY4lyv2K1TaehClg%2FqY9dIt7V36CKZbTyYce6SCl6q08e3ou4mHXO%2FKxeMD5JDUnfPnth9mQTGoA34TUj2cAuII2kqYnHInPlzWLSpHRrHo1OZTYDNiF9zGf8Fbb0BMz8oXcqV2%2F8ZcRymnZ96PXsZSKzUb8m1rou0Bd7P48S0FQlLM5uwRA7trxGwjrPvH9aMPGBsc4GOqUBpaZ%2FGp7S2TuHrXRz1RJk00mTATDtzy63QaBU%2FKV3HjIGoBwTeC1bSD4DSZ%2B%2FQ3Jo8A7gEVDVgpg0O3fNjQZijTQpWP2CdOpny%2BIL%2Fh4bv3nLhHcl21t3QquAoQE5vseMc%2FZHWIJXfZSSC%2BpTIKNhVHSMsjrl5w7UA0gs041R%2BLnWNaD6MEeDunhZ0FL3vqMvnGHfQQlc67i1cG22ZWvwH%2FISWBLQ&X-Amz-Signature=8c560ee3d8169f2e1b340e78fb7a82cc4f814efdf97a33e3cd00256185a40c85&X-Amz-SignedHeaders=host&x-amz-checksum-mode=ENABLED&x-id=GetObject)
+![ai-generated-image.png](/resources/images/blog/building-hipaa-compliant-ai-agents/img-3.webp)
 
 
 ## FAQ: HIPAA and AI agents (quick answers)
