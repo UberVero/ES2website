@@ -1,3 +1,6 @@
+---
+layout: null
+---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -81,7 +84,7 @@
         "name": "What does pricing look like?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pricing depends on scope, tool complexity, and the number of workflows/agents. Most teams start with the 60-day sprint, then decide on ongoing systems ownership."
+          "text": "We're transparent about pricing. The 60-day Marketing Foundation sprint starts at $8,000. Agent packages (2–3 custom agents with setup and training) typically range $5,000–$15,000. Growth Systems engagements are scoped individually based on channels and complexity. We'll give you a clear number on the first call — no surprises."
         }
       },
       {
@@ -390,6 +393,31 @@
           <p>Routes inbound leads, enriches and classifies them, and creates an auditable qualification trail with clean routing.</p>
         </div>
 
+        <div class="card card--agent">
+          <div class="agent__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M4 6h14M4 11h14M4 16h8" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="18" cy="16" r="3" stroke="#ff7a00" stroke-width="1.5"/>
+              <path d="M20 18l2 2" stroke="#ff7a00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>SEO Content Agent</h3>
+          <p>Monitors keyword rankings, identifies content gaps, drafts briefs for new posts, and tracks performance over time — keeping your content engine running without a dedicated writer.</p>
+        </div>
+
+        <div class="card card--agent">
+          <div class="agent__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="4" width="18" height="14" rx="3" stroke="#ff7a00" stroke-width="1.8"/>
+              <path d="M2 9h18" stroke="#ff7a00" stroke-width="1.5"/>
+              <circle cx="6" cy="14" r="1.5" fill="#ff7a00"/>
+              <path d="M10 14h6" stroke="#ff7a00" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Reporting Dashboard Agent</h3>
+          <p>Pulls data from GA4, ad platforms, and CRM into a single live view. Sends weekly summaries with trends, anomalies, and plain-English recommendations.</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -451,7 +479,7 @@
         <details class="faq__item">
           <summary class="faq__q">What does pricing look like?</summary>
           <div class="faq__a">
-            <p>Pricing depends on scope, tool complexity, and the number of workflows/agents. Most teams start with the 60-day sprint, then decide on ongoing systems ownership.</p>
+            <p>We're transparent about pricing. The 60-day Marketing Foundation sprint starts at <strong>$8,000</strong>. Agent packages (2–3 custom agents with setup and training) typically range <strong>$5,000–$15,000</strong>. Growth Systems engagements are scoped individually based on channels and complexity. We'll give you a clear number on the first call — no surprises.</p>
           </div>
         </details>
 
@@ -465,6 +493,31 @@
       </div>
     </div>
   </section>
+
+  <!-- LATEST RESOURCES -->
+  {% if site.posts.size > 0 %}
+  <section class="section section--light" id="resources">
+    <div class="container container--mid">
+      <h2 class="section__title">Latest resources</h2>
+      <p class="section__lead">Guides, frameworks, and lessons from building AI-powered marketing systems.</p>
+      <div class="cards cards--3">
+        {% for post in site.posts limit:3 %}
+        <a href="{{ post.url }}" class="card card--outline card--link">
+          <div class="card__body">
+            {% if post.category %}<p class="card__eyebrow">{{ post.category }}</p>{% endif %}
+            <h3 class="card__title">{{ post.title }}</h3>
+            {% if post.description %}<p class="card__excerpt">{{ post.description }}</p>{% endif %}
+          </div>
+          <div class="card__footer">
+            <span class="card__date">{{ post.date | date: "%B %-d, %Y" }}</span>
+            <span class="card__readmore">Read more →</span>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
 
   <!-- FOOTER -->
   <footer class="footer">
@@ -492,6 +545,91 @@
       </nav>
     </div>
   </footer>
+
+  <!-- EXIT INTENT SURVEY -->
+  <div class="exit-survey" id="exitSurvey" aria-hidden="true">
+    <div class="exit-survey__backdrop" onclick="dismissSurvey()"></div>
+    <div class="exit-survey__card">
+      <button class="exit-survey__close" onclick="dismissSurvey()" aria-label="Close survey">&times;</button>
+
+      <div class="exit-survey__step" id="surveyStep1">
+        <p class="exit-survey__title">Before you go &mdash;</p>
+        <p class="exit-survey__subtitle">What brought you here today?</p>
+        <div class="exit-survey__options">
+          <button class="exit-survey__btn" onclick="answerSurvey('b2b-marketing-help')">Looking for help with B2B marketing</button>
+          <button class="exit-survey__btn" onclick="answerSurvey('exploring-ai-agents')">Exploring AI agents for my business</button>
+          <button class="exit-survey__btn" onclick="answerSurvey('someone-recommended')">Someone recommended Eldur</button>
+          <button class="exit-survey__btn" onclick="answerSurvey('just-browsing')">Just browsing</button>
+        </div>
+      </div>
+
+      <div class="exit-survey__step exit-survey__step--hidden" id="surveyStep2">
+        <p class="exit-survey__title">Thanks!</p>
+        <p class="exit-survey__subtitle">Which agent sounds most useful to you?</p>
+        <div class="exit-survey__options">
+          <button class="exit-survey__btn" onclick="answerFollowup('agent-seo-content')">SEO Content Agent</button>
+          <button class="exit-survey__btn" onclick="answerFollowup('agent-profitability')">Profitability Agent</button>
+          <button class="exit-survey__btn" onclick="answerFollowup('agent-intake-qualification')">Intake + Qualification Agent</button>
+          <button class="exit-survey__btn" onclick="answerFollowup('agent-not-sure')">Not sure what these mean</button>
+        </div>
+      </div>
+
+      <div class="exit-survey__step exit-survey__step--hidden" id="surveyThanks">
+        <p class="exit-survey__title">Appreciate it!</p>
+        <p class="exit-survey__subtitle">Your feedback helps us improve.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var shown = false;
+
+    function showSurvey() {
+      if (shown || sessionStorage.getItem('exit-survey-dismissed')) return;
+      shown = true;
+      var el = document.getElementById('exitSurvey');
+      el.classList.add('exit-survey--visible');
+      el.setAttribute('aria-hidden', 'false');
+    }
+
+    // Desktop: mouse leaves toward top of viewport
+    // Both mouseleave and mouseout for Safari compatibility
+    function handleExit(e) {
+      if (e.clientY < 10) showSurvey();
+    }
+    document.addEventListener('mouseleave', handleExit);
+    document.addEventListener('mouseout', function(e) {
+      if (!e.relatedTarget && !e.toElement) handleExit(e);
+    });
+
+    // Mobile: show after 45 seconds on page
+    if ('ontouchstart' in window) {
+      setTimeout(showSurvey, 45000);
+    }
+
+    // Expose to onclick handlers
+    window.dismissSurvey = function() {
+      var el = document.getElementById('exitSurvey');
+      el.classList.remove('exit-survey--visible');
+      el.setAttribute('aria-hidden', 'true');
+      sessionStorage.setItem('exit-survey-dismissed', '1');
+    };
+
+    window.answerSurvey = function(answer) {
+      if (typeof fathom !== 'undefined') fathom.trackEvent('exit-survey: ' + answer);
+      document.getElementById('surveyStep1').classList.add('exit-survey__step--hidden');
+      document.getElementById('surveyStep2').classList.remove('exit-survey__step--hidden');
+    };
+
+    window.answerFollowup = function(answer) {
+      if (typeof fathom !== 'undefined') fathom.trackEvent('exit-survey: ' + answer);
+      document.getElementById('surveyStep2').classList.add('exit-survey__step--hidden');
+      document.getElementById('surveyThanks').classList.remove('exit-survey__step--hidden');
+      setTimeout(window.dismissSurvey, 2000);
+    };
+  })();
+  </script>
 
 </body>
 </html>

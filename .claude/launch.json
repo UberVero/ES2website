@@ -2,7 +2,7 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "static-server",
+      "name": "eldur-site",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "3000"],
       "port": 3000
