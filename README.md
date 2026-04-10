@@ -65,6 +65,11 @@ ES2website/
 │       │   └── [slug]/  # One folder per post, created by sync
 │       └── *.png        # Manually added homepage/hero images
 │
+├── results/             # Case studies — hand-built static HTML (not Jekyll)
+│   ├── index.html       # Case study listing page at /results/
+│   └── [slug]/
+│       └── index.html   # One folder per case study, full design freedom
+│
 ├── assets/
 │   ├── favicon.svg
 │   ├── logo-nav.png     # Nav logo
@@ -93,14 +98,24 @@ ES2website/
 
 ## Brand tokens
 
+> **Source of truth:** `styles.css` `:root` block. Update this table if you change tokens there.
+
 | Variable | Value | Use |
 |----------|-------|-----|
-| `--navy` | `#00033D` | Primary dark background |
-| `--purple` | `#4800FF` | CTA buttons, accents |
-| `--coral` | `#F6413D` | Eyebrows, highlights |
-| `--pink` | `#F5A6B1` | Subtle accent |
-| `--gray` | `#EFEFF1` | Light section backgrounds |
+| `--black` | `#000000` | Primary dark backgrounds, text |
+| `--dark` | `#111111` | Dark cards on dark sections |
+| `--orange` | `#ff7a00` | CTAs, links, accents |
+| `--orange-dim` | `rgba(255,122,0,0.08)` | Blockquote/tint fills |
+| `--red` | `#ee0f0f` | Eyebrows, highlights |
+| `--yellow` | `#ffc109` | Emphasis on dark cards |
+| `--gradient` | `linear-gradient(90deg, #ff7a00, #ee0f0f)` | Metric numbers, gradient accents |
 | `--white` | `#FFFFFF` | Default background |
+| `--gray` | `#EFEFF1` | Light section backgrounds |
+| `--text-muted` | `rgba(255,255,255,0.65)` | Muted text on dark bg |
+| `--border` | `rgba(0,0,0,0.10)` | Card borders |
+| `--radius` | `12px` | Default border radius |
+| `--radius-lg` | `20px` | Large border radius |
+| `--max-w` | `1160px` | Max container width |
 | `--font` | Basier Circle | Body copy + headings |
 | `--font-heading` | Kamura | Decorative (reserved) |
 
@@ -204,7 +219,38 @@ Registrar: Namecheap (or check registrar for eldur.studio)
 
 ---
 
+## Results / Case Studies section
+
+Case studies live at `/results/` and are **hand-built static HTML** — not Jekyll templated posts. Each case study has full design freedom (timelines, metric cards, comparison tables, unique layouts).
+
+```
+/results/                          → listing page
+/results/[slug]/index.html         → individual case study
+```
+
+**First case study:** `results/people-enrichment-agent/` — Lead Enrichment Agent (Explorium + Notion)
+
+**Content workflow:** Case studies are drafted in the same Notion "Eldur Blog" database as blog posts (using `Post Type = Case Study`). The sync script (`scripts/notion-sync.js`) **skips** entries with that post type so they never become blog posts. The static HTML file is the source of truth — Notion is used for copy drafting only.
+
+**When adding a new case study:**
+1. Copy `results/people-enrichment-agent/index.html` as a starting point
+2. Place at `results/[new-slug]/index.html`
+3. Add a new card to `results/index.html`
+4. Each page can look completely different — CSS classes (`.cs-hero`, `.cs-timeline`, `.metric-card`, `.callout-card`, `.cs-table`, `.cs-faq`) are building blocks, not a required template
+
+See `DEPLOYMENT.md` for the full workflow.
+
+---
+
 ## Changelog
+
+### 2026-04-10
+- Added **Results / case studies section** (`/results/`) — hand-built static HTML for per-page design flexibility
+- First case study: Lead Enrichment Agent (Explorium + Notion) at `/results/people-enrichment-agent/`
+- Updated nav + footer in `index.html`, `resources/index.html`, `_layouts/post.html` with **Results** link
+- `scripts/notion-sync.js` now skips entries with `Post Type = Case Study` so they can live in the same Notion database as blog drafts without syncing to `_posts/`
+- New CSS: `.results-hero`, `.cs-hero`, `.stat-pill`, `.cs-timeline`, `.metric-card`, `.callout-card`, `.cs-feature-cards`, `.cs-workflow`, `.cs-table`, `.cs-faq`
+- Fixed README brand tokens table (was showing stale Webflow-era colors — now matches `styles.css` `:root`)
 
 ### 2026-03-31
 - Added auto-image pipeline to blog sync: downloads images from Notion, optimizes with `sharp` (WebP, max 1200px), saves locally in `resources/images/blog/[slug]/`

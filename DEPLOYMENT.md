@@ -57,7 +57,7 @@ Database ID: `ce0d53fdc6a2489a8201330e13bd3515`
 | Published Date | Date | ✓ | Sets post URL and sort order |
 | Description | Text | | Excerpt for cards + og:description |
 | Author | Text | | Byline (e.g. Veronica) |
-| Post Type | Select | | Article, Guide, Case Study, Tutorial |
+| Post Type | Select | | Article, Guide, Case Study, Tutorial. **Case Study entries are skipped by the sync** — they live at `/results/` as hand-built HTML. See "Case Studies" section below. |
 | Category | Select | | Guides, Case Studies, AI & Automation, Strategy |
 | Tags | Multi-select | | AI Agents, B2B Marketing, One-Person Team, Strategy, Automation |
 | Featured Image URL | URL | | Stable URL only — use `resources/images/` in repo or external CDN. Notion S3 URLs expire. |
@@ -72,6 +72,78 @@ front matter and overwrites the file in place. No duplicate posts.
 
 **If you change the Slug or Published Date:** the old file is deleted and a new one is created at
 the new URL. The old URL will 404. Update any links before changing slugs on live posts.
+
+---
+
+## Case Studies (`/results/`)
+
+Case studies are **different from blog posts**. They live at `/results/[slug]/` and are **hand-built static HTML**, not Jekyll-templated posts. This gives each case study full design flexibility (custom timelines, metric cards, unique layouts).
+
+### Content architecture
+
+```
+/results/                          → results/index.html (listing page)
+/results/[slug]/                   → results/[slug]/index.html (static HTML)
+```
+
+Current case studies:
+- `/results/people-enrichment-agent/` — Lead Enrichment Agent (Explorium + Notion)
+
+### Workflow — how case studies interact with Notion
+
+You can still draft case study copy in the **Eldur Blog** Notion database (using `Post Type = Case Study`) to keep all content in one place. The sync script **skips** Case Study entries so they never appear as blog posts.
+
+```
+Eldur Blog Notion DB
+  ↓  Status = Published
+  ↓  notion-sync.js reads Post Type
+  ├─ "Blog Post" / "Guide" / ... → syncs to _posts/*.md (blog)
+  └─ "Case Study" → SKIPPED (static HTML is the source of truth)
+```
+
+**This means:** You can safely set a Case Study entry in Notion to `Status = Published` and it will NOT appear on the blog. The sync logs `Skipping Case Study "Title" — hand-built at /results/` and moves on.
+
+### Adding a new case study
+
+1. **Create the static HTML file:**
+   - Copy `results/people-enrichment-agent/index.html` as a starting point
+   - Save as `results/[new-slug]/index.html`
+   - Each case study can look different — the CSS classes (`.cs-hero`, `.cs-timeline`, `.metric-card`, `.callout-card`, `.cs-feature-cards`, `.cs-table`, `.cs-faq`) are building blocks, not a required layout
+2. **Add a card to the listing page:** edit `results/index.html` and add a new `<article class="card--case-study">` block linking to the new slug
+3. **Update JSON-LD schema inside the new case study:** change `headline`, `description`, `image`, `datePublished`, and the `BreadcrumbList` title
+4. **Commit + push:** `git add results/ && git commit -m "feat: new case study" && git push`
+
+### CSS building blocks (in `styles.css`)
+
+| Class | What it is |
+|---|---|
+| `.results-hero` | Listing page dark hero (mirrors `.resources-hero`) |
+| `.card--case-study` | Listing card |
+| `.cs-hero` | Case study page hero with breadcrumb + stat pills |
+| `.stat-pill` | Inline metric badge (e.g. "98% time reduction") |
+| `.cs-section` / `.cs-2col` | Section container + 2-column layout |
+| `.callout-card` | Dark card with orange left border (client pain points / quotes) |
+| `.cs-feature-cards` / `.cs-feature-card` | 2-column feature comparison |
+| `.cs-timeline` / `.cs-timeline__step` | Numbered horizontal/vertical architecture timeline |
+| `.cs-workflow` / `.cs-insight` | Numbered workflow steps with pull-quote callout |
+| `.cs-metrics` / `.metric-card` | Result metric cards with gradient numbers |
+| `.cs-table` / `.cs-table-wrap` | Comparison table with scroll wrapper |
+| `.cs-faq` | FAQ accordion using `<details>`/`<summary>` |
+
+### Why static HTML instead of a Jekyll layout
+
+A Jekyll `_layouts/case-study.html` template would force every case study into the same structure. Case studies need to emphasize different things (a timeline for an architecture story, a before/after for a design story, big metrics for a growth story). Hand-built HTML lets each tell its own story.
+
+### Troubleshooting
+
+**Case Study appears on the blog instead of `/results/`**
+- Check `Post Type` is exactly `Case Study` in Notion (case-insensitive match, but must spell it right)
+- The skip runs in `scripts/notion-sync.js` — look for "Skipping Case Study" in the sync log
+- If it already synced once as a blog post, manually delete the file from `_posts/` and commit
+
+**New case study page returns 404**
+- File must be named `index.html` inside its folder: `results/[slug]/index.html`
+- GitHub Pages takes ~60 seconds to rebuild after push
 
 ---
 
