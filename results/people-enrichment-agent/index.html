@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lead Enrichment Agent with Explorium and Notion — Eldur Studio</title>
+  <meta name="description" content="Full case study: architecture, results, and lessons from enriching 400+ VC contacts in a Notion CRM using Explorium, Pipedream, and agentic AI workflows.">
+  <meta property="og:site_name" content="Eldur Studio">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eldur.studio/results/people-enrichment-agent/">
+  <meta property="og:title" content="Lead Enrichment Agent with Explorium and Notion — Eldur Studio">
+  <meta property="og:description" content="We replaced 200 hours of LinkedIn research with a 2-hour automation. 400+ VC contacts enriched at 95% match rate.">
+  <meta property="og:image" content="https://eldur.studio/assets/social-card.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@eldur_studio">
+  <link rel="canonical" href="https://eldur.studio/results/people-enrichment-agent/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="https://cdn.usefathom.com/script.js" data-site="FYROQRHW" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Lead Enrichment Agent with Explorium and Notion",
+    "description": "Full case study: architecture, results, and lessons from enriching 400+ VC contacts in a Notion CRM using Explorium, Pipedream, and agentic AI workflows.",
+    "datePublished": "2026-04-10",
+    "author": {
+      "@type": "Person",
+      "name": "Veronica",
+      "url": "https://eldur.studio"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Eldur Studio",
+      "url": "https://eldur.studio"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://eldur.studio/results/people-enrichment-agent/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eldur.studio/" },
+      { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://eldur.studio/results/" },
+      { "@type": "ListItem", "position": 3, "name": "Lead Enrichment Agent with Explorium and Notion", "item": "https://eldur.studio/results/people-enrichment-agent/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <svg height="32" viewBox="488 316 133 148" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.045 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+        </svg>
+        <span class="nav__wordmark">Eldur Studio</span>
+      </a>
+      <div class="nav__links">
+        <a href="/results/" class="nav__link nav__link--active">Results</a>
+        <a href="/resources/" class="nav__link">Resources</a>
+        <a href="https://booking.akiflow.com/veronica-es-new" class="btn btn--nav" target="_blank" rel="noopener">Schedule a call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="cs-hero">
+    <div class="container--narrow">
+      <p class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/results/">Results</a>
+        <span>/</span>
+        Lead Enrichment Agent
+      </p>
+      <p class="eyebrow">Case Study · CRM Automation</p>
+      <h1 class="cs-hero__title">Lead Enrichment Agent with Explorium and Notion</h1>
+      <p class="cs-hero__lead">We replaced 200 hours of LinkedIn research with a 2-hour automation. A venture firm needed to enrich and verify hundreds of investor records — here's exactly how we built it.</p>
+      <div class="cs-hero__stats">
+        <span class="stat-pill"><strong>98%</strong> time reduction</span>
+        <span class="stat-pill"><strong>400+</strong> contacts enriched</span>
+        <span class="stat-pill"><strong>2.2 hrs</strong> total runtime</span>
+        <span class="stat-pill"><strong>95%</strong> match rate (major firms)</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE PROBLEM -->
+  <section class="cs-section">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">The problem</p>
+      <h2 class="cs-section__title">A relationship database that couldn't keep up</h2>
+      <div class="cs-2col">
+        <div class="cs-prose">
+          <p>The client needed to keep a large investor relationship database accurate across multiple systems — email, calendar, spreadsheets, and finance. The database had common failure modes that compounded over time:</p>
+          <ul>
+            <li>Missing or outdated firm websites</li>
+            <li>Unverified emails that bounced on outreach</li>
+            <li>Inconsistent company names and domains</li>
+            <li>Manual enrichment that never kept up with volume</li>
+          </ul>
+          <p>They evaluated investment CRMs that promised enrichment, but the reality was a rigid workflow and a schema that didn't match how the team actually worked.</p>
+          <p>The ask: keep Notion as the system of record, and make the data stay current without manual effort.</p>
+        </div>
+        <div>
+          <div class="callout-card">
+            <p class="callout-card__label">Before automation</p>
+            <div class="callout-card__item">15–30 minutes per contact for manual research</div>
+            <div class="callout-card__item">400 contacts × 30 min = 100–200 hours of work</div>
+            <div class="callout-card__item">Data still outdated within weeks</div>
+            <div class="callout-card__item">No audit trail of what changed or when</div>
+            <div class="callout-card__item">Enrichment depended on one person's bandwidth</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY NOTION + WHY EXPLORIUM -->
+  <section class="cs-section cs-section--light">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Stack decisions</p>
+      <h2 class="cs-section__title">Why Notion. Why Explorium.</h2>
+      <div class="cs-feature-cards">
+        <div class="cs-feature-card">
+          <p class="cs-feature-card__label">System of record</p>
+          <h3 class="cs-feature-card__title">Why Notion</h3>
+          <p class="cs-feature-card__body">We build a lot of CRMs in Notion because it's flexible, fast to evolve, and easy to adopt. The native AI lets you search with natural language: "When's the last time we talked to Investor XYZ and what did we discuss?" — instead of applying filters and scanning rows.</p>
+          <p class="cs-feature-card__body">The gap: Notion doesn't come with deep company intelligence by default. This client needed funding events, validated domains, and high-confidence contact details inside their existing workspace — not a migration.</p>
+        </div>
+        <div class="cs-feature-card">
+          <p class="cs-feature-card__label">Enrichment layer</p>
+          <h3 class="cs-feature-card__title">Why Explorium</h3>
+          <p class="cs-feature-card__body">The MCP connection to Claude was the surprise win. I could read and write Notion data without mapping fields. What would normally take an hour of configuration became a conversation.</p>
+          <ul>
+            <li>Strong coverage: company info, funding events, contact details</li>
+            <li>Better matching than "domain only" — infers the right company from partial inputs using fuzzy logic</li>
+            <li>A usable playground: we tested on real records before writing any automation code</li>
+            <li>Statistics endpoint: estimates query size before you commit to a run</li>
+            <li>Credit-based pricing that scales without surprise invoices</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE TIMELINE -->
+  <section class="cs-section cs-section--dark">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Architecture</p>
+      <h2 class="cs-section__title">What we shipped</h2>
+      <p class="cs-section__lead">Four agents, each responsible for exactly one job. An orchestration layer keeps execution reliable across the full batch.</p>
+      <div class="cs-timeline">
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">1</div>
+          <h3 class="cs-timeline__title">Prospect Matching</h3>
+          <p class="cs-timeline__desc">Looks up the right person from name + company, even with spelling variations or aliases. Returns a stable ID used for every enrichment step.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">2</div>
+          <h3 class="cs-timeline__title">Email Validation</h3>
+          <p class="cs-timeline__desc">Picks the best current work email when multiple results come back. Checks domain matches expected company. Flags low-confidence results for human review.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">3</div>
+          <h3 class="cs-timeline__title">Orchestration (Pipedream)</h3>
+          <p class="cs-timeline__desc">Runs multi-step workflows in order. Handles batching and retries automatically. Tracks what already ran so partial failures don't restart from scratch.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">4</div>
+          <h3 class="cs-timeline__title">Notion Update</h3>
+          <p class="cs-timeline__desc">Writes enriched data back into Notion. Stamps each record with a last-checked date. Keeps an audit trail: what changed, when, and how confident the match was.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY WORKFLOW -->
+  <section class="cs-section">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Key workflow</p>
+      <h2 class="cs-section__title">Email enrichment: 400+ contacts</h2>
+      <p class="cs-section__lead">A typical run, step by step. Each step either produces a result or marks the record for human review — no silent failures.</p>
+      <div class="cs-workflow">
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">1</div>
+          <p class="cs-workflow__text"><strong>Notion triggers on record create/update.</strong> The webhook fires as soon as a new contact is added or an existing one is flagged for refresh.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">2</div>
+          <p class="cs-workflow__text"><strong>Validate inputs.</strong> Check that name, firm, and Notion page URL are present. Skip and log any incomplete records rather than failing the whole batch.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">3</div>
+          <p class="cs-workflow__text"><strong>Match the prospect.</strong> Name + company → stable Explorium ID. Handles aliases, maiden names, and common misspellings.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">4</div>
+          <p class="cs-workflow__text"><strong>Enrich prospect data.</strong> Pull verified emails, phone, LinkedIn profile, and any public activity signals.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">5</div>
+          <p class="cs-workflow__text"><strong>Infer expected domains from firm enrichment.</strong> Cross-reference the contact's email domain against the firm's known domains to catch role changes or aliases.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">6</div>
+          <p class="cs-workflow__text"><strong>Select the best email.</strong> Apply validation rules: prefer work email, check domain match, reject anything below confidence threshold.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">7</div>
+          <p class="cs-workflow__text"><strong>Update Notion or mark "no match".</strong> Write the enriched fields back. If no match found, set a status property so the record is easy to filter and review.</p>
+        </div>
+        <div class="cs-workflow__step">
+          <div class="cs-workflow__num">8</div>
+          <p class="cs-workflow__text"><strong>Store enrichment metadata.</strong> Log last-checked date, match confidence, and which fields changed. Gives the team full visibility into data freshness.</p>
+        </div>
+      </div>
+      <div class="cs-insight">
+        <p class="cs-insight__label">Lesson learned</p>
+        <p>Batching was the difference between "it works in a demo" and "it runs all week without babysitting." We found <strong>3–5 records per batch</strong> was the sweet spot for stability. Our first run tried 20 at once, the MCP connection dropped mid-enrichment, and we spent an hour figuring out which records actually got written back. After that, 3–5 became a hard rule.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="cs-section cs-section--light">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Results</p>
+      <h2 class="cs-section__title">What the numbers looked like</h2>
+      <div class="cs-metrics">
+        <div class="metric-card">
+          <div class="metric-card__value">95%+</div>
+          <div class="metric-card__label">Match rate</div>
+          <div class="metric-card__detail">Large, well-known firms. Mid-size funds ($100M–$1B AUM): 70–80%. Smaller/international: 40–60%.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__value">~20s</div>
+          <div class="metric-card__label">Per contact</div>
+          <div class="metric-card__detail">Full workflow — webhook to Notion update. Single match + enrich: 2–3 seconds. Batch of 5: 8–12 seconds.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__value">98%</div>
+          <div class="metric-card__label">Time reduction</div>
+          <div class="metric-card__detail">Manual: 15–30 min × 400 contacts = 100–200 hrs. Automated: ~20 sec × 400 contacts = 2.2 hrs.</div>
+        </div>
+      </div>
+      <div class="cs-results-prose">
+        <h3>What changed for the client</h3>
+        <p>Instead of chasing down company websites or guessing at funding data, the CRM now updates itself. Automation is smoother, and the database is always one step ahead. The team went from "who has time to clean this?" to running enrichment as a background task — no babysitting required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPARISON TABLE -->
+  <section class="cs-section">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Tool evaluation</p>
+      <h2 class="cs-section__title">How Explorium compares</h2>
+      <p class="cs-section__lead">This reflects our experience during the build. We recommend verifying current capabilities directly with each provider — these things change.</p>
+      <div class="cs-table-wrap">
+        <table class="cs-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Explorium</th>
+              <th>Crunchbase API</th>
+              <th>PitchBook API</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Email enrichment</td>
+              <td><strong>Verified professional + personal</strong></td>
+              <td>Limited contact info</td>
+              <td>None</td>
+            </tr>
+            <tr>
+              <td>Batch processing</td>
+              <td><strong>40+ prospects per call</strong></td>
+              <td>Sequential lookups</td>
+              <td>Unknown</td>
+            </tr>
+            <tr>
+              <td>MCP support</td>
+              <td><strong>Yes</strong></td>
+              <td>No</td>
+              <td>No</td>
+            </tr>
+            <tr>
+              <td>Real-time events</td>
+              <td><strong>Funding, hiring, acquisitions</strong></td>
+              <td>Delayed updates</td>
+              <td>Unknown</td>
+            </tr>
+            <tr>
+              <td>Flexible matching</td>
+              <td><strong>Name + company, email, phone</strong></td>
+              <td>UUID-based only</td>
+              <td>Unknown</td>
+            </tr>
+            <tr>
+              <td>Pricing model</td>
+              <td><strong>Credit-based (scales, budget-friendly)</strong></td>
+              <td>Per-call (expensive at scale)</td>
+              <td>Expensive per-seat annual license</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cs-section cs-section--light">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Common questions</p>
+      <h2 class="cs-section__title">FAQs</h2>
+      <div class="cs-faq">
+        <details>
+          <summary>What is Notion data enrichment?</summary>
+          <p>It's the process of adding richer, more useful business data — like company websites or funding details — to your Notion CRM records, usually via API integration. Instead of looking up each record manually, you connect an enrichment provider that fills in the fields automatically.</p>
+        </details>
+        <details>
+          <summary>How does Explorium help with CRM data?</summary>
+          <p>Explorium's API connects to individual records and fills in important company and contact details without manual research. We used custom buttons in the Notion UI to give the client the ability to manually trigger enrichment for a single record, and more sophisticated looping logic to process multiple records in bulk overnight.</p>
+        </details>
+        <details>
+          <summary>Is it complicated to set up?</summary>
+          <p>It's an advanced use case, but if you're already using API-based automations in Notion with an orchestrator like Zapier, n8n, Make, or Pipedream, adding Explorium is quick and straightforward. The main complexity is the batching logic and the field-matching rules — that's where most of the time went.</p>
+        </details>
+        <details>
+          <summary>Who should consider this integration?</summary>
+          <p>If you have a Notion Business plan and use it to manage relationships, Notion with enrichment becomes genuinely competitive with established CRMs — with a UI that's entirely flexible to how your company works. Especially powerful if you've connected your email to Notion AI, since you can then search across enriched contacts and email history together.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="cs-section">
+    <div class="container--narrow">
+      <p class="cs-section__eyebrow">What this demonstrates</p>
+      <h2 class="cs-section__title">You don't need to leave Notion to get better data</h2>
+      <div class="cs-prose">
+        <p>If you already use Notion for relationships and internal context, you don't need to migrate to a different CRM. You need an enrichment layer that is:</p>
+        <ul>
+          <li>Programmatic — not dependent on someone's calendar</li>
+          <li>Auditable — full trail of what changed and when</li>
+          <li>Safe to run at scale — batching, retries, partial failure handling</li>
+          <li>Designed around your schema, not a vendor's</li>
+        </ul>
+        <p>That's where agentic enrichment workflows earn their keep.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="post-cta">
+    <div class="container--center">
+      <p class="post-cta__title">Want something like this for your CRM?</p>
+      <a href="https://booking.akiflow.com/veronica-es-new" class="btn btn--primary" target="_blank" rel="noopener">Schedule a call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="nav__logo">
+          <svg height="28" viewBox="488 316 133 148" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.045 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+          </svg>
+          <span class="nav__wordmark">Eldur Studio</span>
+        </a>
+        <p>Build the one-person marketing team.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="/results/">Results</a>
+        <a href="/resources/">Resources</a>
+        <a href="https://booking.akiflow.com/veronica-es-new" target="_blank" rel="noopener">Schedule a call</a>
+        <a href="mailto:info@eldur.studio" class="footer__contact">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0.75" y="2.75" width="11.5" height="7.5" rx="1.25" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M0.75 4.25l5.75 3.5 5.75-3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          info@eldur.studio
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>

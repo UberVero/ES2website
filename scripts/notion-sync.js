@@ -239,6 +239,16 @@ async function main() {
       continue;
     }
 
+    // Skip Case Studies — they are hand-built static HTML pages under /results/,
+    // not Jekyll blog posts. They stay in the Notion "Eldur Blog" DB so content
+    // can be drafted in the same place, but they don't sync to _posts/.
+    const rawPostType = getSelectValue(props['Post Type']) || '';
+    if (rawPostType.toLowerCase() === 'case study') {
+      console.log(`  Skipping Case Study "${title}" — hand-built at /results/`);
+      skipped++;
+      continue;
+    }
+
     // Optional fields
     const description = richTextToPlain(props['Description']?.rich_text) || null;
     const author = richTextToPlain(props['Author']?.rich_text) || null;

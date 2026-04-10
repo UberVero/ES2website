@@ -1,8 +1,8 @@
 ---
 layout: null
-title: "Resources — Eldur Studio"
-description: "Guides, frameworks, and field notes on AI agents, B2B marketing, and one-person teams."
-permalink: /resources/
+title: "Results — Eldur Studio"
+description: "Real client outcomes from AI agent deployments — architecture, metrics, and lessons from live engagements."
+permalink: /results/
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +15,7 @@ permalink: /resources/
   <meta property="og:title" content="{{ page.title }}">
   <meta property="og:description" content="{{ page.description }}">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://eldur.studio/resources/">
+  <meta property="og:url" content="https://eldur.studio/results/">
   <meta property="og:image" content="https://eldur.studio/assets/social-card.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,7 +24,7 @@ permalink: /resources/
   <meta name="twitter:title" content="{{ page.title }}">
   <meta name="twitter:description" content="{{ page.description }}">
   <meta name="twitter:image" content="https://eldur.studio/assets/social-card.png">
-  <link rel="canonical" href="https://eldur.studio/resources/">
+  <link rel="canonical" href="https://eldur.studio/results/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
   <script src="https://cdn.usefathom.com/script.js" data-site="FYROQRHW" defer></script>
@@ -41,52 +41,51 @@ permalink: /resources/
         <span class="nav__wordmark">Eldur Studio</span>
       </a>
       <div class="nav__links">
-        <a href="/results/" class="nav__link">Results</a>
-        <a href="/resources/" class="nav__link nav__link--active">Resources</a>
+        <a href="/results/" class="nav__link nav__link--active">Results</a>
+        <a href="/resources/" class="nav__link">Resources</a>
         <a href="https://booking.akiflow.com/veronica-es-new" class="btn btn--nav" target="_blank" rel="noopener">Schedule a call</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO -->
-  <header class="resources-hero">
+  <header class="results-hero">
     <div class="container">
       <p class="eyebrow">Eldur Studio</p>
-      <h1 class="resources-hero__title">Resources</h1>
-      <p class="resources-hero__lead">Guides, frameworks, and field notes on AI agents, B2B marketing, and building one-person teams.</p>
+      <h1 class="results-hero__title">Results</h1>
+      <p class="results-hero__lead">Real client deployments — architecture, outcomes, and the lessons that only come from shipping.</p>
     </div>
   </header>
 
-  <!-- POSTS GRID -->
+  <!-- CASE STUDIES GRID -->
   <main class="section section--light">
     <div class="container">
-      {% assign posts = site.posts | where: "status", "published" %}
-      {% if posts.size > 0 %}
       <div class="cards--3">
-        {% for post in posts %}
-        <article class="card--resource">
-          {% if post.image %}
-          <div class="card__cover">
-            <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+
+        <!-- Case study 1: People Enrichment Agent -->
+        <article class="card--case-study">
+          <div class="card__cover" style="background: var(--black); display:flex; align-items:center; justify-content:center; padding: 32px;">
+            <svg width="64" height="64" viewBox="488 316 133 148" fill="rgba(255,122,0,0.35)" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.005 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+            </svg>
           </div>
-          {% else %}
-          <div class="card__cover"></div>
-          {% endif %}
           <div class="card__body">
-            {% if post.category %}<p class="card__eyebrow">{{ post.category }}</p>{% endif %}
-            <h2 class="card__title">{{ post.title }}</h2>
-            {% if post.description %}<p class="card__excerpt">{{ post.description }}</p>{% endif %}
+            <p class="card__eyebrow">Case Study · CRM Automation</p>
+            <h2 class="card__title">Lead Enrichment Agent with Explorium and Notion</h2>
+            <p class="card__excerpt">We replaced 200 hours of LinkedIn research with a 2-hour automation — enriching 400+ VC contacts with a 95% match rate.</p>
+          </div>
+          <div class="card--case-study card__stats">
+            <span class="card__stat">98% time reduction</span>
+            <span class="card__stat">400+ contacts</span>
+            <span class="card__stat">2.2 hrs</span>
           </div>
           <div class="card__footer">
-            <span class="card__date">{{ post.date | date: "%b %-d, %Y" }}</span>
-            <a href="{{ post.url }}" class="card__readmore">Read →</a>
+            <span class="card__date">April 2026</span>
+            <a href="/results/people-enrichment-agent/" class="card__readmore">Read case study →</a>
           </div>
         </article>
-        {% endfor %}
+
       </div>
-      {% else %}
-      <p style="color:#888; text-align:center; padding: 64px 0;">No posts yet — check back soon.</p>
-      {% endif %}
     </div>
   </main>
 
@@ -106,7 +105,6 @@ permalink: /resources/
         <a href="/results/">Results</a>
         <a href="/resources/">Resources</a>
         <a href="https://booking.akiflow.com/veronica-es-new" target="_blank" rel="noopener">Schedule a call</a>
-        <a href="https://eldur.studio" target="_blank" rel="noopener">eldur.studio</a>
         <a href="mailto:info@eldur.studio" class="footer__contact">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="0.75" y="2.75" width="11.5" height="7.5" rx="1.25" stroke="currentColor" stroke-width="1.1"/>
