@@ -27,6 +27,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
     # Only run after a *successful* Pages deploy (skip when it failed)
     if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
     steps:
@@ -58,6 +61,7 @@ jobs:
           exit 1
 
       - name: Run mobile layout tests
+        id: playwright
         env:
           BASE_URL: ${{ github.event.inputs.base_url || 'https://eldur.studio' }}
           CI: "true"
@@ -70,3 +74,109 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 14
+
+      # ------------------------------------------------------------------
+      # Auto-file a GitHub issue when Huginn catches a regression.
+      #
+      # Rules:
+      #   • Only on real runs (deploys + schedule), never on manual
+      #     workflow_dispatch — that's for testing and would be noisy.
+      #   • Dedupe: if an open `huginn-failure` issue already exists for
+      #     the same commit SHA, add a comment instead of filing a new
+      #     issue. Same regression, same thread.
+      #   • The `huginn-failure` label is created on the fly the first
+      #     time this runs so nobody has to manage labels manually.
+      # ------------------------------------------------------------------
+      - name: File GitHub issue on failure
+        if: ${{ failure() && github.event_name != 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          TRIGGER: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          # Make sure the label exists (idempotent)
+          gh label create huginn-failure \
+            --color d73a4a \
+            --description "Mobile layout watchdog detected a regression" \
+            --force >/dev/null 2>&1 || true
+
+          # Short commit description for the issue title
+          short_sha="${COMMIT_SHA:0:7}"
+          commit_subject="$(git log -1 --format='%s' "$COMMIT_SHA" 2>/dev/null || echo 'unknown commit')"
+
+          # Dedupe: is there already an open issue for this exact commit?
+          existing=$(gh issue list \
+            --label huginn-failure \
+            --state open \
+            --search "$COMMIT_SHA in:body" \
+            --json number \
+            --jq '.[0].number // empty')
+
+          if [ -n "$existing" ]; then
+            echo "Existing huginn-failure issue #$existing covers $short_sha — adding a comment."
+            gh issue comment "$existing" --body "Huginn failed again on the same commit. Latest run: $RUN_URL"
+            exit 0
+          fi
+
+          title="Huginn caught a regression on ${short_sha}: ${commit_subject}"
+          body=$(cat <<BODY
+          Huginn — the mobile layout watchdog — detected a regression on production.
+
+          | | |
+          |---|---|
+          | **Commit** | \`${COMMIT_SHA}\` |
+          | **Trigger** | \`${TRIGGER}\` |
+          | **Run** | ${RUN_URL} |
+
+          ## How to diagnose
+
+          1. Open the run link above.
+          2. Expand the **Run mobile layout tests** step — you'll see the exact test names and the devices they failed on.
+          3. Scroll to the **Artifacts** section at the bottom of the run page and download **playwright-report**. Unzip it and open \`index.html\` — you get screenshots and traces for every failure.
+          4. Reproduce locally (Chrome DevTools mobile mode works) and fix.
+          5. Push to a branch, open a PR. Huginn re-runs automatically after the deploy.
+
+          ## Auto-close
+
+          This issue closes itself on the next **successful** Huginn run. No cleanup needed.
+          BODY
+          )
+
+          gh issue create \
+            --title "$title" \
+            --body "$body" \
+            --label huginn-failure
+
+      # ------------------------------------------------------------------
+      # Auto-close any lingering huginn-failure issues when Huginn is
+      # green again. Keeps the Issues tab honest — open issues always
+      # mean something is actually broken *right now*.
+      # ------------------------------------------------------------------
+      - name: Close stale huginn-failure issues on success
+        if: ${{ success() && github.event_name != 'workflow_dispatch' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COMMIT_SHA: ${{ github.sha }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          numbers=$(gh issue list \
+            --label huginn-failure \
+            --state open \
+            --json number \
+            --jq '.[].number')
+
+          if [ -z "$numbers" ]; then
+            echo "No open huginn-failure issues. Nothing to close."
+            exit 0
+          fi
+
+          for n in $numbers; do
+            echo "Closing issue #$n — Huginn is green on ${COMMIT_SHA:0:7}"
+            gh issue comment "$n" --body "Huginn is green again on \`${COMMIT_SHA:0:7}\`. Closing. Run: $RUN_URL"
+            gh issue close "$n"
+          done
