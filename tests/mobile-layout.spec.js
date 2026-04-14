@@ -1,7 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Mobile layout integrity suite.
+ * Huginn — Mobile Layout Watchdog.
+ *
+ * Named after Odin's raven, who flies out over the world each day
+ * and reports back what he saw. This suite does the same for
+ * eldur.studio on four simulated phones.
  *
  * Guards against the two classes of regressions we care about:
  *   1. Header overflow / CTA clipping on narrow viewports (why the

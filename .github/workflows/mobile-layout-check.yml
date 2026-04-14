@@ -1,6 +1,9 @@
-name: Mobile Layout Check
+name: Huginn — Mobile Layout Watchdog
 
-# Runs the Playwright mobile layout suite against the deployed site.
+# "Huginn" is Odin's raven who flies out over the world each day and
+# reports back what he saw. This workflow is our version: it visits
+# eldur.studio on four simulated phones after every deploy and tells
+# us if anything on mobile has regressed.
 #
 # Triggers:
 #   • After GitHub Pages finishes publishing a new build from main
