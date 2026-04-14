@@ -1,0 +1,69 @@
+name: Mobile Layout Check
+
+# Runs the Playwright mobile layout suite against the deployed site.
+#
+# Triggers:
+#   • After GitHub Pages finishes publishing a new build from main
+#     (workflow_run on the built-in "pages-build-deployment" workflow).
+#   • A nightly safety net at 12:00 UTC, so we catch any drift even
+#     when nothing has been pushed.
+#   • Manual dispatch, optionally against a different base URL.
+on:
+  workflow_run:
+    workflows: ["pages-build-deployment"]
+    types: [completed]
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: "Base URL to test against"
+        required: false
+        default: "https://eldur.studio"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    # Only run after a *successful* Pages deploy (skip when it failed)
+    if: ${{ github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'success' }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Wait for the live site to respond
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://eldur.studio' }}
+        run: |
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            if curl -fsS --max-time 10 "$BASE_URL" > /dev/null; then
+              echo "Site is up on attempt $i"
+              exit 0
+            fi
+            echo "Attempt $i failed, sleeping 10s..."
+            sleep 10
+          done
+          echo "Site did not respond after 10 attempts" >&2
+          exit 1
+
+      - name: Run mobile layout tests
+        env:
+          BASE_URL: ${{ github.event.inputs.base_url || 'https://eldur.studio' }}
+          CI: "true"
+        run: npx playwright test
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14

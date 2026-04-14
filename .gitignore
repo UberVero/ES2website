@@ -2,3 +2,9 @@ node_modules/
 _site/
 .jekyll-cache/
 .jekyll-metadata
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
