@@ -242,6 +242,9 @@ That's **48 checks** total. They run in about 30 seconds.
 
 - The "Huginn — Mobile Layout Watchdog" job goes red in the repo's **Actions** tab and GitHub emails you.
 - The failure points at the exact page, device, and check that failed, so the fix is usually a one-line change.
+- **A GitHub issue is filed automatically** with the `huginn-failure` label. It includes the commit SHA, a link to the run, and a short runbook. If Huginn fails twice on the same commit, the second failure comments on the existing issue instead of spawning a duplicate.
+- **Issues auto-close** on the next successful Huginn run, so the Issues tab always reflects what's broken *right now*.
+- Manual runs triggered from the Actions UI (`workflow_dispatch`) never file issues — that channel is for testing and would create noise.
 
 ### What it doesn't check (intentionally)
 
