@@ -18,7 +18,8 @@ cd "${CLAUDE_PROJECT_DIR:-$(pwd)}"
 echo "[session-start] Installing npm dependencies..."
 npm install --no-audit --no-fund
 
-echo "[session-start] Installing Playwright Chromium..."
-npx --yes playwright install --with-deps chromium
+echo "[session-start] Installing Playwright browsers (Chromium + WebKit)..."
+# WebKit powers the iPhone device profiles; Chromium powers Pixel 5.
+npx --yes playwright install --with-deps chromium webkit
 
 echo "[session-start] Done. Run tests with: npm run test:mobile"
