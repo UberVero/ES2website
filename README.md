@@ -20,6 +20,7 @@ Static marketing site for **Eldur Studio** — Custom AI Agents for B2B Growth.
 | Hosting | GitHub Pages (main branch, root `/`) |
 | Domain | eldur.studio via DNS A records |
 | Analytics | Fathom (site ID: `FYROQRHW`) |
+| Mobile watchdog | **Huginn** — Playwright suite run in GitHub Actions after every deploy |
 
 No build step for the marketing site. Blog sync uses Node.js (`scripts/notion-sync.js`).
 
@@ -49,7 +50,18 @@ ES2website/
 ├── package.json         # Node deps for sync script (sharp, notion libs)
 │
 ├── .github/workflows/
-│   └── notion-sync.yml  # GitHub Action: 2h schedule + manual trigger
+│   ├── notion-sync.yml          # GitHub Action: 2h schedule + manual trigger
+│   └── mobile-layout-check.yml  # Huginn — runs the mobile watchdog
+│
+├── tests/
+│   └── mobile-layout.spec.js    # Huginn — Playwright mobile integrity suite
+├── playwright.config.js         # Mobile viewports + base URL for Huginn
+│
+├── .claude/
+│   ├── settings.json            # Registers the SessionStart hook
+│   └── hooks/
+│       └── session-start.sh     # Installs deps + Playwright browser
+│                                 # in Claude Code on the web sessions
 │
 ├── scripts/
 │   └── notion-sync.js   # Notion → Markdown + image pipeline
@@ -204,6 +216,68 @@ git push
 
 ---
 
+## Huginn — mobile layout watchdog
+
+Named after Odin's raven, who flies out over the world each day and reports back what he saw. Huginn is a little robot that visits eldur.studio on four simulated phones after every deploy and tells us if anything on mobile has regressed. Mobile is where our layout problems usually hide, and humans never catch them until a week later.
+
+### What it actually does
+
+- **Pretends to be four different phones** — iPhone SE, iPhone 14, iPhone 14 Pro Max, Pixel 5.
+- **Visits three pages** on each — the homepage, `/results/`, and `/resources/`.
+- **Checks four things** on every page:
+  1. Does anything stick out past the edge of the screen? (The classic mobile bug.)
+  2. Can it see the logo, the hamburger button, and the orange "Schedule a call" pill — all inside the visible area?
+  3. When it taps the hamburger, does a menu actually open with Results, Resources, and the email row?
+  4. At the bottom of the page, does the footer behave — does every link fit on screen?
+
+That's **48 checks** total. They run in about 30 seconds.
+
+### When it runs
+
+- **Automatically, after every deploy** to `main` — the moment GitHub Pages finishes rebuilding the site.
+- **Every day at 12:00 UTC** as a safety net, in case something drifts without a deploy (e.g. a browser update changes behavior).
+- **On demand** — anyone with repo access can kick it off manually from the **Actions** tab, optionally against a different URL (useful for testing a preview branch).
+
+### What happens if something breaks
+
+- The "Huginn — Mobile Layout Watchdog" job goes red in the repo's **Actions** tab and GitHub emails you.
+- The failure points at the exact page, device, and check that failed, so the fix is usually a one-line change.
+
+### What it doesn't check (intentionally)
+
+- Whether the design is *pretty* — tests can't have opinions on aesthetics.
+- Whether copy is correct, images load, or links go to the right place.
+- Desktop layout — the initial scope is mobile-only because that's where today's problem lives. Easy to extend later.
+
+### The files
+
+| File | What it does |
+|---|---|
+| `tests/mobile-layout.spec.js` | The actual checks, written in plain JavaScript (Playwright). |
+| `playwright.config.js` | Lists the four phone profiles and the base URL to test against (defaults to `https://eldur.studio`, override with `BASE_URL=...`). |
+| `.github/workflows/mobile-layout-check.yml` | The recipe GitHub runs to actually execute Huginn after every deploy. |
+| `.claude/hooks/session-start.sh` | Pre-installs the browser Huginn needs inside Claude Code on the web, so future agent sessions are test-ready from the first second. |
+
+### Running it yourself
+
+From the repo root:
+
+```bash
+# Against production (default)
+npm run test:mobile
+
+# Against a local Jekyll dev server
+BASE_URL=http://localhost:4000 npm run test:mobile
+```
+
+First-time setup on a new machine requires one command:
+
+```bash
+npm install && npx playwright install --with-deps chromium
+```
+
+---
+
 ## DNS records
 
 Registrar: Namecheap (or check registrar for eldur.studio)
@@ -243,6 +317,13 @@ See `DEPLOYMENT.md` for the full workflow.
 ---
 
 ## Changelog
+
+### 2026-04-14
+- **Mobile hamburger menu** — CSS-only `<details>`-based hamburger sitting left of the CTA pill; opens a slide-down panel with Results, Resources, and the email row. Fixes nav overflow on iPhone Safari.
+- **Compact mobile footer** — centered, wrap-friendly layout with a thin divider and an email row pinned below its own separator. Absorbs future nav items without any layout work.
+- **Huginn — mobile layout watchdog** — Playwright suite (48 checks across 4 phones × 3 pages) that runs automatically after every deploy. See the "Huginn" section above for details.
+- Added `.claude/settings.json` + `.claude/hooks/session-start.sh` so future Claude Code web sessions auto-install Playwright and can run Huginn without setup.
+- Updated nav HTML in `index.html`, `results/index.html`, `resources/index.html`, `results/people-enrichment-agent/index.html`, and `_layouts/post.html`.
 
 ### 2026-04-10
 - Added **Results / case studies section** (`/results/`) — hand-built static HTML for per-page design flexibility
