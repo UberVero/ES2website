@@ -39,8 +39,11 @@ jobs:
 
       - run: npm ci
 
+      # Install both browser engines: WebKit powers the iPhone device
+      # profiles (the engine behind real Mobile Safari — the whole reason
+      # this test suite exists), and Chromium powers the Pixel 5 profile.
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps chromium
+        run: npx playwright install --with-deps chromium webkit
 
       - name: Wait for the live site to respond
         env:
