@@ -276,6 +276,17 @@ async function main() {
     bodyMarkdown = await processBodyImages(bodyMarkdown, slug);
     const localImage = await processFeaturedImage(image, slug);
 
+    // Fallback: if no explicit Featured Image URL, use the first inline image
+    // in the body (already downloaded and rewritten to a local path above)
+    let featuredImage = localImage;
+    if (!featuredImage) {
+      const firstInlineImage = bodyMarkdown.match(/!\[[^\]]*\]\(([^)]+)\)/);
+      if (firstInlineImage) {
+        featuredImage = firstInlineImage[1];
+        console.log(`    No featured image set — using first body image: ${featuredImage}`);
+      }
+    }
+
     // Build front matter
     const frontMatter = buildFrontMatter({
       title,
@@ -285,7 +296,7 @@ async function main() {
       post_type: postType,
       category,
       tags: tags.length ? tags : null,
-      image: localImage,
+      image: featuredImage,
       date: publishedDate,
       last_modified_at: lastModified,
       status: 'published',

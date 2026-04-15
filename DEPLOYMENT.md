@@ -28,8 +28,8 @@ eldur.studio/resources/[slug]/   ← individual posts
 3. Write content in the page body (headings, paragraphs, lists, blockquotes all convert cleanly)
 4. Add images however you like — **inline images in the post body are handled automatically** (see Image Pipeline below)
 5. For the **Featured Image URL** field, you can either:
-   - Leave it blank (no hero image on the post)
-   - Paste any image URL — the sync script will download and optimize it automatically
+   - Leave it blank — the sync script automatically uses the **first inline image** in the post body as the featured image
+   - Paste any image URL to override — the sync script will download and optimize it automatically
    - Upload an image directly in Notion — even though Notion URLs expire, the sync script downloads them before they do
 6. Set **Status → Published** when ready
 7. Trigger a manual sync (see below) or wait up to 2 hours

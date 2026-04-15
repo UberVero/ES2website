@@ -9,6 +9,7 @@ tags:
   - "AI Agents"
   - "Automation"
   - "Notion"
+image: "/resources/images/blog/notion-crm-enrichment-explorium/img-1.webp"
 date: "2026-04-14"
 status: "published"
 notion_id: "c9ec4eca-8f3f-4753-9358-54d2e639c9a1"
