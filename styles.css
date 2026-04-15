@@ -1141,6 +1141,10 @@ details[open] > .faq__q::after {
     padding: 0 20px;
   }
 
+  .nav__wordmark {
+    display: none;
+  }
+
   .footer {
     padding: 40px 0 32px;
   }
