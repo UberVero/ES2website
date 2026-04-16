@@ -17,7 +17,7 @@ render_with_liquid: false
 ---
 
 
-After five years of running a Webflow agency, I got tired of juggling six different tools just to manage client projects. So I built something better — and now it's available on the Notion marketplace.
+After five years of running a Webflow agency, I got tired of juggling six different tools just to manage client projects. So I built something better — and now it's available on the Notion marketplace. (This experience is a big part of why we [shifted Eldur Studio to an AI-first operating model](/resources/no-code-to-ai-first-operators-marketing-model/).)
 
 
 ## The Problem: Too Many Tools, Not Enough Flow

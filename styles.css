@@ -834,6 +834,168 @@ img, svg {
 }
 
 /* ============================================
+   PACKAGE CARD INTERNALS (new tier layout)
+   ============================================ */
+.pkg__timeline {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 20px;
+}
+
+.pkg__price {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.1;
+  margin-bottom: 24px;
+}
+
+.pkg__price-unit {
+  font-size: 16px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.pkg__divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 4px;
+}
+
+.pkg__row-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.pkg__row-body {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.pkg__scenario {
+  background: var(--orange-dim);
+  border: 1px solid rgba(255, 122, 0, 0.2);
+  border-radius: var(--radius);
+  padding: 18px;
+  margin-top: 24px;
+}
+
+.pkg__scenario-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.pkg__scenario p:last-child {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.55;
+}
+
+.pkg__scenario strong {
+  color: var(--white);
+}
+
+.pkg__footnote {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 15px;
+  margin-top: 36px;
+  line-height: 1.55;
+}
+
+.pkg__footnote strong {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ============================================
+   WHO THIS IS FOR — 2-column layout
+   ============================================ */
+.who-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.who-callout {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--orange);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+}
+
+.who-callout__item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.who-callout__item:last-child {
+  margin-bottom: 0;
+}
+
+.who-callout__check {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.who-callout__item p {
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.who-callout__item strong {
+  color: var(--black);
+}
+
+@media (max-width: 900px) {
+  .who-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* FAQ list styling within faq__a */
+.faq__a ul {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-left: 0;
+  list-style: none;
+  margin-top: 12px;
+}
+
+.faq__a li {
+  padding-left: 18px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.faq__a li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+}
+
+/* ============================================
    AGENT CARDS
    ============================================ */
 .card--agent {

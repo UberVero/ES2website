@@ -53,10 +53,10 @@ The difference from a simple automation: agents handle ambiguity. They don't jus
 ## What this means for marketing teams
 
 
-While agent replace tasks, not people, we can build an large number of agents running in parallel. The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at.
+While agent replace tasks, not people, we can build an large number of agents running in parallel. The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at. This is the core of the [AI-first operating model](/resources/no-code-to-ai-first-operators-marketing-model/) we're building at Eldur Studio.
 
 
-The trap is trying to automate everything at once. Start with one high-value, high-repetition workflow. Get it working. Then expand.
+The trap is trying to automate everything at once. Start with one high-value, high-repetition workflow. Get it working. Then expand. If you're in healthcare or another regulated industry, read our guide on [building HIPAA-compliant AI agents](/resources/building-hipaa-compliant-ai-agents/) first — the rules are different when PHI is involved.
 
 > The best AI agent is the one that runs quietly in the background and surfaces only when something actually needs your attention.
 
@@ -66,6 +66,6 @@ The trap is trying to automate everything at once. Start with one high-value, hi
 Map your last five workdays. Find the task you did most often that required the least judgment. That's your first agent.
 
 
-If you're not sure where to start, [schedule a call](https://www.notion.so/resources/) — we scope these in 30 minutes.
+If you're not sure where to start, [schedule a call](https://booking.akiflow.com/veronica-es-new) — we scope these in 30 minutes.
 
 
