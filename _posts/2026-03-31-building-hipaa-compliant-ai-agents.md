@@ -24,7 +24,7 @@ render_with_liquid: false
 This is an update to a case study I originally shared on [NoCode.tech](http://nocode.tech/) about bringing no-code (now known as vibe-code) into a regulated healthcare org (patient portal + care-team workflows, built to move fast without letting PHI leak into the wrong tools). See the original write-up here: [https://www.nocode.tech/article/i-helped-implement-no-code-with-a-healthcare-org-heres-what-i-learned](https://www.nocode.tech/article/i-helped-implement-no-code-with-a-healthcare-org-heres-what-i-learned)
 
 
-What’s different now is not HIPAA. It’s the shape of the risk when [AI agents](/resources/ai-agents-b2b-marketing/) enter the system.
+What’s different now is not HIPAA. It’s the shape of the risk when AI agents enter the system.
 
 - The old rule still stands: only the systems that touch PHI need to be HIPAA ready.
 - The new reality: agents touch more systems, faster, with less friction. Boundaries and audit trails matter more than ever.
@@ -33,7 +33,7 @@ What’s different now is not HIPAA. It’s the shape of the risk when [AI agent
 ## Context: the no-code healthcare case study this is based on
 
 
-The baseline pattern is the same as the [NoCode.tech](http://nocode.tech/) article: keep PHI inside a HIPAA appropriate boundary, and still let a small care team move quickly with no code by pushing non-PHI work into simpler tools. This is also how we think about [the AI-first operating model](/resources/no-code-to-ai-first-operators-marketing-model/) more broadly — systems over tasks, boundaries over blind automation. The stack combined internal tools, automations, and patient communications. The rule was simple: if a tool cannot protect PHI, it should never see PHI.
+The baseline pattern is the same as the [NoCode.tech](http://nocode.tech/) article: keep PHI inside a HIPAA appropriate boundary, and still let a small care team move quickly with no code by pushing non-PHI work into simpler tools. The stack combined internal tools, automations, and patient communications. The rule was simple: if a tool cannot protect PHI, it should never see PHI.
 
 
 ## What changed with AI agents
