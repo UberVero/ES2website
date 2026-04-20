@@ -1,0 +1,820 @@
+/* ============================================
+   RESULTS / CASE STUDIES
+   ============================================ */
+
+/* Listing page hero (mirrors .resources-hero) */
+.results-hero {
+  background: var(--black);
+  padding: 80px 0 72px;
+}
+
+.results-hero .eyebrow {
+  margin-bottom: 12px;
+}
+
+.results-hero__title {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 16px;
+}
+
+.results-hero__lead {
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 540px;
+}
+
+/* Case study card (extends .card--resource pattern) */
+.card--case-study {
+  border: 1.5px solid var(--border);
+  background: var(--white);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.card--case-study:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+}
+
+.card--case-study .card__stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding: 14px 24px;
+  border-top: 1px solid var(--border);
+}
+
+.card--case-study .card__stat {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--orange);
+  background: var(--orange-dim);
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+
+/* ── Case study page: hero ── */
+.cs-hero {
+  background: var(--black);
+  padding: 64px 0 72px;
+}
+
+.cs-hero .eyebrow {
+  margin-bottom: 14px;
+}
+
+.cs-hero__title {
+  font-size: clamp(28px, 3.8vw, 48px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+  margin-bottom: 18px;
+}
+
+.cs-hero__lead {
+  font-size: 18px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 640px;
+  margin-bottom: 32px;
+}
+
+.cs-hero__stats {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.stat-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.09);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+
+.stat-pill strong {
+  color: var(--orange);
+}
+
+/* ── Case study: section containers ── */
+.cs-section {
+  padding: 80px 0;
+  background: var(--white);
+}
+
+.cs-section--light {
+  background: var(--gray);
+}
+
+.cs-section--dark {
+  background: var(--black);
+  color: var(--white);
+}
+
+.cs-section__eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  margin-bottom: 12px;
+}
+
+.cs-section__title {
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--black);
+  margin-bottom: 16px;
+}
+
+.cs-section--dark .cs-section__title {
+  color: var(--white);
+}
+
+.cs-section__lead {
+  font-size: 17px;
+  line-height: 1.7;
+  color: #444;
+  max-width: 600px;
+  margin-bottom: 48px;
+}
+
+.cs-section--dark .cs-section__lead {
+  color: var(--text-muted);
+}
+
+/* ── 2-col layout for problem section ── */
+.cs-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.cs-prose h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--black);
+  margin: 0 0 10px;
+}
+
+.cs-prose p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.cs-prose ul {
+  list-style: none;
+  margin: 0 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cs-prose ul li {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  padding-left: 20px;
+  position: relative;
+}
+
+.cs-prose ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+}
+
+/* Callout card (client pain point or key insight) */
+.callout-card {
+  background: var(--black);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 28px 28px 28px 28px;
+  color: var(--white);
+}
+
+.callout-card__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 14px;
+}
+
+.callout-card__item {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.callout-card__item:last-child {
+  border-bottom: none;
+}
+
+.callout-card__item::before {
+  content: '✕';
+  font-size: 11px;
+  color: var(--red);
+  flex-shrink: 0;
+}
+
+/* Feature cards (why Notion / why Explorium) */
+.cs-feature-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.cs-feature-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.cs-feature-card__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+  margin-bottom: 10px;
+}
+
+.cs-feature-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.cs-feature-card__body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #444;
+  margin-bottom: 16px;
+}
+
+.cs-feature-card ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cs-feature-card ul li {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #444;
+  padding-left: 18px;
+  position: relative;
+}
+
+.cs-feature-card ul li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--orange);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+/* ── Architecture Timeline ── */
+.cs-timeline {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  position: relative;
+  padding-top: 16px;
+}
+
+.cs-timeline::before {
+  content: '';
+  position: absolute;
+  top: 36px;
+  left: calc(12.5%);
+  width: calc(75%);
+  height: 2px;
+  background: var(--gradient);
+}
+
+.cs-timeline__step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 12px;
+  position: relative;
+}
+
+.cs-timeline__num {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--white);
+  font-size: 16px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+
+.cs-timeline__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+
+.cs-timeline__desc {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/* ── Key workflow steps ── */
+.cs-workflow {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  counter-reset: workflow-step;
+}
+
+.cs-workflow__step {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 16px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border);
+  counter-increment: workflow-step;
+}
+
+.cs-workflow__step:last-child {
+  border-bottom: none;
+}
+
+.cs-workflow__num {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--orange);
+  line-height: 1;
+  padding-top: 2px;
+}
+
+.cs-workflow__text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #333;
+}
+
+.cs-workflow__text strong {
+  font-weight: 700;
+  color: var(--black);
+}
+
+/* Batch size highlight quote */
+.cs-insight {
+  background: var(--orange-dim);
+  border-left: 4px solid var(--orange);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: 20px 24px;
+  margin-top: 32px;
+}
+
+.cs-insight__label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  margin-bottom: 8px;
+}
+
+.cs-insight p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  margin: 0;
+}
+
+/* ── Product screenshot showcase ── */
+.cs-section--showcase {
+  overflow: hidden;
+}
+
+.cs-showcase {
+  background:
+    radial-gradient(circle at top left, rgba(246, 104, 0, 0.14), transparent 34%),
+    linear-gradient(180deg, #fff7f1 0%, #ffffff 60%);
+  border: 1px solid rgba(246, 104, 0, 0.12);
+  border-radius: calc(var(--radius) + 8px);
+  padding: 40px;
+}
+
+.cs-showcase__intro {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.cs-showcase__eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--orange);
+  margin-bottom: 10px;
+}
+
+.cs-showcase__title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--black);
+  margin-bottom: 12px;
+}
+
+.cs-showcase__body {
+  max-width: 680px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: #4d4d4d;
+}
+
+.cs-showcase__points {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.cs-showcase__point {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius);
+  padding: 18px;
+  display: grid;
+  grid-template-columns: 28px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.cs-showcase__point-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--gradient);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cs-showcase__point-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #3b3b3b;
+}
+
+.cs-showcase__figure {
+  margin: 0;
+}
+
+.cs-showcase__frame {
+  background: #fffdfa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: calc(var(--radius) + 6px);
+  overflow: hidden;
+  box-shadow: 0 24px 50px rgba(31, 22, 15, 0.12);
+}
+
+.cs-showcase__frame--mobile {
+  display: none;
+}
+
+.cs-showcase__chrome {
+  height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(180deg, #fffdfa 0%, #f8f1ea 100%);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+.cs-showcase__chrome span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(246, 104, 0, 0.2);
+}
+
+.cs-showcase__chrome span:first-child {
+  background: rgba(246, 104, 0, 0.5);
+}
+
+.cs-showcase__chrome p {
+  margin-left: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #7c6558;
+}
+
+.cs-showcase__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cs-showcase__caption {
+  margin-top: 14px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #6b625c;
+  text-align: center;
+}
+
+/* ── Results metric cards ── */
+.cs-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.metric-card {
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.metric-card__value {
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 8px;
+}
+
+.metric-card__label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--black);
+  margin-bottom: 6px;
+}
+
+.metric-card__detail {
+  font-size: 13px;
+  line-height: 1.5;
+  color: #777;
+}
+
+.cs-results-prose {
+  background: var(--black);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  color: var(--white);
+}
+
+.cs-results-prose h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.cs-results-prose p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+/* ── Comparison table ── */
+.cs-table-wrap {
+  overflow-x: auto;
+  border-radius: var(--radius);
+  border: 1.5px solid var(--border);
+}
+
+.cs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.cs-table th {
+  background: var(--black);
+  color: var(--white);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 14px 20px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.cs-table th:first-child {
+  border-radius: var(--radius) 0 0 0;
+}
+
+.cs-table th:last-child {
+  border-radius: 0 var(--radius) 0 0;
+}
+
+.cs-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: #333;
+  line-height: 1.5;
+}
+
+.cs-table tr:last-child td {
+  border-bottom: none;
+}
+
+.cs-table tr:nth-child(even) td {
+  background: #fafafa;
+}
+
+.cs-table td:first-child {
+  font-weight: 600;
+  color: var(--black);
+  white-space: nowrap;
+}
+
+.cs-table td strong {
+  color: var(--orange);
+}
+
+/* ── FAQ accordion (matches main site pattern) ── */
+.cs-faq {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cs-faq details {
+  border-bottom: 1px solid var(--border);
+}
+
+.cs-faq details:first-child {
+  border-top: 1px solid var(--border);
+}
+
+.cs-faq summary {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--black);
+  padding: 20px 0;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.cs-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.cs-faq summary::after {
+  content: '+';
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--orange);
+  flex-shrink: 0;
+  transition: transform 0.2s;
+}
+
+.cs-faq details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.cs-faq details p,
+.cs-faq details div {
+  font-size: 16px;
+  line-height: 1.75;
+  color: #444;
+  padding-bottom: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 960px) {
+  .cs-feature-cards {
+    grid-template-columns: 1fr;
+  }
+  .cs-timeline {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+  }
+  .cs-timeline::before {
+    display: none;
+  }
+  .cs-metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .cs-showcase {
+    padding: 32px 28px;
+  }
+  .cs-showcase__points {
+    grid-template-columns: 1fr;
+  }
+  .results-hero {
+    padding: 56px 0 48px;
+  }
+}
+
+@media (max-width: 640px) {
+  .cs-2col {
+    grid-template-columns: 1fr;
+  }
+  .cs-timeline {
+    grid-template-columns: 1fr;
+  }
+  .cs-metrics {
+    grid-template-columns: 1fr;
+  }
+  .cs-showcase {
+    padding: 24px 18px;
+    border-radius: var(--radius);
+  }
+  .cs-showcase__title {
+    font-size: 28px;
+  }
+  .cs-showcase__body {
+    font-size: 16px;
+  }
+  .cs-showcase__point {
+    padding: 16px;
+  }
+  .cs-showcase__frame--desktop {
+    display: none;
+  }
+  .cs-showcase__frame--mobile {
+    display: block;
+  }
+  .cs-showcase__mobile-crop {
+    height: 420px;
+    overflow: hidden;
+    background: #f9f3ee;
+  }
+  .cs-showcase__image--mobile {
+    width: 220%;
+    max-width: none;
+    height: 100%;
+    object-fit: cover;
+    object-position: 78% center;
+    transform: translateX(-52%);
+  }
+  .cs-showcase__caption {
+    text-align: left;
+    font-size: 13px;
+  }
+  .cs-hero {
+    padding: 48px 0 52px;
+  }
+}

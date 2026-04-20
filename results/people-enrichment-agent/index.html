@@ -19,6 +19,7 @@
   <link rel="canonical" href="https://eldur.studio/results/people-enrichment-agent/">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/results.css">
   <script src="https://cdn.usefathom.com/script.js" data-site="FYROQRHW" defer></script>
   <script type="application/ld+json">
   {
@@ -208,15 +209,76 @@
   </section>
 
   <!-- ENRICH EMAIL PREVIEW -->
-  <section class="cs-section" style="padding-top: 0;">
+  <section class="cs-section cs-section--showcase" style="padding-top: 0;">
     <div class="container--mid">
-      <picture>
-        <source srcset="/results/people-enrichment-agent/enrich-email-preview.webp" type="image/webp">
-        <img src="/results/people-enrichment-agent/enrich-email-preview.png"
-             alt="Notion CRM table showing the Enrich email button that triggers the enrichment agent for each contact"
-             loading="lazy" decoding="async" width="1200" height="700"
-             style="border-radius: var(--radius); box-shadow: 0 4px 24px rgba(0,0,0,0.10);">
-      </picture>
+      <div class="cs-showcase">
+        <div class="cs-showcase__intro">
+          <p class="cs-showcase__eyebrow">In the workflow</p>
+          <h2 class="cs-showcase__title">The trigger sits where the team already works</h2>
+          <p class="cs-showcase__body">This is the exact table view the client uses inside Notion. We turned enrichment into a single obvious action instead of another buried admin workflow.</p>
+        </div>
+
+        <div class="cs-showcase__points" aria-label="Key details in the screenshot">
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">1</span>
+            <p class="cs-showcase__point-text">Pending records are visually separated so the next action is clear.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">2</span>
+            <p class="cs-showcase__point-text">The button launches enrichment from the contact row itself.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">3</span>
+            <p class="cs-showcase__point-text">Status and last-run data are written back into the same queue for easy review.</p>
+          </div>
+        </div>
+
+        <figure class="cs-showcase__figure">
+          <div class="cs-showcase__frame cs-showcase__frame--desktop">
+            <div class="cs-showcase__chrome" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+              <p>Notion CRM · enrichment queue</p>
+            </div>
+            <picture>
+              <source srcset="/results/people-enrichment-agent/enrich-email-preview.webp" type="image/webp">
+              <img
+                class="cs-showcase__image"
+                src="/results/people-enrichment-agent/enrich-email-preview.png"
+                alt="Notion CRM table showing the Enrich email button that triggers the enrichment agent for each contact"
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="700">
+            </picture>
+          </div>
+
+          <div class="cs-showcase__frame cs-showcase__frame--mobile" aria-hidden="true">
+            <div class="cs-showcase__chrome">
+              <span></span>
+              <span></span>
+              <span></span>
+              <p>Mobile focus</p>
+            </div>
+            <div class="cs-showcase__mobile-crop">
+              <picture>
+                <source srcset="/results/people-enrichment-agent/enrich-email-preview.webp" type="image/webp">
+                <img
+                  class="cs-showcase__image cs-showcase__image--mobile"
+                  src="/results/people-enrichment-agent/enrich-email-preview.png"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  width="1200"
+                  height="700">
+              </picture>
+            </div>
+          </div>
+
+          <figcaption class="cs-showcase__caption">Desktop gets the full queue. On mobile, the layout switches to a tighter crop so the important interaction stays readable.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 

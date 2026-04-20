@@ -68,7 +68,10 @@ function loadExistingPosts() {
     const content = fs.readFileSync(path.join(POSTS_DIR, file), 'utf-8');
     const match = content.match(/^notion_id:\s*(.+)$/m);
     if (match) {
-      map[match[1].trim()] = file;
+      const notionId = stripWrappingQuotes(match[1].trim());
+      if (notionId) {
+        map[notionId] = file;
+      }
     }
   }
   return map;
@@ -78,6 +81,23 @@ function escapeYamlString(str) {
   if (!str) return '""';
   // Use double-quoted YAML string, escaping inner double quotes and backslashes
   return '"' + str.replace(/\\/g, '\\\\').replace(/"/g, '\\"') + '"';
+}
+
+function stripWrappingQuotes(str) {
+  if (!str) return str;
+  return str.replace(/^['"]|['"]$/g, '');
+}
+
+function isTemporarySignedImageUrl(url) {
+  if (!url) return false;
+
+  return (
+    url.includes('X-Amz-Credential=') ||
+    url.includes('X-Amz-Security-Token=') ||
+    url.includes('X-Amz-Signature=') ||
+    url.includes('prod-files-secure.s3.') ||
+    url.includes('amazonaws.com')
+  );
 }
 
 function buildFrontMatter(fields) {
@@ -102,11 +122,77 @@ function buildFrontMatter(fields) {
 
 // ── image pipeline ────────────────────────────────────────────────────────
 
+/** Validate that a URL is safe to download (HTTPS only, not internal IP/reserved domains) */
+function validateImageUrl(urlString) {
+  try {
+    const url = new URL(urlString);
+
+    // Only allow HTTPS
+    if (url.protocol !== 'https:') {
+      throw new Error(`Invalid protocol: ${url.protocol}. Only HTTPS is allowed.`);
+    }
+
+    const hostname = url.hostname.toLowerCase();
+
+    // Block internal/reserved IP ranges and localhost
+    const reservedPatterns = [
+      /^localhost$/,
+      /^127\./,           // 127.0.0.0/8 (loopback)
+      /^10\./,            // 10.0.0.0/8 (private)
+      /^172\.(1[6-9]|2\d|3[01])\./,  // 172.16.0.0/12 (private)
+      /^192\.168\./,      // 192.168.0.0/16 (private)
+      /^169\.254\./,      // 169.254.0.0/16 (link-local)
+      /^::1$/,            // IPv6 loopback
+      /^fc00:/,           // IPv6 private
+      /^fe80:/,           // IPv6 link-local
+    ];
+
+    if (reservedPatterns.some(pattern => pattern.test(hostname))) {
+      throw new Error(`Blocked internal/reserved hostname: ${hostname}`);
+    }
+
+    return url;
+  } catch (err) {
+    throw new Error(`Invalid image URL: ${err.message}`);
+  }
+}
+
 /** Download an image from a URL and return the buffer */
 async function downloadImage(url) {
-  const res = await fetch(url);
-  if (!res.ok) throw new Error(`Failed to download image: ${res.status} ${url}`);
-  return Buffer.from(await res.arrayBuffer());
+  // Validate URL before fetching
+  validateImageUrl(url);
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 30000); // 30-second timeout
+
+  const MAX_SIZE = 50 * 1024 * 1024; // 50 MB limit
+
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    clearTimeout(timeout);
+
+    if (!res.ok) throw new Error(`Failed to download image: ${res.status} ${url}`);
+
+    // Check Content-Length header if available
+    const contentLength = res.headers.get('content-length');
+    if (contentLength && parseInt(contentLength) > MAX_SIZE) {
+      throw new Error(`Image too large: ${contentLength} bytes exceeds ${MAX_SIZE} byte limit`);
+    }
+
+    // Read response with size limit enforcement
+    const buffer = await res.arrayBuffer();
+    if (buffer.byteLength > MAX_SIZE) {
+      throw new Error(`Image too large: ${buffer.byteLength} bytes exceeds ${MAX_SIZE} byte limit`);
+    }
+
+    return Buffer.from(buffer);
+  } catch (err) {
+    clearTimeout(timeout);
+    if (err.name === 'AbortError') {
+      throw new Error(`Image download timeout: ${url}`);
+    }
+    throw err;
+  }
 }
 
 /** Optimize an image buffer: resize to max width, convert to WebP */
@@ -147,7 +233,7 @@ async function processImage(url, slug, index) {
     return `/resources/images/blog/${slug}/${filename}`;
   } catch (err) {
     console.warn(`  Warning: could not process image ${index}: ${err.message}`);
-    return null; // Keep original URL if download fails
+    return null;
   }
 }
 
@@ -170,6 +256,11 @@ async function processBodyImages(markdown, slug) {
     const localPath = await processImage(imageUrl, slug, index);
     if (localPath) {
       result = result.replace(fullMatch, `![${altText}](${localPath})`);
+    } else if (isTemporarySignedImageUrl(imageUrl)) {
+      throw new Error(
+        `Could not localize temporary signed inline image ${index} for "${slug}". ` +
+        'Sync aborted to avoid committing an expiring Notion/AWS URL.'
+      );
     }
   }
 
@@ -190,7 +281,16 @@ async function processFeaturedImage(imageUrl, slug) {
 
   console.log(`    Processing featured image...`);
   const localPath = await processImage(imageUrl, slug, 'featured');
-  return localPath || imageUrl; // Fall back to original URL if processing fails
+  if (localPath) return localPath;
+
+  if (isTemporarySignedImageUrl(imageUrl)) {
+    throw new Error(
+      `Could not localize temporary signed featured image for "${slug}". ` +
+      'Sync aborted to avoid committing an expiring Notion/AWS URL.'
+    );
+  }
+
+  return imageUrl;
 }
 
 // ── main ───────────────────────────────────────────────────────────────────

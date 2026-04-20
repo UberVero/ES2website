@@ -63,7 +63,7 @@ Most teams do not need a roster of narrow experts who each own a tiny slice of t
 ### 2) AI raises the bar for what "good" looks like
 
 
-AI makes output easy, but it does not make outcomes automatic. If anything, it increases the need for someone who can set clear direction, supervise the machines, correct them with real domain knowledge, and build feedback loops that compound over time. One skilled AI-first operator, or a tight team, can now produce at the level of a full marketing department — we break down [how AI agents are changing B2B marketing](/resources/ai-agents-b2b-marketing/) in a separate post. But that only works if the work is organized around _systems_ rather than tasks.
+AI makes output easy, but it does not make outcomes automatic. If anything, it increases the need for someone who can set clear direction, supervise the machines, correct them with real domain knowledge, and build feedback loops that compound over time. One skilled AI-first operator, or a tight team, can now produce at the level of a full marketing department. But that only works if the work is organized around _systems_ rather than tasks.
 
 
 ### 3) Agency economics do not map to this reality
@@ -102,7 +102,7 @@ Companies do not need more vendors, and they definitely do not need more AI tool
 We have been building apps and automations for clients for five years. Before LLMs, those systems were not "AI" in any trendy sense. They were business logic plus automation tools like Zapier and Make, and those tools are still thriving, in many ways 10× more powerful than they were when we started.
 
 
-The lesson from five years of shipping real systems is straightforward — and it's one we lived through [building the Webflow Pro System](/resources/webflow-pro-system-side-project/): **generating output is not the hard part. Scaling, measuring, and improving that output is.** We also learned to spot the difference between tools that look fast in demos and tools that can actually handle complexity, traffic, and maintenance in production.
+The lesson from five years of shipping real systems is straightforward: **generating output is not the hard part. Scaling, measuring, and improving that output is.** We also learned to spot the difference between tools that look fast in demos and tools that can actually handle complexity, traffic, and maintenance in production.
 
 
 A lot of agentic AI today has the same pitfalls that plagued the no-code wave: it works beautifully for prototypes, breaks under real-world edge cases, and becomes hard to debug and maintain at scale. There is a lot of noise in this space, and knowing how to parse the signal is the actual advantage.

@@ -176,9 +176,20 @@ Notion page with images
 - **Featured images** are also processed. Paste any URL in the Featured Image URL field.
 - **Images already in the repo** (e.g., `raw.githubusercontent.com/.../resources/images/...`) are left untouched.
 - **Animated GIFs** are preserved as-is — they aren't converted to WebP (which would break animation).
-- **If a download fails** (network issue, already-expired URL), the original URL is kept and a warning is logged. The post still syncs.
+- **If a temporary Notion/AWS image URL can't be downloaded, the sync fails on purpose.** This prevents expired signed URLs from being committed to the repo and triggering secret-scanning alerts.
+- **Non-temporary image URLs** still fall back to the original URL if download fails.
 - **Max file size target:** ~150KB per image after optimization (most are well under).
 - **Post template** uses `<picture>` element with WebP source for browser compatibility.
+
+### Failure behavior
+
+If the Action fails with an image-localization error:
+
+1. Re-open the post in Notion
+2. Re-copy or re-upload the affected image so Notion generates a fresh temporary URL
+3. Run the **Notion Sync** workflow again
+
+This is expected behavior. The sync now refuses to publish posts that still depend on expiring Notion image URLs.
 
 ### Where images live
 
