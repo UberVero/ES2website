@@ -138,7 +138,7 @@ layout: null
   }
   </script>
 </head>
-<body>
+<body class="page--home">
 
   <!-- NAV -->
   <nav class="nav">
@@ -190,6 +190,9 @@ layout: null
         </div>
       </div>
       <div class="hero__visual" aria-hidden="true">
+        <div class="crab crab--hero" data-crab="hero" aria-hidden="true">
+          <span class="crab__sprite"></span>
+        </div>
         <div class="org-compare">
 
           <!-- BEFORE -->
@@ -258,6 +261,9 @@ layout: null
           <p class="section__lead">B2B teams spending real money on marketing but unsure which dollars turn into pipeline. You're ready for AI to do the work, not just summarize it.</p>
         </div>
         <div class="who-callout" role="list">
+          <div class="crab crab--callout" data-crab="callout" aria-hidden="true">
+            <span class="crab__sprite"></span>
+          </div>
           <div class="who-callout__item" role="listitem">
             <svg class="who-callout__check" width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="11" cy="11" r="11" fill="#ff7a00"/>
@@ -644,6 +650,7 @@ layout: null
     </div>
   </div>
 
+  <script src="/scripts/home-crabs.js"></script>
   <script>
   (function() {
     var shown = false;
