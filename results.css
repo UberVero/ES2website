@@ -39,6 +39,25 @@
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.card--case-study .card__cover {
+  height: 220px;
+  overflow: hidden;
+  background: var(--gray);
+}
+
+.card--case-study .card__cover picture {
+  display: block;
+  height: 100%;
+}
+
+.card--case-study .card__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top left;
+  display: block;
+}
+
 .card--case-study:hover {
   border-color: var(--orange);
   box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
