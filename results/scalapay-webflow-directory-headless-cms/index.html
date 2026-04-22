@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scaling Scalapay's Shopping Directory with Webflow and Sanity — Eldur Studio</title>
+  <meta name="description" content="How we helped Scalapay scale a Webflow merchant directory into thousands of listings by layering custom UX, Algolia search, and a headless CMS (Sanity) delivered via API.">
+  <meta property="og:site_name" content="Eldur Studio">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://eldur.studio/results/scalapay-webflow-directory-headless-cms/">
+  <meta property="og:title" content="Scaling Scalapay's Shopping Directory with Webflow and Sanity — Eldur Studio">
+  <meta property="og:description" content="Webflow CMS hit its limits at thousands of listings. We kept Webflow for marketing speed, moved directory data into Sanity, and shipped a discovery UX that scaled.">
+  <meta property="og:image" content="https://eldur.studio/results/scalapay-webflow-directory-headless-cms/filters.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@eldur_studio">
+  <meta name="twitter:image" content="https://eldur.studio/results/scalapay-webflow-directory-headless-cms/filters.webp">
+  <link rel="canonical" href="https://eldur.studio/results/scalapay-webflow-directory-headless-cms/">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="stylesheet" href="/results.css">
+  <script src="https://cdn.usefathom.com/script.js" data-site="FYROQRHW" defer></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Scaling Scalapay's Shopping Directory with Webflow and Sanity",
+    "description": "How we helped Scalapay scale a Webflow merchant directory into thousands of listings by layering custom UX, Algolia search, and a headless CMS (Sanity) delivered via API.",
+    "datePublished": "2026-04-20",
+    "author": {
+      "@type": "Person",
+      "name": "Veronica",
+      "url": "https://eldur.studio"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Eldur Studio",
+      "url": "https://eldur.studio"
+    },
+    "image": "https://eldur.studio/results/scalapay-webflow-directory-headless-cms/filters.webp",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://eldur.studio/results/scalapay-webflow-directory-headless-cms/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://eldur.studio/" },
+      { "@type": "ListItem", "position": 2, "name": "Results", "item": "https://eldur.studio/results/" },
+      { "@type": "ListItem", "position": 3, "name": "Scaling Scalapay's Shopping Directory", "item": "https://eldur.studio/results/scalapay-webflow-directory-headless-cms/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo">
+        <svg height="32" viewBox="488 316 133 148" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.005 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+        </svg>
+        <span class="nav__wordmark">Eldur Studio</span>
+      </a>
+      <div class="nav__links">
+        <a href="/results/" class="nav__link nav__link--active">Results</a>
+        <a href="/resources/" class="nav__link">Resources</a>
+        <details class="nav__menu">
+          <summary aria-label="Open menu">
+            <span class="nav__toggle">
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+              <span class="nav__bar"></span>
+            </span>
+          </summary>
+          <div class="nav__mobile-panel">
+            <a href="/results/" class="nav__mobile-link">Results</a>
+            <a href="/resources/" class="nav__mobile-link">Resources</a>
+            <a href="mailto:info@eldur.studio" class="nav__mobile-link nav__mobile-link--muted">
+              <svg width="14" height="14" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="0.75" y="2.75" width="11.5" height="7.5" rx="1.25" stroke="currentColor" stroke-width="1.1"/>
+                <path d="M0.75 4.25l5.75 3.5 5.75-3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              info@eldur.studio
+            </a>
+          </div>
+        </details>
+        <a href="https://booking.akiflow.com/veronica-es-new" class="btn btn--nav" target="_blank" rel="noopener">Schedule a call</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="cs-hero">
+    <div class="container--narrow">
+      <p class="breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <a href="/results/">Results</a>
+        <span>/</span>
+        Scalapay Directory
+      </p>
+      <p class="eyebrow">Case Study · E-Commerce / No-Code</p>
+      <h1 class="cs-hero__title">Scaling Scalapay's shopping directory with Webflow and Sanity</h1>
+      <p class="cs-hero__lead">Scalapay's merchant directory outgrew Webflow CMS. We kept Webflow for marketing speed, moved directory data into a headless CMS, and shipped a discovery UX that stayed fast at thousands of listings.</p>
+      <div class="cs-hero__stats">
+        <span class="stat-pill"><strong>Thousands</strong> of listings</span>
+        <span class="stat-pill"><strong>8</strong> countries</span>
+        <span class="stat-pill"><strong>3</strong> phased delivery</span>
+        <span class="stat-pill"><strong>1 CMS</strong> → web + mobile</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- THE PROBLEM -->
+  <section class="cs-section">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">The problem</p>
+      <h2 class="cs-section__title">The directory became the product — Webflow CMS couldn't keep up</h2>
+      <div class="cs-2col">
+        <div class="cs-prose">
+          <p>Scalapay's marketing team loved Webflow because they could publish changes in minutes. It worked fine for a small set of listings. Then the directory became the product.</p>
+          <p>Thousands of merchants across eight countries, constant updates, and a marketing team that needed to ship pages quickly without turning "content" into ops work. A few failure modes showed up as the directory grew:</p>
+          <ul>
+            <li>The CMS structure wasn't built for a directory that behaves like a product</li>
+            <li>Filtering and discovery started to feel slow and brittle</li>
+            <li>Merchant content had to be maintained twice — web and mobile app — creating drift and duplicated work</li>
+          </ul>
+          <p>They didn't have a "website problem." They had a content system problem.</p>
+        </div>
+        <div>
+          <div class="callout-card">
+            <p class="callout-card__label">Before the rebuild</p>
+            <div class="callout-card__item">CMS structure not designed for a directory at scale</div>
+            <div class="callout-card__item">Filtering slow and brittle as inventory grew</div>
+            <div class="callout-card__item">Merchant data maintained separately for web and mobile</div>
+            <div class="callout-card__item">Content updates required ops coordination, not just publishing</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH INTRO -->
+  <section class="cs-section cs-section--dark">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">The approach</p>
+      <h2 class="cs-section__title">Ship in phases. Keep Webflow.</h2>
+      <p class="cs-section__lead">We didn't rip everything out. Improvements shipped in phases so the directory got better immediately, and the architecture stayed sane throughout.</p>
+      <div class="phases-strip">
+        <div class="phase-item">
+          <p class="phase-item__num">Phase 01</p>
+          <h3 class="phase-item__title">Real-time filtering</h3>
+          <p class="phase-item__desc">Replaced Webflow's native filtering with custom code. Discovery feels instant — no page reload, no lag as inventory grows.</p>
+        </div>
+        <div class="phase-item">
+          <p class="phase-item__num">Phase 02</p>
+          <h3 class="phase-item__title">Predictive search</h3>
+          <p class="phase-item__desc">Layered Algolia for typo-tolerant, instant results as the merchant catalogue expanded.</p>
+        </div>
+        <div class="phase-item">
+          <p class="phase-item__num">Phase 03</p>
+          <h3 class="phase-item__title">Headless CMS</h3>
+          <p class="phase-item__desc">Directory data moved into Sanity, connected to Webflow via API — one dataset for web and mobile.</p>
+        </div>
+        <div class="phase-item">
+          <p class="phase-item__num">Phase 04</p>
+          <h3 class="phase-item__title">Webflow stays</h3>
+          <p class="phase-item__desc">Marketing kept their Webflow workflow for pages and campaigns. No migration, no retraining.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 1: FILTERING -->
+  <section class="cs-section cs-section--showcase">
+    <div class="container--mid">
+      <div class="cs-showcase">
+        <div class="cs-showcase__intro">
+          <p class="cs-showcase__eyebrow">Phase 1</p>
+          <h2 class="cs-showcase__title">Real-time filtering that actually feels instant</h2>
+          <p class="cs-showcase__body">Webflow's native filtering worked for small datasets, but it wasn't the experience you want when discovery is the core job. We replaced the native filtering behavior with custom code — emoji-based category pills that filter the directory in real time without a page reload.</p>
+        </div>
+        <div class="cs-showcase__points" aria-label="Key details in the screenshot">
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">1</span>
+            <p class="cs-showcase__point-text">Emoji category pills make filtering tactile and visually distinct from search.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">2</span>
+            <p class="cs-showcase__point-text">Results update instantly — no reload, no spinner, no lag.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">3</span>
+            <p class="cs-showcase__point-text">Built on Webflow's existing structure — no CMS migration needed at this stage.</p>
+          </div>
+        </div>
+        <figure class="cs-showcase__figure">
+          <div class="cs-showcase__frame cs-showcase__frame--desktop">
+            <div class="cs-showcase__chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <p>Scalapay · merchant directory</p>
+            </div>
+            <img
+              class="cs-showcase__image"
+              src="/results/scalapay-webflow-directory-headless-cms/filters.webp"
+              alt="Scalapay merchant directory showing emoji-based category filtering UI"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="700">
+          </div>
+          <div class="cs-showcase__frame cs-showcase__frame--mobile" aria-hidden="true">
+            <div class="cs-showcase__chrome">
+              <span></span><span></span><span></span>
+              <p>Mobile focus</p>
+            </div>
+            <div class="cs-showcase__mobile-crop">
+              <img
+                class="cs-showcase__image cs-showcase__image--mobile"
+                src="/results/scalapay-webflow-directory-headless-cms/filters.webp"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="700">
+            </div>
+          </div>
+          <figcaption class="cs-showcase__caption">The emoji filter pills became a signature UX pattern — memorable, fast, and easy to expand as new categories were added.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 2: SEARCH -->
+  <section class="cs-section cs-section--showcase" style="padding-top: 0;">
+    <div class="container--mid">
+      <div class="cs-showcase">
+        <div class="cs-showcase__intro">
+          <p class="cs-showcase__eyebrow">Phase 2</p>
+          <h2 class="cs-showcase__title">Predictive search with Algolia</h2>
+          <p class="cs-showcase__body">Once filtering was solid, search became the next constraint. As merchant count grew, users needed to find specific brands without scrolling. We added Algolia for typo-tolerant, predictive results — so the directory stayed usable as inventory scaled.</p>
+        </div>
+        <div class="cs-showcase__points" aria-label="Key details in the search demo">
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">1</span>
+            <p class="cs-showcase__point-text">Results appear as you type — no submit button, no wait.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">2</span>
+            <p class="cs-showcase__point-text">Typo-tolerant matching means users find brands even with imperfect spelling.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">3</span>
+            <p class="cs-showcase__point-text">Algolia's index updates automatically as new merchants are added to the CMS.</p>
+          </div>
+        </div>
+        <figure class="cs-showcase__figure">
+          <div class="cs-showcase__frame cs-showcase__frame--desktop">
+            <div class="cs-showcase__chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <p>Scalapay · Algolia search</p>
+            </div>
+            <img
+              class="cs-showcase__image"
+              src="/results/scalapay-webflow-directory-headless-cms/algolia-search.gif"
+              alt="Animated demo of Algolia predictive search on the Scalapay merchant directory"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="700">
+          </div>
+          <div class="cs-showcase__frame cs-showcase__frame--mobile" aria-hidden="true">
+            <div class="cs-showcase__chrome">
+              <span></span><span></span><span></span>
+              <p>Mobile focus</p>
+            </div>
+            <div class="cs-showcase__mobile-crop">
+              <img
+                class="cs-showcase__image cs-showcase__image--mobile"
+                src="/results/scalapay-webflow-directory-headless-cms/algolia-search.gif"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="700">
+            </div>
+          </div>
+          <figcaption class="cs-showcase__caption">Predictive search made the directory feel like a product — not just a filtered list. Users could get to a specific brand in two keystrokes.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHASE 3: HEADLESS -->
+  <section class="cs-section cs-section--showcase" style="padding-top: 0;">
+    <div class="container--mid">
+      <div class="cs-showcase">
+        <div class="cs-showcase__intro">
+          <p class="cs-showcase__eyebrow">Phase 3</p>
+          <h2 class="cs-showcase__title">Headless CMS — one source of truth for web and mobile</h2>
+          <p class="cs-showcase__body">This is where the system became durable. We moved directory data into Sanity so Scalapay had a scalable source of truth that could also power the mobile app. Then we connected Sanity to Webflow via API — so the marketing team could keep using Webflow for pages and campaigns, without stuffing a product-grade directory into a website CMS.</p>
+        </div>
+        <div class="cs-showcase__points" aria-label="Key details in the architecture diagram">
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">1</span>
+            <p class="cs-showcase__point-text">Sanity holds all merchant data — structured, scalable, and API-first.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">2</span>
+            <p class="cs-showcase__point-text">Webflow pulls from the API — marketing keeps their workflow, no migration.</p>
+          </div>
+          <div class="cs-showcase__point">
+            <span class="cs-showcase__point-num">3</span>
+            <p class="cs-showcase__point-text">The mobile app pulls from the same Sanity source — no more content duplication.</p>
+          </div>
+        </div>
+        <figure class="cs-showcase__figure">
+          <div class="cs-showcase__frame cs-showcase__frame--desktop">
+            <div class="cs-showcase__chrome" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <p>Architecture · Sanity + Webflow + API</p>
+            </div>
+            <img
+              class="cs-showcase__image"
+              src="/results/scalapay-webflow-directory-headless-cms/architecture.webp"
+              alt="Architecture diagram showing Sanity as source of truth connected to Webflow and the mobile app via API"
+              loading="lazy"
+              decoding="async"
+              width="1200"
+              height="700">
+          </div>
+          <div class="cs-showcase__frame cs-showcase__frame--mobile" aria-hidden="true">
+            <div class="cs-showcase__chrome">
+              <span></span><span></span><span></span>
+              <p>Mobile focus</p>
+            </div>
+            <div class="cs-showcase__mobile-crop">
+              <img
+                class="cs-showcase__image cs-showcase__image--mobile"
+                src="/results/scalapay-webflow-directory-headless-cms/architecture.webp"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                width="1200"
+                height="700">
+            </div>
+          </div>
+          <figcaption class="cs-showcase__caption">Each tool stayed in its lane: Sanity for data, Webflow for pages, the API as the bridge between them.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section class="cs-section cs-section--dark">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Architecture</p>
+      <h2 class="cs-section__title">What we shipped</h2>
+      <p class="cs-section__lead">Four components, each responsible for exactly one job. The key decision was keeping each tool in its lane.</p>
+      <div class="cs-timeline">
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">1</div>
+          <h3 class="cs-timeline__title">Sanity</h3>
+          <p class="cs-timeline__desc">Source of truth for merchant data. Structured, scalable, and reusable across web and mobile. One update propagates everywhere.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">2</div>
+          <h3 class="cs-timeline__title">Webflow</h3>
+          <p class="cs-timeline__desc">Presentation layer for the marketing site. Fast page building for campaigns and landing pages — without the CMS weight of the full directory.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">3</div>
+          <h3 class="cs-timeline__title">API Integration</h3>
+          <p class="cs-timeline__desc">The bridge that keeps the directory fresh. Sanity data flows to Webflow without manual copy-paste or duplication.</p>
+        </div>
+        <div class="cs-timeline__step">
+          <div class="cs-timeline__num">4</div>
+          <h3 class="cs-timeline__title">Algolia + Custom UX</h3>
+          <p class="cs-timeline__desc">The discovery layer. Typo-tolerant search combined with emoji-based filtering so the directory feels like a product, not a list.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="cs-section cs-section--light">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">Outcome</p>
+      <h2 class="cs-section__title">What changed for Scalapay</h2>
+      <div class="cs-metrics">
+        <div class="metric-card">
+          <div class="metric-card__value">1000s</div>
+          <div class="metric-card__label">Listings at scale</div>
+          <div class="metric-card__detail">Directory scaled to thousands of merchants across 8 countries without degrading UX or slowing the marketing team.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__value">1 CMS</div>
+          <div class="metric-card__label">Web + mobile</div>
+          <div class="metric-card__detail">Single Sanity source of truth eliminated duplicate content maintenance across web and the mobile app.</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-card__value">0 migrations</div>
+          <div class="metric-card__label">For marketing</div>
+          <div class="metric-card__detail">Marketing kept their Webflow workflow. No retraining, no downtime — the architecture gained headroom around them.</div>
+        </div>
+      </div>
+      <div class="cs-results-prose">
+        <h3>The underlying shift</h3>
+        <p>Scalapay didn't need a new website. They needed to separate "content that belongs to a product" from "content that belongs to marketing." Once that line was clear, the architecture followed. Sanity handles the product data. Webflow handles the marketing pages. The API keeps them in sync. Each tool does what it's actually good at.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="cs-section">
+    <div class="container--mid">
+      <p class="cs-section__eyebrow">What Scalapay said</p>
+      <h2 class="cs-section__title">A fast and trustworthy partner</h2>
+      <blockquote class="cs-blockquote">
+        <p>"Eldur Studio helped us stretch Webflow's limits and has proven to be a fast and trustworthy partner. The quality of the work has been consistently great, the team is collaborative and has often helped us take our idea to the next level."</p>
+        <cite>— Scalapay</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- CTA STRIP -->
+  <section class="post-cta">
+    <div class="container--center">
+      <p class="post-cta__title">Building a directory or a content-heavy product?</p>
+      <a href="https://booking.akiflow.com/veronica-es-new" class="btn btn--primary" target="_blank" rel="noopener">Schedule a call</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a href="/" class="nav__logo">
+          <svg height="28" viewBox="488 316 133 148" fill="white" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M583.872 365.062C603.228 376.639 618.027 431.886 585.114 444.567C544.201 460.331 550.034 407.457 550.034 407.457C550.347 415.382 557.671 415.234 561.169 414.704C563.752 414.313 566.418 414.595 568.773 415.725C570.003 416.317 571.227 417.158 572.214 418.354C575.502 422.347 581.37 421.356 584.883 417.251C586.097 415.834 586.38 413.87 585.131 412.484L547.289 371.905C544.268 377.583 546.869 384.253 546.869 384.253C546.869 384.253 508.999 408.619 524.336 447.886C524.336 447.886 504.005 444.465 496.94 426.328C489.835 408.192 495.074 390.803 510.78 378.274C526.487 365.747 547.802 347.23 539.385 320.113C539.385 320.113 583.964 330.71 571.972 376.547C571.972 376.547 580.934 373.887 583.872 365.062"/>
+          </svg>
+          <span class="nav__wordmark">Eldur Studio</span>
+        </a>
+        <p>Build the one-person marketing team.</p>
+      </div>
+      <nav class="footer__links" aria-label="Footer navigation">
+        <a href="/results/">Results</a>
+        <a href="/resources/">Resources</a>
+        <a href="https://booking.akiflow.com/veronica-es-new" target="_blank" rel="noopener">Schedule a call</a>
+        <a href="mailto:info@eldur.studio" class="footer__contact">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0.75" y="2.75" width="11.5" height="7.5" rx="1.25" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M0.75 4.25l5.75 3.5 5.75-3.5" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          info@eldur.studio
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+</body>
+</html>
