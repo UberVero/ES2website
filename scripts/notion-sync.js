@@ -91,13 +91,20 @@ function stripWrappingQuotes(str) {
 function isTemporarySignedImageUrl(url) {
   if (!url) return false;
 
-  return (
+  if (
     url.includes('X-Amz-Credential=') ||
     url.includes('X-Amz-Security-Token=') ||
-    url.includes('X-Amz-Signature=') ||
-    url.includes('prod-files-secure.s3.') ||
-    url.includes('amazonaws.com')
-  );
+    url.includes('X-Amz-Signature=')
+  ) {
+    return true;
+  }
+
+  try {
+    const { hostname } = new URL(url);
+    return hostname === 'amazonaws.com' || hostname.endsWith('.amazonaws.com');
+  } catch {
+    return false;
+  }
 }
 
 function buildFrontMatter(fields) {
@@ -275,8 +282,13 @@ async function processFeaturedImage(imageUrl, slug) {
   if (!imageUrl) return null;
 
   // Skip images already hosted in the repo (raw.githubusercontent.com)
-  if (imageUrl.includes('raw.githubusercontent.com') && imageUrl.includes('ES2website')) {
-    return imageUrl;
+  try {
+    const { hostname, pathname } = new URL(imageUrl);
+    if (hostname === 'raw.githubusercontent.com' && pathname.includes('/ES2website/')) {
+      return imageUrl;
+    }
+  } catch {
+    // not a valid URL — fall through to download
   }
 
   console.log(`    Processing featured image...`);
