@@ -3,7 +3,7 @@ url: "https://eldur.studio"
 baseurl: ""
 permalink: /resources/:slug/
 twitter_username: eldur_studio
-exclude: [README.md, AGENTS.md, DEPLOYMENT.md, scripts/, package.json, package-lock.json, node_modules/]
+exclude: [README.md, AGENTS.md, CLAUDE.md, DEPLOYMENT.md, scripts/, package.json, package-lock.json, node_modules/]
 defaults:
   - scope: { path: "", type: posts }
     values: { layout: post }
