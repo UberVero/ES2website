@@ -8,7 +8,7 @@
     "test:mobile:local": "BASE_URL=http://localhost:4000 playwright test"
   },
   "dependencies": {
-    "@notionhq/client": "^2.2.15",
+    "@notionhq/client": "^5.20.0",
     "notion-to-md": "^3.1.1",
     "sharp": "^0.34.5"
   },
