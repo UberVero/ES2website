@@ -4,6 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "check:assets": "node scripts/check-public-assets.js",
     "test:mobile": "playwright test",
     "test:mobile:local": "BASE_URL=http://localhost:4000 playwright test"
   },
