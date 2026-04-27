@@ -25,7 +25,7 @@ function toRepoPath(filePath) {
   return normalize(relative(root, filePath)).split(sep).join('/');
 }
 
-function listHtmlFiles(dir) {
+function listFiles(dir, extensions) {
   const entries = readdirSync(dir);
   const files = [];
 
@@ -36,8 +36,8 @@ function listHtmlFiles(dir) {
     const stats = statSync(fullPath);
 
     if (stats.isDirectory()) {
-      files.push(...listHtmlFiles(fullPath));
-    } else if (stats.isFile() && entry.endsWith('.html')) {
+      files.push(...listFiles(fullPath, extensions));
+    } else if (stats.isFile() && extensions.has(extname(entry).toLowerCase())) {
       files.push(fullPath);
     }
   }
@@ -84,10 +84,10 @@ function getAssetCandidates(rawValue) {
   }).filter(Boolean);
 }
 
-function resolveAssetPath(htmlFile, assetUrl) {
+function resolveAssetPath(sourceFile, assetUrl) {
   const repoPath = assetUrl.startsWith('/')
     ? assetUrl.slice(1)
-    : toRepoPath(resolve(dirname(htmlFile), assetUrl));
+    : toRepoPath(resolve(dirname(sourceFile), assetUrl));
 
   const normalized = normalize(repoPath).split(sep).join('/');
   if (normalized.startsWith('..')) return null;
@@ -106,21 +106,36 @@ function isExcluded(repoPath, excludes) {
 const excludes = readJekyllExcludes();
 const problems = [];
 const attrPattern = /\b(?:href|poster|src|srcset)=["']([^"']+)["']/gi;
+const cssUrlPattern = /url\(\s*['"]?([^'")]+)['"]?\s*\)/gi;
 
-for (const htmlFile of listHtmlFiles(root)) {
+function checkReference(sourceFile, candidate) {
+  const repoPath = resolveAssetPath(sourceFile, candidate);
+  if (!repoPath) return;
+
+  const sourceRepoPath = toRepoPath(sourceFile);
+  if (!existsSync(join(root, repoPath))) {
+    problems.push(`${sourceRepoPath} references missing asset ${candidate}`);
+  } else if (isExcluded(repoPath, excludes)) {
+    problems.push(`${sourceRepoPath} references Jekyll-excluded asset ${candidate}`);
+  }
+}
+
+for (const htmlFile of listFiles(root, new Set(['.html']))) {
   const html = readFileSync(htmlFile, 'utf8');
-  const htmlRepoPath = toRepoPath(htmlFile);
 
   for (const match of html.matchAll(attrPattern)) {
     for (const candidate of getAssetCandidates(match[1])) {
-      const repoPath = resolveAssetPath(htmlFile, candidate);
-      if (!repoPath) continue;
+      checkReference(htmlFile, candidate);
+    }
+  }
+}
 
-      if (!existsSync(join(root, repoPath))) {
-        problems.push(`${htmlRepoPath} references missing asset ${candidate}`);
-      } else if (isExcluded(repoPath, excludes)) {
-        problems.push(`${htmlRepoPath} references Jekyll-excluded asset ${candidate}`);
-      }
+for (const cssFile of listFiles(root, new Set(['.css']))) {
+  const css = readFileSync(cssFile, 'utf8');
+
+  for (const match of css.matchAll(cssUrlPattern)) {
+    for (const candidate of getAssetCandidates(match[1])) {
+      checkReference(cssFile, candidate);
     }
   }
 }

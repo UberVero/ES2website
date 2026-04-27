@@ -351,36 +351,6 @@ img, svg {
   min-height: 560px;
 }
 
-.page--home .hero__inner {
-  position: relative;
-}
-
-.crab {
-  position: absolute;
-  width: 72px;
-  height: 48px;
-  pointer-events: none;
-  z-index: 2;
-  will-change: transform;
-}
-
-.crab__sprite {
-  display: block;
-  width: 100%;
-  height: 100%;
-  background: url('/assets/crab-pixel.svg') center / contain no-repeat;
-  image-rendering: pixelated;
-  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.2));
-}
-
-.crab__sprite.is-step {
-  background-image: url('/assets/crab-pixel-step.svg');
-}
-
-.crab--hero {
-  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.14));
-}
-
 .hero__headline {
   font-family: var(--font);
   font-size: clamp(38px, 5vw, 62px);
@@ -1722,4 +1692,3 @@ details[open] > .faq__q::after {
     padding: 32px 24px 28px;
   }
 }
-
