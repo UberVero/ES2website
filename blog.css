@@ -42,12 +42,19 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  color: inherit;
+  text-decoration: none;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .card--resource:hover {
   border-color: var(--orange);
   box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+}
+
+.card--resource:focus-visible {
+  outline: 3px solid var(--orange);
+  outline-offset: 4px;
 }
 
 .card__cover {
@@ -115,6 +122,8 @@
   color: var(--orange);
 }
 
+.card--resource:hover .card__readmore,
+.card--resource:focus-visible .card__readmore,
 .card__readmore:hover {
   text-decoration: underline;
 }

@@ -80,6 +80,20 @@
   border-radius: 100px;
 }
 
+/* Bottom CTA on standalone case-study pages. */
+.post-cta {
+  background: var(--gray);
+  padding: 56px 0;
+  text-align: center;
+}
+
+.post-cta__title {
+  font-size: clamp(20px, 2.5vw, 26px);
+  font-weight: 700;
+  color: var(--black);
+  margin-bottom: 24px;
+}
+
 /* ── Case study page: hero ── */
 .cs-hero {
   background: var(--black);
@@ -930,5 +944,8 @@
   }
   .cs-hero {
     padding: 48px 0 52px;
+  }
+  .post-cta {
+    padding: 40px 0;
   }
 }

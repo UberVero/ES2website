@@ -85,7 +85,7 @@ permalink: /resources/
       {% if posts.size > 0 %}
       <div class="cards--3">
         {% for post in posts %}
-        <article class="card--resource">
+        <a href="{{ post.url }}" class="card--resource">
           {% if post.image %}
           <div class="card__cover">
             <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
@@ -100,9 +100,9 @@ permalink: /resources/
           </div>
           <div class="card__footer">
             <span class="card__date">{{ post.date | date: "%b %-d, %Y" }}</span>
-            <a href="{{ post.url }}" class="card__readmore">Read →</a>
+            <span class="card__readmore">Read →</span>
           </div>
-        </article>
+        </a>
         {% endfor %}
       </div>
       {% else %}
