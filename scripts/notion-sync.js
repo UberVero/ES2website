@@ -319,8 +319,20 @@ async function main() {
 
   console.log('Querying Notion database...');
 
-  const response = await notion.databases.query({
+  // Notion API 2025-09-03 split databases into "data sources". The SDK v5
+  // removed `databases.query` — records are now queried via `dataSources.query`.
+  const database = await notion.databases.retrieve({
     database_id: process.env.NOTION_DATABASE_ID,
+  });
+
+  const dataSource = database.data_sources?.[0];
+  if (!dataSource) {
+    console.error(`Error: database ${process.env.NOTION_DATABASE_ID} has no data sources.`);
+    process.exit(1);
+  }
+
+  const response = await notion.dataSources.query({
+    data_source_id: dataSource.id,
     filter: {
       property: 'Status',
       select: { equals: 'Published' },
