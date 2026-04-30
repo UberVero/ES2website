@@ -9,7 +9,7 @@ tags:
   - "Webflow/No-Code"
   - "AI Agents"
   - "Automation"
-image: "/resources/images/blog/claude-webflow-dev-webflow-designer-mcp/img-1.webp"
+image: "https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/blog/claude-webflow-dev-webflow-designer-mcp/img-1.webp"
 date: "2026-04-15"
 status: "published"
 notion_id: "34361616-8253-8079-8813-c8491196b855"
