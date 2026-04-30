@@ -1,7 +1,7 @@
 ---
 title: "The rise of AI-first marketers"
 slug: "rise-of-ai-first-marketers"
-description: "Function Health’s AI-first growth role shows where marketing hiring is headed: the next strong growth marketer can turn judgment into repeatable workflows, shorten iteration cycles, and protect quality as AI enters the work."
+description: "I was reading Function Health’s Growth Marketing Manager role and thought it was ridiculous to require advanced AI expertise in skills that are less than a year old. Unicorn? Or the future?"
 author: "Veronica"
 post_type: "article"
 category: "AI & Automation"
@@ -16,9 +16,6 @@ status: "published"
 notion_id: "35061616-8253-802f-8fa8-c9ba6c8a50f1"
 render_with_liquid: false
 ---
-
-
-> 🧠 I was reading[ Function Health's Growth Marketing Manager role ](https://jobs.gem.com/function-health/am9icG9zdDpLifKonZNRCCc6_YKEtIAH)and had the reaction I keep having lately: this looks like a normal marketing job until you notice how much of the work assumes AI as basic operating literacy.
 
 
 ![your new growth marketing colleague](/resources/images/blog/rise-of-ai-first-marketers/img-1.webp)
