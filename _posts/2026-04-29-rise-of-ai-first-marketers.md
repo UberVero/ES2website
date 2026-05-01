@@ -125,7 +125,7 @@ Without those pieces, the team spends the saved time fixing the output.
 This is the part that’s most promising, and most foreign to marketing teams, except the large, established ones.
 
 
-A good campaign should not end as a Slack celebration and a line in a dashboard. It should leave something behind:
+A good campaign should not end as a Slack celebration and a line in a dashboard. It leaves an “artifact” to use Anthropic speak.
 
 - A reusable brief
 - A segmentation rule
@@ -134,10 +134,7 @@ A good campaign should not end as a Slack celebration and a line in a dashboard.
 - A comms calendar
 - A playbook for the next version
 
-Function Health uses language like "repeatable activation playbooks" and "systemized growth motions." That is the phrase I would pay attention to.
-
-
-The win is not only that one campaign worked. The win is that the next campaign starts from a better place.
+Function Health uses language like "repeatable activation playbooks" and "systemized growth motions.". The win is not only that one campaign worked. The win is that the next campaign starts from a better place.
 
 
 ## Quality needs an owner
