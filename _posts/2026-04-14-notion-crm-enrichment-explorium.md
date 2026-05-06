@@ -66,7 +66,7 @@ With so many company/people data providers out there, Explorium felt refreshingl
 For the complete architecture breakdown, comparison table (Explorium vs. Crunchbase vs. PitchBook), workflow diagram, and FAQs, read the full case study:
 
 
-[**→ How We Built a Lead Enrichment Agent with Explorium and Notion**](/results/people-enrichment-agent/)
+**→ How We Built a Lead Enrichment Agent with Explorium and Notion** 
 
 
 ---
