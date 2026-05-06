@@ -41,7 +41,7 @@ The difference from a simple automation: agents handle ambiguity. They don't jus
 ## Three places agents are replacing manual work right now
 
 
-**Lead research and qualification.** Instead of a rep spending 20 minutes researching a company before a call, an agent does it in 30 seconds: pulls LinkedIn data, recent news, tech stack signals, and writes a briefing doc.
+**Lead research and qualification.** Instead of a rep spending 20 minutes researching a company before a call, an agent does it in 30 seconds: pulls LinkedIn data, recent news, tech stack signals, and writes a briefing doc. We built exactly this for a venture firm — enriching 400+ VC contacts at a 95% match rate in 2.2 hours. [Read the case study →](/results/people-enrichment-agent/)
 
 
 **Content repurposing.** You publish a long-form post. An agent converts it into a LinkedIn thread, a short email, and a summary card — while you're doing something else.
@@ -66,6 +66,6 @@ The trap is trying to automate everything at once. Start with one high-value, hi
 Map your last five workdays. Find the task you did most often that required the least judgment. That's your first agent.
 
 
-If you're not sure where to start, [schedule a call](https://www.notion.so/resources/) — we scope these in 30 minutes.
+If you're not sure where to start, [schedule a call](https://booking.akiflow.com/veronica-es-new) — we scope these in 30 minutes.
 
 
