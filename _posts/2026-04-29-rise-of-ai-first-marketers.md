@@ -2,6 +2,7 @@
 title: "The rise of AI-first marketers"
 slug: "rise-of-ai-first-marketers"
 description: "I was reading Function Health’s Growth Marketing Manager role and thought it was ridiculous to require advanced AI expertise in skills that are less than a year old. Unicorn? Or the future?"
+key_quote: "The AI-first marketer isn't a unicorn — it's the new baseline for high-leverage growth roles."
 author: "Veronica"
 post_type: "article"
 category: "AI & Automation"

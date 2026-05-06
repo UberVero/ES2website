@@ -375,6 +375,7 @@ async function main() {
 
     // Optional fields
     const description = richTextToPlain(props['Description']?.rich_text) || null;
+    const keyQuote = richTextToPlain(props['Key Quote']?.rich_text) || null;
     const author = richTextToPlain(props['Author']?.rich_text) || null;
     const postType = getSelectValue(props['Post Type'])?.toLowerCase().replace(/\s+/g, '_') || null;
     const category = getSelectValue(props['Category']) || null;
@@ -416,6 +417,7 @@ async function main() {
       title,
       slug,
       description,
+      key_quote: keyQuote,
       author,
       post_type: postType,
       category,
