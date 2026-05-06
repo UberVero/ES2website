@@ -36,7 +36,8 @@
     {% if page.last_modified_at %}"dateModified": "{{ page.last_modified_at | date_to_xmlschema }}",{% endif %}
     "author": {
       "@type": "Person",
-      "name": {{ page.author | default: "Veronica" | jsonify }},
+      "@id": "https://eldur.studio/#veronica",
+      "name": {{ page.author | default: "Veronica Picciafuoco" | jsonify }},
       "url": "https://eldur.studio"
     },
     "publisher": {
@@ -50,9 +51,48 @@
     },
     "wordCount": {{ content | number_of_words }},
     "inLanguage": "en",
-    "articleBody": {{ content | strip_html | truncatewords: 5000 | jsonify }}
+    {% if page.key_quote %}"speakable": {
+      "@type": "SpeakableSpecification",
+      "cssSelector": [".post__pullquote"]
+    },
+    {% endif %}"articleBody": {{ content | strip_html | truncatewords: 5000 | jsonify }}
   }
   </script>
+  <!-- JSON-LD: Person schema for author (E-E-A-T / GEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "@id": "https://eldur.studio/#veronica",
+    "name": "Veronica Picciafuoco",
+    "jobTitle": "Founder",
+    "url": "https://eldur.studio",
+    "image": "https://eldur.studio/assets/headshot_veronica.png",
+    "description": "Founder of Eldur Studio. Helps lean B2B teams ship marketing systems with AI agents.",
+    "knowsAbout": ["B2B Marketing", "AI Agents", "Marketing Automation", "Webflow", "Notion"],
+    "sameAs": [
+      "https://www.linkedin.com/in/veronicapicciafuoco",
+      "https://twitter.com/UberVero"
+    ],
+    "worksFor": {
+      "@type": "Organization",
+      "name": "Eldur Studio",
+      "url": "https://eldur.studio"
+    }
+  }
+  </script>
+  {% if page.key_quote %}
+  <!-- JSON-LD: Claim schema for the post's key quotable statement -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Claim",
+    "appearance": {{ page.url | absolute_url | jsonify }},
+    "text": {{ page.key_quote | jsonify }},
+    "author": { "@id": "https://eldur.studio/#veronica" }
+  }
+  </script>
+  {% endif %}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -139,9 +179,37 @@
         <img src="{{ page.image }}" alt="{{ page.title }}" loading="lazy" decoding="async" width="1200">
       </picture>
       {% endif %}
+      {% if page.key_quote %}
+      <aside class="post__pullquote" itemscope itemtype="https://schema.org/Quotation">
+        <blockquote itemprop="text">{{ page.key_quote }}</blockquote>
+        <cite itemprop="creator" itemscope itemtype="https://schema.org/Person">
+          <span itemprop="name">{{ page.author | default: "Veronica Picciafuoco" }}</span>
+        </cite>
+      </aside>
+      {% endif %}
       {{ content }}
     </div>
   </main>
+
+  <!-- AUTHOR BIO -->
+  <aside class="author-bio" aria-label="About the author">
+    <div class="container--narrow author-bio__inner">
+      <img src="/assets/headshot_veronica.png" alt="Veronica Picciafuoco" class="author-bio__avatar" width="80" height="80" loading="lazy">
+      <div class="author-bio__body">
+        <p class="author-bio__eyebrow">Written by</p>
+        <p class="author-bio__name">Veronica Picciafuoco</p>
+        <p class="author-bio__role">Founder, Eldur Studio</p>
+        <p class="author-bio__copy">Founder of Eldur Studio. Helps lean B2B teams ship marketing systems with AI agents — from Notion CRM enrichment to Claude-powered Webflow ops.</p>
+        <p class="author-bio__links">
+          <a href="https://www.linkedin.com/in/veronicapicciafuoco" rel="author noopener" target="_blank">LinkedIn</a>
+          <span aria-hidden="true">·</span>
+          <a href="https://twitter.com/UberVero" rel="author noopener" target="_blank">Twitter</a>
+          <span aria-hidden="true">·</span>
+          <a href="mailto:info@eldur.studio">info@eldur.studio</a>
+        </p>
+      </div>
+    </div>
+  </aside>
 
   <!-- CTA STRIP -->
   <section class="post-cta">
