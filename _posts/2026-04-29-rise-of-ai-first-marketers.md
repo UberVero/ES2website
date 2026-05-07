@@ -18,9 +18,6 @@ render_with_liquid: false
 ---
 
 
-![your new growth marketing colleague](/resources/images/blog/rise-of-ai-first-marketers/img-1.webp)
-
-
 ## The title is familiar. The job description is not.
 
 > We’re seeking a highly creative, AI-first **Growth Marketing Manager** to drive member activation across our employer (B2B2C) channel. This is a hands-on builder role for someone who is equally strong in strategy and execution—someone who can design growth systems, run campaigns, and use AI to fundamentally rethink how activation is done.
@@ -68,6 +65,9 @@ The issue is not automating the individual tasks, that’s easy. It’s _chainin
 - Someone has to remember what worked last quarter
 
 A chatbot on top of a messy process gives you faster mess. A defined workflow with good context, sources of truth, and quality gates can give you a real speed advantage.
+
+
+![your new growth marketing colleague](/resources/images/blog/rise-of-ai-first-marketers/img-1.webp)
 
 
 ## Auditing marketing workflows for AI readiness
