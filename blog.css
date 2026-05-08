@@ -362,4 +362,97 @@
   .post-cta {
     padding: 40px 0;
   }
+
+  .author-bio__inner {
+    flex-direction: column;
+    gap: 14px;
+  }
+}
+
+/* ============================================
+   PULL QUOTE (key quotable statement / GEO)
+   ============================================ */
+.post__pullquote {
+  border-left: 3px solid var(--orange);
+  padding: 8px 0 8px 20px;
+  margin: 36px 0 40px;
+}
+
+.post__pullquote blockquote {
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--black);
+  margin: 0 0 8px;
+}
+
+.post__pullquote cite {
+  font-size: 13px;
+  color: var(--text-muted);
+  font-style: normal;
+}
+
+/* ============================================
+   AUTHOR BIO
+   ============================================ */
+.author-bio {
+  background: #f7f6f3;
+  padding: 40px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.author-bio__inner {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.author-bio__avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.author-bio__eyebrow {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin: 0 0 6px;
+}
+
+.author-bio__name {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0;
+  color: var(--black);
+}
+
+.author-bio__role {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 2px 0 10px;
+}
+
+.author-bio__copy {
+  font-size: 15px;
+  line-height: 1.55;
+  margin: 0 0 12px;
+  color: var(--black);
+}
+
+.author-bio__links {
+  font-size: 14px;
+  margin: 0;
+}
+
+.author-bio__links a {
+  color: var(--orange);
+}
+
+.author-bio__links span {
+  margin: 0 6px;
+  color: var(--text-muted);
 }
