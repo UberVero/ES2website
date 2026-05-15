@@ -87,7 +87,11 @@
   {
     "@context": "https://schema.org",
     "@type": "Claim",
-    "appearance": {{ page.url | absolute_url | jsonify }},
+    "appearance": {
+      "@type": "BlogPosting",
+      "url": {{ page.url | absolute_url | jsonify }},
+      "headline": {{ page.title | jsonify }}
+    },
     "text": {{ page.key_quote | jsonify }},
     "author": { "@id": "https://eldur.studio/#veronica" }
   }
