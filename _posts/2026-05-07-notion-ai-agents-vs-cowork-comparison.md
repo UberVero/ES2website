@@ -224,7 +224,10 @@ Decision checklist:
 If you’re deciding between Notion agents and an external runner for a real workflow (SEO audits, inbox triage, pipeline reporting, ops checks), but really you just want to save time and get this up and running, Eldur Studio can build it for you! Reach out and let’s build your first agent in the platform that makes most sense for you / your company.
 
 
-## Comparison table (quick scan)
+---
+
+
+## Comparison table
 
 
 | Dimension                                        | Notion AI Agents (native)                                                                                                                                                                                                    | Scheduled runner (Cowork / Claude Code routines)                                                                                                                                                                                  |
