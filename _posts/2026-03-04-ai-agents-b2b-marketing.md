@@ -53,7 +53,7 @@ The difference from a simple automation: agents handle ambiguity. They don't jus
 ## What this means for marketing teams
 
 
-While agent replace tasks, not people, we can build an large number of agents running in parallel. The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at.
+While agents replace tasks, not people, we can build a large number of agents running in parallel. The leverage is asymmetric. A solo operator with three well-designed agents can match the output of a team of five — on the tasks that agents are good at.
 
 
 The trap is trying to automate everything at once. Start with one high-value, high-repetition workflow. Get it working. Then expand.
@@ -67,5 +67,4 @@ Map your last five workdays. Find the task you did most often that required the 
 
 
 If you're not sure where to start, [schedule a call](https://www.notion.so/resources/) — we scope these in 30 minutes.
-
 
