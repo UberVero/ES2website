@@ -115,7 +115,14 @@ function buildFrontMatter(fields) {
       if (val.length === 0) continue;
       lines.push(`${key}:`);
       for (const item of val) {
-        lines.push(`  - ${escapeYamlString(item)}`);
+        if (item !== null && typeof item === 'object' && !Array.isArray(item)) {
+          const entries = Object.entries(item);
+          entries.forEach(([k, v], i) => {
+            lines.push(`${i === 0 ? '  - ' : '    '}${k}: ${escapeYamlString(String(v))}`);
+          });
+        } else {
+          lines.push(`  - ${escapeYamlString(item)}`);
+        }
       }
     } else if (typeof val === 'boolean') {
       lines.push(`${key}: ${val}`);

@@ -1,0 +1,43 @@
+# Eldur Studio
+
+Eldur Studio builds custom AI agents for B2B marketing and sales ops teams.
+We design, wire, and hand off agentic workflows — the client owns the system
+after we're done. No ongoing dependency on us, no SaaS subscription for the
+agent layer.
+
+## What we do
+
+- Lead qualification and enrichment agents (Explorium, Apollo, Clay integrations)
+- Content publishing automation (Notion → Jekyll, multi-channel distribution)
+- CRM hygiene and enrichment pipelines (Notion, HubSpot, Salesforce)
+- Ad monitoring and alerting agents
+- Competitive intelligence monitoring
+- Custom Notion CRMs for relationship-heavy B2B teams
+
+## Who we work with
+
+10–50 person B2B companies with marketing teams of 1–3 people who want to
+compete with larger teams without hiring. We're the right fit when you have
+a clear ICP, some existing tooling, and want systems that run themselves.
+
+## Key pages
+
+- Homepage: https://eldur.studio/
+- Results / Case Studies: https://eldur.studio/results/
+- Resources / Blog: https://eldur.studio/resources/
+- Book a call: https://booking.akiflow.com/veronica-es-new
+- Contact: info@eldur.studio
+
+## Notable case studies
+
+- Lead enrichment agent (Explorium + Notion + Pipedream): 400+ contacts, 85%
+  match rate, 98% time reduction vs manual LinkedIn research.
+  https://eldur.studio/results/people-enrichment-agent/
+- Scalapay merchant directory (Webflow + Sanity headless CMS, thousands of
+  listings with Algolia search).
+  https://eldur.studio/results/scalapay-webflow-directory-headless-cms/
+
+## Founder
+
+Veronica Picciafuoco — founder, builder, and the person you'll work with.
+LinkedIn: https://www.linkedin.com/in/veronicapicciafuoco

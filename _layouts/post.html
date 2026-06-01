@@ -195,6 +195,85 @@
     </div>
   </main>
 
+  <script>
+  /* FAQ: detect "## Frequently Asked Questions" section in post body,
+     wrap it in an accordion, and inject FAQPage JSON-LD for rich results. */
+  (function () {
+    var body = document.querySelector('.post-body');
+    if (!body) return;
+
+    var h2s = body.querySelectorAll('h2');
+    var faqH2 = null;
+    for (var i = 0; i < h2s.length; i++) {
+      if (/frequently asked questions|^faq$/i.test(h2s[i].textContent.trim())) {
+        faqH2 = h2s[i]; break;
+      }
+    }
+    if (!faqH2) return;
+
+    /* Collect sibling h3+p pairs until the next h2 or end of container */
+    var pairs = [];
+    var el = faqH2.nextElementSibling;
+    var pendingQ = null;
+    while (el && el.tagName !== 'H2') {
+      if (el.tagName === 'H3') {
+        pendingQ = { q: el.textContent.trim(), qEl: el };
+      } else if (pendingQ && (el.tagName === 'P' || el.tagName === 'UL')) {
+        pairs.push({ q: pendingQ.q, a: el.textContent.trim(), qEl: pendingQ.qEl, aEl: el });
+        pendingQ = null;
+      }
+      el = el.nextElementSibling;
+    }
+    if (!pairs.length) return;
+
+    /* Build accordion wrapper to replace the raw h3+p pairs */
+    var section = document.createElement('section');
+    section.className = 'post-faq';
+    section.setAttribute('aria-label', 'Frequently asked questions');
+
+    var heading = document.createElement('h2');
+    heading.className = 'post-faq__heading';
+    heading.textContent = 'Frequently Asked Questions';
+    section.appendChild(heading);
+
+    pairs.forEach(function (pair) {
+      var details = document.createElement('details');
+      details.className = 'post-faq__item';
+      var summary = document.createElement('summary');
+      summary.className = 'post-faq__question';
+      summary.textContent = pair.q;
+      var answer = document.createElement('p');
+      answer.className = 'post-faq__answer';
+      answer.textContent = pair.a;
+      details.appendChild(summary);
+      details.appendChild(answer);
+      section.appendChild(details);
+    });
+
+    /* Replace original h2 + h3/p nodes with the accordion */
+    faqH2.parentNode.insertBefore(section, faqH2);
+    faqH2.remove();
+    pairs.forEach(function (p) { p.qEl.remove(); p.aEl.remove(); });
+
+    /* Inject FAQPage JSON-LD */
+    var schema = {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: pairs.map(function (p) {
+        return {
+          '@type': 'Question',
+          name: p.q,
+          acceptedAnswer: { '@type': 'Answer', text: p.a }
+        };
+      })
+    };
+    var s = document.createElement('script');
+    s.type = 'application/ld+json';
+    s.textContent = JSON.stringify(schema);
+    document.head.appendChild(s);
+  })();
+  </script>
+
   <!-- AUTHOR BIO -->
   <aside class="author-bio" aria-label="About the author">
     <div class="container--narrow author-bio__inner">
