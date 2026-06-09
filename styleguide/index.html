@@ -99,11 +99,19 @@
 
       <div class="sg-subhead">Type</div>
       <div class="sg-panel">
-        <p style="font-family:var(--font-heading);font-size:40px;line-height:1.05;letter-spacing:-0.02em;margin-bottom:18px;">Kamura — display / headlines</p>
-        <p style="font-family:var(--font);font-size:24px;font-weight:700;margin-bottom:4px;">Basier Circle Bold 700 — H-level UI</p>
-        <p style="font-family:var(--font);font-size:17px;font-weight:600;margin-bottom:4px;">Basier Circle SemiBold 600 — buttons, labels</p>
+        <p style="font-family:var(--font-heading);font-size:48px;line-height:1;letter-spacing:-0.01em;margin-bottom:6px;">95% · 200h → 2h</p>
+        <p style="font-family:var(--font-heading);font-size:28px;line-height:1.05;margin-bottom:18px;color:#555;">Kamura — display serif: the nav wordmark and big metric numbers</p>
+        <p style="font-family:var(--font);font-size:clamp(38px,5vw,56px);font-weight:700;line-height:1.08;letter-spacing:-0.03em;margin-bottom:14px;">Build the one&#8209;person marketing team</p>
+        <p style="font-family:var(--font);font-size:13px;color:#888;margin-bottom:18px;">↑ Hero headlines &amp; section titles are <strong>Basier Circle Bold</strong>, <em>not</em> Kamura.</p>
+        <p style="font-family:var(--font);font-size:17px;font-weight:600;margin-bottom:4px;">Basier Circle SemiBold 600 — buttons, labels, eyebrows</p>
         <p style="font-family:var(--font);font-size:16px;font-weight:400;color:#444;">Basier Circle Regular 400 — body copy. The quick brown fox jumps over the lazy dog.</p>
-        <p class="sg-note"><span class="sg-code">--font-heading</span> = Kamura (serif display) · <span class="sg-code">--font</span> = Basier Circle (weights 400/500/600/700). Fonts load via root-relative <span class="sg-code">@font-face</span> paths so they work from sub-pages.</p>
+        <p class="sg-note"><span class="sg-code">--font-heading</span> = Kamura (serif display — reserved for the wordmark and large numerals). <span class="sg-code">--font</span> = Basier Circle (weights 400/500/600/700) for <strong>everything else, including the hero headline and section titles</strong>. Fonts load via root-relative <span class="sg-code">@font-face</span> paths so they work from sub-pages.</p>
+      </div>
+
+      <div class="sg-subhead">Eyebrow (<span class="sg-code">.eyebrow</span>)</div>
+      <div class="sg-panel">
+        <p class="eyebrow">Custom AI agents for growth</p>
+        <p class="sg-note">The small uppercase kicker above a headline/section title: <span class="sg-code">--red</span>, 12px/700, <span class="sg-code">0.12em</span> tracking. Used in the hero and at the top of most sections. On dark sections it sits above white headings; here on light it keeps its red.</p>
       </div>
 
       <div class="sg-subhead">Radius</div>
@@ -245,7 +253,7 @@
     <!-- ============================= METRIC NUMBERS ============================= -->
     <section class="sg-section" id="metrics">
       <h2>Gradient metric numbers — <span class="sg-code">.metric-card</span></h2>
-      <p class="sg-lead">Big gradient-filled figures used on case studies (<span class="sg-code">/results/</span>). The flame gradient is clipped to the text via <span class="sg-code">background-clip: text</span>. Defined in <span class="sg-code">results.css</span>, laid out in a <span class="sg-code">.cs-metrics</span> grid.</p>
+      <p class="sg-lead">Big <strong>Kamura</strong> (<span class="sg-code">--font-heading</span>) figures used on case studies (<span class="sg-code">/results/</span>) — the display serif's main job besides the wordmark. The flame gradient is clipped to the text via <span class="sg-code">background-clip: text</span>. Defined in <span class="sg-code">results.css</span>, laid out in a <span class="sg-code">.cs-metrics</span> grid.</p>
       <div class="cs-metrics">
         <div class="metric-card">
           <div class="metric-card__value">95%</div>

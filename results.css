@@ -621,9 +621,10 @@
 }
 
 .metric-card__value {
-  font-size: clamp(32px, 4vw, 44px);
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-family: var(--font-heading);
+  font-size: clamp(36px, 4.4vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
   line-height: 1;
   background: var(--gradient);
   -webkit-background-clip: text;
