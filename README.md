@@ -82,11 +82,18 @@ ES2website/
 │   └── [slug]/
 │       └── index.html   # One folder per case study, full design freedom
 │
+├── styleguide/
+│   └── index.html       # Living style guide at /styleguide/ — tokens +
+│                        #   components rendered from the real CSS
+├── results.css          # Case-study styles (metric cards, timelines, …)
+├── blog.css             # Blog-post styles
+│
 ├── assets/
 │   ├── favicon.svg
-│   ├── logo-nav.png     # Nav logo
-│   ├── logo-white.png   # Footer logo (white version)
-│   └── social-card.png  # OG image (1200×630)
+│   ├── logo-nav.png       # Nav logo
+│   ├── logo-white.png     # Footer logo (white version)
+│   ├── social-card.png    # OG image (1200×630)
+│   └── install-agent.js   # InstallAgent CTA animation (idle → installing → done)
 │
 └── fonts/
     ├── BasierCircle-Regular.otf
@@ -108,9 +115,37 @@ ES2website/
 
 ---
 
+## Style guide
+
+**Where the visual rules live: [`/styleguide/`](styleguide/index.html)** — a living catalog that renders
+the brand tokens and every component straight from the real CSS (`styles.css` + `results.css`), so it can't
+drift from production. Open it whenever you're building a new page (e.g. the self-service homepage) to see
+what already exists before adding anything.
+
+```sh
+python3 -m http.server 3000   # then visit http://localhost:3000/styleguide/
+```
+
+It covers:
+- **Tokens** — colors, the flame `--gradient`, type scale, radii (rendered live, with token names).
+- **Buttons** (`.btn`) — every variant + size, the hover lift, the `.btn__ico` icon nudge, disabled state.
+- **Cards** (`.card`) — agent cards with the `.agent__icon` hover wiggle, link-card lift, dark + package cards.
+- **Install agent** (`.ia2`) — the hero CTA in all three variants, click to play the install animation.
+- **Gradient metric numbers** (`.metric-card`) — the `background-clip: text` figures used on case studies.
+- **Rules & conventions** — token source of truth, where each CSS file applies, class-naming, the
+  nav/footer-in-three-places rule, `prefers-reduced-motion`, and open follow-ups.
+
+Conventions to know before editing styles:
+- **Tokens are the source of truth in `styles.css` `:root`** — never hard-code a hex; add/reuse a token.
+- **CSS is split by zone:** `styles.css` (homepage + shared), `results.css` (case studies), `blog.css` (posts).
+- **Class naming is plain** (`.btn`, `.card`, `.agent__icon`). The design-system handoff ships `--es-*` /
+  `.es-btn` / `.es-card`; those get remapped to these names when applied (see the DS-sync follow-up issue).
+
+---
+
 ## Brand tokens
 
-> **Source of truth:** `styles.css` `:root` block. Update this table if you change tokens there.
+> **Source of truth:** `styles.css` `:root` block — see the live [`/styleguide/`](styleguide/index.html) for the rendered version. Update this table if you change tokens there.
 
 | Variable | Value | Use |
 |----------|-------|-----|

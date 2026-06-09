@@ -62,9 +62,11 @@ Every `_posts/*.md` file must have these fields or the sync will skip it:
 
 ## Key architectural decisions
 
+**Style guide is the visual source of truth** — `styleguide/index.html` (served at `/styleguide/`) is a living catalog that renders the brand tokens and every component (buttons, cards, install-agent CTA, gradient metric numbers) straight from the real CSS, plus a "rules & conventions" section. **Read it before building a new page** to see what already exists. It is hand-built static HTML (not Jekyll), `noindex`, and not linked from the site nav.
+
 **Nav exists in three places** — `index.html`, `_layouts/post.html`, and `resources/index.html`. Changes to nav must be made in all three. Same for the footer.
 
-**CSS is one file** — `styles.css` covers homepage, blog posts, resources listing, and case studies. It uses CSS custom properties (see `:root` for all tokens). The README.md brand token table is outdated; always use the `:root` block in `styles.css` as the source of truth.
+**CSS is split by zone** — `styles.css` (homepage + shared: buttons, cards, nav, hero, install-agent), `results.css` (case studies: metric cards, timelines), `blog.css` (blog posts). All use the CSS custom properties in `styles.css` `:root` — the single token source of truth. The README.md brand token table is a mirror that can lag; always use the `:root` block (or the live `/styleguide/`).
 
 **`@font-face` uses root-relative paths** (`/fonts/...`) so fonts load correctly from sub-pages like `/resources/slug/`. Relative paths would break on sub-paths.
 
