@@ -67,6 +67,13 @@ layout: null
 .sg-toc a { font-size: 13px; color: #666; }
 .sg-toc a:hover { color: var(--orange); }
 
+/* pinned hover demos — so reviewers see hover-only states without a mouse */
+.sg-pin .card--outline, .sg-pin .card--agent, .sg-pin .card--link {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+  transform: translateY(-3px);
+}
+
 /* page-chrome responsiveness (keeps specimens inside narrow viewports) */
 @media (max-width: 640px) {
   .sg-top { padding: 14px 16px; }
@@ -314,6 +321,13 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
         <div class="card card--dark"><h3>Dark card</h3><p>For black sections. Muted body, <em>yellow</em> emphasis when needed.</p></div>
       </div>
     </div>
+    <div class="sg-block">
+      <span class="sg-label">rest → hover (left is live — hover it; right is pinned to the hover state)</span>
+      <div class="cards cards--2">
+        <a class="card card--outline card--link" href="#cards"><p class="card__eyebrow">Resource</p><h3 class="card__title">Link card (live)</h3><p class="card__excerpt">Hover me — the border turns orange and the whole card lifts 3px.</p></a>
+        <div class="sg-pin"><a class="card card--outline card--link" href="#cards"><p class="card__eyebrow">Resource</p><h3 class="card__title">Link card (pinned hover)</h3><p class="card__excerpt">Orange border + 3px lift + soft orange shadow.</p></a></div>
+      </div>
+    </div>
   </section>
 
   <!-- ============ AGENT CARDS ============ -->
@@ -323,6 +337,14 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
     <p class="sg-lead">The icon tile now does the agent-bot <strong>wiggle on hover</strong> and the card lifts — the one sanctioned bit of personality, carried over from the Install Agent bot. <strong>Hover a card.</strong></p>
     <div class="sg-stage sg-stage--light">
       <div class="cards cards--3" id="agent-cards"></div>
+    </div>
+    <div class="sg-block">
+      <span class="sg-label">hover state (pinned)</span>
+      <div class="sg-stage sg-stage--light">
+        <div class="sg-pin" style="max-width:320px">
+          <div class="card card--agent"><div class="agent__icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2.5" y="4" width="17" height="13" rx="4" stroke="#ff7a00" stroke-width="2"/><circle cx="8" cy="10.5" r="1.4" fill="#ff7a00"/><circle cx="14" cy="10.5" r="1.4" fill="#ff7a00"/><path d="M11 4V1.6M11 1.6a1.3 1.3 0 1 0 0-.01" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Pinned hover</h3><p>Orange border + soft orange shadow + 3px lift. The icon wiggle plays only on a real pointer hover.</p></div>
+        </div>
+      </div>
     </div>
   </section>
 
