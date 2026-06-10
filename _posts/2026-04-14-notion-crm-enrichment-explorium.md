@@ -60,20 +60,18 @@ Honestly, the playground is what sealed the deal. We loaded the client's actual 
 With so many company/people data providers out there, Explorium felt refreshingly straightforward.
 
 
-Explorium also published their own case study on this project: [Eldur Studio Case Study: A 98% Faster Approach to Lead Enrichment](https://www.explorium.ai/resource/eldur-studio-case-study-a-98-faster-approach-to-lead-enrichment/).
-
-
 ## Full case study
 
 
 For the complete architecture breakdown, comparison table (Explorium vs. Crunchbase vs. PitchBook), workflow diagram, and FAQs, read the full case study:
 
 
-**[→ How We Built a Lead Enrichment Agent with Explorium and Notion](/results/people-enrichment-agent/)**
+**→ How We Built a Lead Enrichment Agent with Explorium and Notion** 
 
 
 ---
 
 
 ![Email enrichment workflow diagram](/resources/images/blog/notion-crm-enrichment-explorium/img-1.webp)
+
 
