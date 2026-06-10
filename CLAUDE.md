@@ -62,7 +62,9 @@ Every `_posts/*.md` file must have these fields or the sync will skip it:
 
 ## Key architectural decisions
 
-**Style guide is the visual source of truth** — `styleguide/index.html` (served at `/styleguide/`) is a living catalog that renders the brand tokens and every component (buttons, cards, install-agent CTA, gradient metric numbers) straight from the real CSS, plus a "rules & conventions" section. **Read it before building a new page** to see what already exists. It is hand-built static HTML (not Jekyll), `noindex`, and not linked from the site nav.
+**Style guide is the visual source of truth** — `styleguide/index.html` (Jekyll page at `/styleguide/`) is a living catalog with 12 sections (Brand, Color, Typography, Spacing & Radii, Buttons, Install Agent, Cards, Agent Cards, Packages, Eyebrows/Chips/Highlight, Timeline, FAQ). It links the real `/styles.css` so it can't drift, and inlines only its own `sg-*` page chrome (page furniture — never put `sg-*` rules in `styles.css`). It's `noindex` and not in the site nav. **Read it before building a new page.**
+
+**Design changes arrive as repo-token handoffs → PR.** Tokens (`:root`) + component classes live only in `styles.css` (the system of record); `/styleguide/` is the contract. New designs come from the Claude Design project as vanilla CSS patches **already using the repo's own tokens** (`--orange`, `.btn` — not `--es-*`/`.es-btn`), applied to `styles.css` (+ markup, + `assets/<name>.js` loaded `defer`) in a reviewable PR, diffed visually against `/styleguide/`. Add a specimen for every new component. Token-first: brand tweaks are one-line `:root` edits — never hard-code a hex.
 
 **Nav exists in three places** — `index.html`, `_layouts/post.html`, and `resources/index.html`. Changes to nav must be made in all three. Same for the footer.
 

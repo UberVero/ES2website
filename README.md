@@ -115,31 +115,36 @@ ES2website/
 
 ---
 
-## Style guide
+## Style guide & design system
 
-**Where the visual rules live: [`/styleguide/`](styleguide/index.html)** — a living catalog that renders
-the brand tokens and every component straight from the real CSS (`styles.css` + `results.css`), so it can't
-drift from production. Open it whenever you're building a new page (e.g. the self-service homepage) to see
-what already exists before adding anything.
+**The coded style guide is the source of truth: [`/styleguide/`](styleguide/index.html)** — a living catalog
+that renders every brand token and component straight from the real `styles.css`, so it cannot drift from
+production. Open it before building any new page (e.g. the self-service homepage) to see what already exists.
 
 ```sh
 python3 -m http.server 3000   # then visit http://localhost:3000/styleguide/
 ```
 
-It covers:
-- **Tokens** — colors, the flame `--gradient`, type scale, radii (rendered live, with token names).
-- **Buttons** (`.btn`) — every variant + size, the hover lift, the `.btn__ico` icon nudge, disabled state.
-- **Cards** (`.card`) — agent cards with the `.agent__icon` hover wiggle, link-card lift, dark + package cards.
-- **Install agent** (`.ia2`) — the hero CTA in all three variants, click to play the install animation.
-- **Gradient metric numbers** (`.metric-card`) — the `background-clip: text` figures used on case studies.
-- **Rules & conventions** — token source of truth, where each CSS file applies, class-naming, the
-  nav/footer-in-three-places rule, `prefers-reduced-motion`, and open follow-ups.
+The 12 sections mirror the design system: **Brand · Color · Typography · Spacing & Radii · Buttons ·
+Install Agent · Cards · Agent Cards · Packages · Eyebrows/Chips/Highlight · Timeline · FAQ**. The page links
+the real `/styles.css` and inlines only its own `sg-*` page chrome (page furniture — deliberately *not* part
+of the design system).
 
-Conventions to know before editing styles:
-- **Tokens are the source of truth in `styles.css` `:root`** — never hard-code a hex; add/reuse a token.
-- **CSS is split by zone:** `styles.css` (homepage + shared), `results.css` (case studies), `blog.css` (posts).
-- **Class naming is plain** (`.btn`, `.card`, `.agent__icon`). The design-system handoff ships `--es-*` /
-  `.es-btn` / `.es-card`; those get remapped to these names when applied (see the DS-sync follow-up issue).
+### Keeping the system in sync (the workflow)
+1. **One source of truth, in Git.** Tokens (`:root`) + component classes live in `styles.css`; every page
+   links it. It's versioned — that's the system of record. `/styleguide/` is the human-readable contract.
+2. **Token-first.** Brand changes (accent, radius) are one-line edits to `:root` that propagate everywhere.
+   Never hard-code a hex in markup.
+3. **Design → PR.** Prototype in the Claude Design project; when approved, export a **repo-token handoff**
+   (vanilla CSS patches that already use `--orange`/`.btn`, not `--es-*`/`.es-btn`) and apply it to
+   `styles.css` (+ markup/JS) as a reviewable PR. Diff the PR visually against `/styleguide/`.
+4. **JS components** (e.g. InstallAgent) ship as small `assets/<name>.js`, loaded `defer`, in the same PR.
+5. **Add a specimen for every new component** in `/styleguide/` so the catalog stays complete.
+6. *(Optional, later)* a visual-regression snapshot of `/styleguide/` in CI to catch unintended drift.
+
+> Earlier handoffs shipped `--es-*` / `.es-btn` tokens that had to be hand-remapped to the repo's
+> `--orange` / `.btn`. Handoffs now arrive **pre-mapped to the repo's own tokens**, so applying a design
+> change is a paste-and-review, not a re-type.
 
 ---
 

@@ -228,36 +228,32 @@ img, svg {
 .btn {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  padding: 19px 34px;
-  border-radius: 12px;
+  padding: 16px 30px;                /* was 14px 28px */
+  border-radius: 12px;               /* was 100px (pill) */
   font-family: var(--font);
-  font-size: 17px;
-  font-weight: 700;
+  font-size: 16px;                   /* was 15px */
+  font-weight: 700;                  /* was 600 */
   line-height: 1;
   letter-spacing: -0.01em;
   cursor: pointer;
-  transition: transform 0.16s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
+  transition: transform 0.16s cubic-bezier(.2,.8,.2,1), background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease;
   text-decoration: none;
   border: 2px solid transparent;
   white-space: nowrap;
 }
-.btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
-.btn:hover { transform: translateY(-2px); }   /* the lift */
+.btn:not(.btn--nav):hover { transform: translateY(-2px); }   /* the lift */
 .btn:active { transform: translateY(0); }
+.btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
 
-/* wrap trailing/leading icons in <span class="btn__ico"> so they nudge on hover */
-.btn__ico { display: inline-flex; transition: transform 0.18s cubic-bezier(0.2, 0.8, 0.2, 1); }
+/* wrap an icon in <span class="btn__ico"> so it nudges on hover */
+.btn__ico { display: inline-flex; transition: transform 0.18s cubic-bezier(.2,.8,.2,1); }
 .btn:hover .btn__ico { transform: translateX(2px); }
 
-/* sizes */
-.btn--sm { padding: 13px 22px; font-size: 15px; border-radius: 10px; }
-.btn--lg { padding: 23px 42px; font-size: 19px; border-radius: 14px; }
-
 .btn--nav {
-  padding: 10px 22px;
+  padding: 10px 20px;
   font-size: 14px;
+  border-radius: 10px;               /* compact, but matches the new corner */
   background: var(--orange);
   color: var(--white);
   border-color: var(--orange);
@@ -278,14 +274,13 @@ img, svg {
   box-shadow: 0 10px 28px rgba(255, 122, 0, 0.42);
 }
 
-/* flame orange→red gradient, for the loud moments */
+/* NEW — flame orange→red gradient, for the loud moments */
 .btn--gradient {
   background: var(--gradient);
   color: var(--white);
+  border-color: transparent;
 }
-.btn--gradient:hover {
-  box-shadow: 0 12px 30px rgba(238, 15, 15, 0.40);
-}
+.btn--gradient:hover { box-shadow: 0 12px 30px rgba(238, 15, 15, 0.40); }
 
 .btn--ghost {
   background: transparent;
@@ -304,7 +299,7 @@ img, svg {
 }
 .btn--white:hover {
   background: var(--gray);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
 }
 
 .btn--outline-white {
@@ -318,9 +313,8 @@ img, svg {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .btn, .btn__ico { transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, box-shadow 0.18s ease; }
-  .btn:hover, .btn:active { transform: none; }
-  .btn:hover .btn__ico { transform: none; }
+  .btn, .btn__ico { transition: background 0.18s ease, border-color 0.18s ease; }
+  .btn:not(.btn--nav):hover { transform: none; }
 }
 
 /* ============================================
@@ -710,13 +704,12 @@ img, svg {
   flex-direction: column;
   text-decoration: none;
   color: inherit;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
 
 .card--link:hover {
   border-color: var(--orange);
   box-shadow: 0 4px 16px rgba(255, 122, 0, 0.08);
-  transform: translateY(-3px);
 }
 
 .card--link .card__body {
@@ -1131,23 +1124,6 @@ img, svg {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-  /* pivot near the tile's base + GPU hint for the hover wiggle */
-  transform-origin: 50% 78%;
-  will-change: transform;
-}
-
-/* the icon tile does a playful wiggle on hover (echoes the InstallAgent bot) */
-@keyframes agent-icon-wiggle {
-  0%, 100% { transform: rotate(0deg); }
-  22%      { transform: rotate(-7deg); }
-  60%      { transform: rotate(5deg); }
-  82%      { transform: rotate(-2deg); }
-}
-.card--agent:hover .agent__icon { animation: agent-icon-wiggle 0.55s ease-in-out; }
-
-@media (prefers-reduced-motion: reduce) {
-  .card--agent:hover .agent__icon { animation: none; }
-  .card--link:hover { transform: none; }
 }
 
 .card--agent h3 {
@@ -1162,6 +1138,41 @@ img, svg {
   font-size: 15px;
   color: #555555;
   line-height: 1.65;
+}
+
+/* ============================================
+   CARD HOVER MOTION (patch — appended)
+   ============================================ */
+/* pivot near the base + GPU hint */
+.agent__icon {
+  transform-origin: 50% 78%;
+  will-change: transform;
+}
+
+/* the wiggle — same curve as the InstallAgent bot */
+@keyframes agent-icon-wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  22%      { transform: rotate(-7deg); }
+  60%      { transform: rotate(5deg); }
+  82%      { transform: rotate(-2deg); }
+}
+.card--agent:hover .agent__icon { animation: agent-icon-wiggle 0.55s ease-in-out; }
+
+/* agent card lifts on hover (extend its existing transition) */
+.card--agent {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s cubic-bezier(.2,.8,.2,1);
+}
+.card--agent:hover { transform: translateY(-3px); }
+
+/* blog/resource cards lift too (they already turn the border orange) */
+.card--link {
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.2s cubic-bezier(.2,.8,.2,1);
+}
+.card--link:hover { transform: translateY(-3px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .card--agent:hover .agent__icon { animation: none; }
+  .card--agent:hover, .card--link:hover { transform: none; }
 }
 
 /* ============================================
@@ -1789,6 +1800,12 @@ details[open] > .faq__q::after {
 .ia2--outline .ia2-bot { color: var(--orange); }
 .ia2--outline.is-installing .ia2-bot,
 .ia2--outline.is-done       .ia2-bot { color: var(--white); }
+
+/* ---- label colour per variant/state (explicit — robust on <a> and <button>) ---- */
+.ia2--solid .ia2-label, .ia2--dark .ia2-label { color: var(--white); }
+.ia2--outline .ia2-label { color: var(--orange); }
+.ia2--outline.is-installing .ia2-label,
+.ia2--outline.is-done       .ia2-label { color: var(--white); }
 
 /* ---- hero bot ---- */
 @keyframes ia2-blink { 0%, 90%, 100% { transform: scaleY(1); } 94% { transform: scaleY(0.08); } }
