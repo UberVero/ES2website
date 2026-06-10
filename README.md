@@ -125,8 +125,8 @@ production. Open it before building any new page (e.g. the self-service homepage
 python3 -m http.server 3000   # then visit http://localhost:3000/styleguide/
 ```
 
-The 12 sections mirror the design system: **Brand · Color · Typography · Spacing & Radii · Buttons ·
-Install Agent · Cards · Agent Cards · Packages · Eyebrows/Chips/Highlight · Timeline · FAQ**. The page links
+The sections mirror the design system: **Brand · Color · Typography · Spacing & Radii · Buttons ·
+Install Agent · Cards · Agent Cards · Packages · Chips/Highlight · Timeline · FAQ**. The page links
 the real `/styles.css` and inlines only its own `sg-*` page chrome (page furniture — deliberately *not* part
 of the design system).
 
