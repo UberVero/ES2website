@@ -196,6 +196,11 @@
   </main>
 
   <script>
+  /* Add lazy loading to inline markdown images that the renderer omits it from */
+  document.querySelectorAll('.post-body img:not([loading])').forEach(function(img) {
+    img.setAttribute('loading', 'lazy');
+  });
+
   /* FAQ: detect "## Frequently Asked Questions" section in post body,
      wrap it in an accordion, and inject FAQPage JSON-LD for rich results. */
   (function () {

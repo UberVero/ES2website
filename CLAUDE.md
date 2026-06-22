@@ -62,9 +62,13 @@ Every `_posts/*.md` file must have these fields or the sync will skip it:
 
 ## Key architectural decisions
 
+**Style guide is the visual source of truth** — `styleguide/index.html` (Jekyll page at `/styleguide/`) is a living catalog (Brand, Color, Typography, Spacing & Radii, Buttons, Install Agent, Cards, Agent Cards, Packages, Chips/Highlight, Timeline, FAQ). It links the real `/styles.css` so it can't drift, and inlines only its own `sg-*` page chrome (page furniture — never put `sg-*` rules in `styles.css`). It's `noindex` and not in the site nav. **Read it before building a new page.**
+
+**Design changes arrive as repo-token handoffs → PR.** Tokens (`:root`) + component classes live only in `styles.css` (the system of record); `/styleguide/` is the contract. New designs come from the Claude Design project as vanilla CSS patches **already using the repo's own tokens** (`--orange`, `.btn` — not `--es-*`/`.es-btn`), applied to `styles.css` (+ markup, + `assets/<name>.js` loaded `defer`) in a reviewable PR, diffed visually against `/styleguide/`. Add a specimen for every new component. Token-first: brand tweaks are one-line `:root` edits — never hard-code a hex.
+
 **Nav exists in three places** — `index.html`, `_layouts/post.html`, and `resources/index.html`. Changes to nav must be made in all three. Same for the footer.
 
-**CSS is one file** — `styles.css` covers homepage, blog posts, resources listing, and case studies. It uses CSS custom properties (see `:root` for all tokens). The README.md brand token table is outdated; always use the `:root` block in `styles.css` as the source of truth.
+**CSS is split by zone** — `styles.css` (homepage + shared: buttons, cards, nav, hero, install-agent), `results.css` (case studies: metric cards, timelines), `blog.css` (blog posts). All use the CSS custom properties in `styles.css` `:root` — the single token source of truth. The README.md brand token table is a mirror that can lag; always use the `:root` block (or the live `/styleguide/`).
 
 **`@font-face` uses root-relative paths** (`/fonts/...`) so fonts load correctly from sub-pages like `/resources/slug/`. Relative paths would break on sub-paths.
 

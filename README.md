@@ -82,11 +82,18 @@ ES2website/
 │   └── [slug]/
 │       └── index.html   # One folder per case study, full design freedom
 │
+├── styleguide/
+│   └── index.html       # Living style guide at /styleguide/ — tokens +
+│                        #   components rendered from the real CSS
+├── results.css          # Case-study styles (metric cards, timelines, …)
+├── blog.css             # Blog-post styles
+│
 ├── assets/
 │   ├── favicon.svg
-│   ├── logo-nav.png     # Nav logo
-│   ├── logo-white.png   # Footer logo (white version)
-│   └── social-card.png  # OG image (1200×630)
+│   ├── logo-nav.png       # Nav logo
+│   ├── logo-white.png     # Footer logo (white version)
+│   ├── social-card.png    # OG image (1200×630)
+│   └── install-agent.js   # InstallAgent CTA animation (idle → installing → done)
 │
 └── fonts/
     ├── BasierCircle-Regular.otf
@@ -108,9 +115,42 @@ ES2website/
 
 ---
 
+## Style guide & design system
+
+**The coded style guide is the source of truth: [`/styleguide/`](styleguide/index.html)** — a living catalog
+that renders every brand token and component straight from the real `styles.css`, so it cannot drift from
+production. Open it before building any new page (e.g. the self-service homepage) to see what already exists.
+
+```sh
+python3 -m http.server 3000   # then visit http://localhost:3000/styleguide/
+```
+
+The sections mirror the design system: **Brand · Color · Typography · Spacing & Radii · Buttons ·
+Install Agent · Cards · Agent Cards · Packages · Chips/Highlight · Timeline · FAQ**. The page links
+the real `/styles.css` and inlines only its own `sg-*` page chrome (page furniture — deliberately *not* part
+of the design system).
+
+### Keeping the system in sync (the workflow)
+1. **One source of truth, in Git.** Tokens (`:root`) + component classes live in `styles.css`; every page
+   links it. It's versioned — that's the system of record. `/styleguide/` is the human-readable contract.
+2. **Token-first.** Brand changes (accent, radius) are one-line edits to `:root` that propagate everywhere.
+   Never hard-code a hex in markup.
+3. **Design → PR.** Prototype in the Claude Design project; when approved, export a **repo-token handoff**
+   (vanilla CSS patches that already use `--orange`/`.btn`, not `--es-*`/`.es-btn`) and apply it to
+   `styles.css` (+ markup/JS) as a reviewable PR. Diff the PR visually against `/styleguide/`.
+4. **JS components** (e.g. InstallAgent) ship as small `assets/<name>.js`, loaded `defer`, in the same PR.
+5. **Add a specimen for every new component** in `/styleguide/` so the catalog stays complete.
+6. *(Optional, later)* a visual-regression snapshot of `/styleguide/` in CI to catch unintended drift.
+
+> Earlier handoffs shipped `--es-*` / `.es-btn` tokens that had to be hand-remapped to the repo's
+> `--orange` / `.btn`. Handoffs now arrive **pre-mapped to the repo's own tokens**, so applying a design
+> change is a paste-and-review, not a re-type.
+
+---
+
 ## Brand tokens
 
-> **Source of truth:** `styles.css` `:root` block. Update this table if you change tokens there.
+> **Source of truth:** `styles.css` `:root` block — see the live [`/styleguide/`](styleguide/index.html) for the rendered version. Update this table if you change tokens there.
 
 | Variable | Value | Use |
 |----------|-------|-----|
