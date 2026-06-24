@@ -223,7 +223,7 @@ This isn't abstract if you run marketing or ops with a lean team. The three part
 The teams getting leverage out of AI aren't the ones with the flashiest model. They're the ones who got memory and tools right, so the agent runs quietly in the background and only surfaces when something genuinely needs them.
 
 
-For the marketing-specific version of this, read [How AI Agents Are Changing B2B Marketing (And What to Do About It)](https://app.notion.com/resources/ai-agents-b2b-marketing/).
+For the marketing-specific version of this, read [How AI Agents Are Changing B2B Marketing (And What to Do About It)](https://eldur.studio/resources/ai-agents-b2b-marketing/).
 
 
 If that's the direction you're headed, these go deeper:

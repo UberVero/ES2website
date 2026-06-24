@@ -107,7 +107,7 @@ If the instruction is "turn this approved campaign brief into three email varian
 That is the difference between playing with AI and delegating work to an AI agent.
 
 
-For a practical model of how those agents fit into a marketing system, see [The Multi-Agent Marketing Pyramid: Orchestrator + Specialists](https://app.notion.com/resources/multi-agent-marketing-pyramid/).
+For a practical model of how those agents fit into a marketing system, see [The Multi-Agent Marketing Pyramid: Orchestrator + Specialists](https://eldur.studio/resources/multi-agent-marketing-pyramid/).
 
 
 The agent needs:
