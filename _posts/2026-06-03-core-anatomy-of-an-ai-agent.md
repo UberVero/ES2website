@@ -24,7 +24,7 @@ Everyone is calling things "agents" right now. A chatbot with a system prompt. A
 The difference matters because it changes what you can trust the thing to do. A real agent doesn't just respond to you. It decides what to do next, remembers enough to stay consistent, and takes action on its own.
 
 
- Every working agent is built from the same three parts:
+    Every working agent is built from the same three parts:
 
 1. **The brain** (the LLM)
 2. **Memory**
@@ -221,6 +221,9 @@ This isn't abstract if you run marketing or ops with a lean team. The three part
 - **Skills:** your repeatable playbooks — how you draft a post, qualify a lead, or run a launch — so the agent does each job your way without a fresh briefing every time
 
 The teams getting leverage out of AI aren't the ones with the flashiest model. They're the ones who got memory and tools right, so the agent runs quietly in the background and only surfaces when something genuinely needs them.
+
+
+For the marketing-specific version of this, read [How AI Agents Are Changing B2B Marketing (And What to Do About It)](https://app.notion.com/resources/ai-agents-b2b-marketing/).
 
 
 If that's the direction you're headed, these go deeper:
