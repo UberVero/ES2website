@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "dataforseo": {
+      "type": "http",
+      "url": "https://mcp.dataforseo.com/mcp",
+      "headers": {
+        "Authorization": "Basic ${DATAFORSEO_AUTH_B64}"
+      }
+    }
+  }
+}

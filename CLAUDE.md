@@ -52,6 +52,19 @@ The script (`scripts/notion-sync.js`) downloads and optimizes images (via `sharp
 
 Required GitHub secrets: `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
 
+## SEO audit (weekly)
+
+A weekly SEO audit runs as a scheduled Claude Code on the web session. It reviews the site and files `seo`-labeled GitHub issues for findings — and, importantly, for its own tool failures (that is the failure-alert mechanism; e.g. issue #38 reported a missing data source).
+
+The audit pulls ranking data from **DataforSEO via its hosted MCP server**, configured in committed `.mcp.json` at the repo root:
+- Endpoint: `https://mcp.dataforseo.com/mcp` (Streamable HTTP transport).
+- Tools used: `dataforseo_labs_google_domain_rank_overview`, `dataforseo_labs_google_ranked_keywords`.
+- Auth: the env var `DATAFORSEO_AUTH_B64` — base64 of the DataforSEO **API** `login:password` (not the dashboard login; the API Access dashboard provides a pre-encoded token). It is set in the **Claude Code web environment**, never committed (this repo is public — `.mcp.json` only references the var).
+- The first session to use the project `.mcp.json` may need to approve/trust the server.
+- Manual fallback for ranking data: https://app.dataforseo.com.
+
+> `.mcp.json` configures DataforSEO for any Claude Code session opened in this repo with `DATAFORSEO_AUTH_B64` set — it does not host the server (DataforSEO does). Claude Code supports remote `http` MCP servers natively; if the http transport ever fails, the `mcp-remote` npx bridge wrapping the same URL is the documented fallback.
+
 ## Jekyll front matter fields
 
 Every `_posts/*.md` file must have these fields or the sync will skip it:

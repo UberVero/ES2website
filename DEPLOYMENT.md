@@ -247,6 +247,16 @@ Repo → Settings → Secrets and variables → Actions:
 | `NOTION_API_KEY` | Notion integration token (notion.so/my-integrations) |
 | `NOTION_DATABASE_ID` | `ce0d53fdc6a2489a8201330e13bd3515` |
 
+### Claude Code web environment variables
+
+The weekly SEO audit (a scheduled Claude Code web session, see `CLAUDE.md`) needs DataforSEO's hosted MCP. This is **not** a GitHub Actions secret — set it as a **Claude Code web environment variable** ([docs](https://code.claude.com/docs/en/claude-code-on-the-web)):
+
+| Variable | Value |
+|---|---|
+| `DATAFORSEO_AUTH_B64` | base64 of the DataforSEO **API** `login:password` (API Access dashboard → "Send by Email" gives a pre-encoded token) |
+
+The endpoint and auth wiring live in committed `.mcp.json` (env-var reference only — no secret in the repo).
+
 ---
 
 ## Re-setup checklist
