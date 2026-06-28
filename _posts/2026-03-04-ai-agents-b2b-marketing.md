@@ -67,6 +67,6 @@ The trap is trying to automate everything at once. Start with one high-value, hi
 Map your last five workdays. Find the task you did most often that required the least judgment. That's your first agent.
 
 
-If you're not sure where to start, [book a call](https://www.notion.so/resources/) and I'll scope it with you in 30 minutes.
+If you're not sure where to start, [book a call](https://booking.akiflow.com/veronica-es-new) and I'll scope it with you in 30 minutes.
 
 
