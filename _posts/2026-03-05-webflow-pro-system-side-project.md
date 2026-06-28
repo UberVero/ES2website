@@ -9,7 +9,7 @@ tags:
   - "Automation"
   - "One-Person Team"
   - "Notion"
-image: "/resources/images/eldur-webflow-pro-hero.png"
+image: "https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/eldur-webflow-pro-hero.png"
 date: "2026-03-05"
 status: "published"
 notion_id: "d0ec7012-4d41-4b2c-b4f6-2b9a610e8b39"
