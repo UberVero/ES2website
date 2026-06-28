@@ -249,13 +249,13 @@ Repo → Settings → Secrets and variables → Actions:
 
 ### Claude Code web environment variables
 
-The weekly SEO audit (a scheduled Claude Code web session, see `CLAUDE.md`) needs DataforSEO's hosted MCP. This is **not** a GitHub Actions secret — set it as a **Claude Code web environment variable** ([docs](https://code.claude.com/docs/en/claude-code-on-the-web)):
+The weekly SEO audit (a scheduled Claude Code web session, see `CLAUDE.md`) reaches DataforSEO over MCP. The **primary** path is a custom MCP connector configured in the web environment (it holds its own credentials); the committed `.mcp.json` is the **fallback**, and it needs this env var. This is **not** a GitHub Actions secret — set it as a **Claude Code web environment variable** ([docs](https://code.claude.com/docs/en/claude-code-on-the-web)):
 
 | Variable | Value |
 |---|---|
 | `DATAFORSEO_AUTH_B64` | base64 of the DataforSEO **API** `login:password` (API Access dashboard → "Send by Email" gives a pre-encoded token) |
 
-The endpoint and auth wiring live in committed `.mcp.json` (env-var reference only — no secret in the repo).
+The fallback's endpoint and auth wiring live in committed `.mcp.json` (env-var reference only — no secret in the repo).
 
 ---
 

@@ -56,14 +56,18 @@ Required GitHub secrets: `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
 
 A weekly SEO audit runs as a scheduled Claude Code on the web session. It reviews the site and files `seo`-labeled GitHub issues for findings — and, importantly, for its own tool failures (that is the failure-alert mechanism; e.g. issue #38 reported a missing data source).
 
-The audit pulls ranking data from **DataforSEO via its hosted MCP server**, configured in committed `.mcp.json` at the repo root:
+The audit pulls ranking data from **DataforSEO over MCP**. It's wired two ways, in priority order:
+
+1. **Primary — custom MCP connector**, configured in the **Claude Code web environment** (the connection that exposes the `mcp__DataforSEO__*` toolset). This is what the live audit uses; the connector holds its own DataforSEO credentials in the web environment.
+2. **Fallback — committed `.mcp.json`** at the repo root: a version-controlled definition of the same hosted endpoint, so the data source is reproducible from the repo if the connector is ever removed or unavailable.
+
+Common to both:
 - Endpoint: `https://mcp.dataforseo.com/mcp` (Streamable HTTP transport).
 - Tools used: `dataforseo_labs_google_domain_rank_overview`, `dataforseo_labs_google_ranked_keywords`.
-- Auth: the env var `DATAFORSEO_AUTH_B64` — base64 of the DataforSEO **API** `login:password` (not the dashboard login; the API Access dashboard provides a pre-encoded token). It is set in the **Claude Code web environment**, never committed (this repo is public — `.mcp.json` only references the var).
-- The first session to use the project `.mcp.json` may need to approve/trust the server.
+- First use of either path may surface a one-time approve/trust prompt for the server.
 - Manual fallback for ranking data: https://app.dataforseo.com.
 
-> `.mcp.json` configures DataforSEO for any Claude Code session opened in this repo with `DATAFORSEO_AUTH_B64` set — it does not host the server (DataforSEO does). Claude Code supports remote `http` MCP servers natively; if the http transport ever fails, the `mcp-remote` npx bridge wrapping the same URL is the documented fallback.
+**`.mcp.json` fallback specifics:** auth comes from the env var `DATAFORSEO_AUTH_B64` — base64 of the DataforSEO **API** `login:password` (not the dashboard login; the API Access dashboard provides a pre-encoded token), set in the **Claude Code web environment**, never committed (this repo is public — `.mcp.json` only references the var). It configures DataforSEO for any Claude Code session opened in this repo with that var set; it does not host the server (DataforSEO does). Claude Code supports remote `http` MCP servers natively; if the http transport ever fails, the `mcp-remote` npx bridge wrapping the same URL is the documented fallback.
 
 ## Jekyll front matter fields
 
