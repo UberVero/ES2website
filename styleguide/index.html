@@ -1,0 +1,468 @@
+---
+layout: null
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eldur Studio — Design System & Style Guide</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/styles.css">
+<style>
+/* Page furniture for /styleguide/ only — NOT part of the design system.
+   The design-system CSS lives in /styles.css (the source of truth). */
+/* ============================================
+   STYLEGUIDE PAGE CHROME  (sg-* — not shipped in styles.css)
+   ============================================ */
+.sg-body { font-family: var(--font); color: var(--black); background: var(--white); }
+.sg-top { position: sticky; top: 0; z-index: 50; background: var(--black); color: #fff; padding: 18px 40px; display: flex; align-items: baseline; gap: 16px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.sg-top__mark { font-family: var(--font-heading); font-size: 22px; letter-spacing: .02em; }
+.sg-top__tag { font-size: 12px; color: var(--orange); font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+.sg-top__meta { margin-left: auto; font-size: 12px; color: rgba(255,255,255,.5); }
+.sg-wrap { max-width: 1080px; margin: 0 auto; padding: 0 40px 120px; }
+.sg-sec { padding: 64px 0 8px; border-bottom: 1px solid var(--border); }
+.sg-sec:last-child { border-bottom: none; }
+.sg-kicker { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; color: var(--orange); margin-bottom: 10px; }
+.sg-h2 { font-size: 30px; font-weight: 700; letter-spacing: -.02em; margin-bottom: 8px; }
+.sg-lead { font-size: 16px; color: #555; line-height: 1.6; max-width: 640px; margin-bottom: 36px; }
+.sg-block { margin-bottom: 40px; }
+.sg-label { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 11px; text-transform: uppercase; letter-spacing: .1em; color: #999; margin-bottom: 16px; display: block; }
+.sg-row { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.sg-stage { padding: 36px; border-radius: var(--radius-lg); border: 1px solid var(--border); }
+.sg-stage--dark { background: var(--black); border-color: rgba(255,255,255,.1); }
+.sg-stage--light { background: var(--gray); border-color: transparent; }
+.sg-note { font-size: 13px; color: #777; line-height: 1.6; margin-top: 14px; }
+.sg-note code, .sg-code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; background: #f3f3f5; border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; color: #b8430f; }
+.sg-pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; background: #0e0e0e; color: #e6e6e6; border-radius: var(--radius); padding: 20px 22px; overflow-x: auto; margin-top: 16px; }
+.sg-pre .c { color: #ff9a4d; }
+.sg-pre .k { color: #ffc109; }
+
+/* color swatches */
+.sg-swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 14px; }
+.sg-sw { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.sg-sw__chip { height: 76px; }
+.sg-sw__meta { padding: 10px 12px; }
+.sg-sw__name { font-size: 13px; font-weight: 700; }
+.sg-sw__val { font-family: ui-monospace, monospace; font-size: 11px; color: #888; margin-top: 2px; }
+
+/* type specimens */
+.sg-type { display: flex; flex-direction: column; gap: 26px; }
+.sg-type__row { display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: baseline; border-top: 1px solid var(--border); padding-top: 20px; }
+.sg-type__meta { font-family: ui-monospace, monospace; font-size: 11px; color: #999; line-height: 1.6; }
+
+/* spec table */
+.sg-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+.sg-table th, .sg-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); }
+.sg-table th { font-size: 11px; text-transform: uppercase; letter-spacing: .08em; color: #999; }
+.sg-table td code { font-family: ui-monospace, monospace; font-size: 12.5px; color: #b8430f; }
+
+/* radii demo */
+.sg-radii { display: flex; gap: 18px; flex-wrap: wrap; }
+.sg-radius { width: 92px; height: 64px; background: var(--orange-dim); border: 1.5px solid var(--orange); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 600; color: #b8430f; }
+
+/* TOC */
+.sg-toc { display: flex; flex-wrap: wrap; gap: 8px 18px; padding: 22px 0 4px; }
+.sg-toc a { font-size: 13px; color: #666; }
+.sg-toc a:hover { color: var(--orange); }
+
+/* pinned hover demos — so reviewers see hover-only states without a mouse */
+.sg-pin .card--outline, .sg-pin .card--agent, .sg-pin .card--link {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+  transform: translateY(-3px);
+}
+
+/* page-chrome responsiveness (keeps specimens inside narrow viewports) */
+@media (max-width: 640px) {
+  .sg-top { padding: 14px 16px; }
+  .sg-wrap { padding: 0 14px 80px; }
+  .sg-stage { padding: 16px; }
+  .sg-type__row { grid-template-columns: 1fr; gap: 8px; }
+  .sg-table { display: block; overflow-x: auto; white-space: nowrap; }
+}
+</style>
+</head>
+<body class="sg-body">
+
+<header class="sg-top">
+  <span class="sg-top__mark">Eldur Studio</span>
+  <span class="sg-top__tag">Design System</span>
+  <span class="sg-top__meta">Living style guide · source of truth: <code>styles.css</code></span>
+</header>
+
+<div class="sg-wrap">
+
+  <nav class="sg-toc">
+    <a href="#brand">Brand</a>
+    <a href="#color">Color</a>
+    <a href="#type">Typography</a>
+    <a href="#space">Spacing &amp; Radii</a>
+    <a href="#buttons">Buttons</a>
+    <a href="#install">Install Agent</a>
+    <a href="#cards">Cards</a>
+    <a href="#agent">Agent Cards</a>
+    <a href="#packages">Packages</a>
+    <a href="#bits">Chips · Highlight</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#faq">FAQ</a>
+  </nav>
+
+  <!-- ============ BRAND ============ -->
+  <section class="sg-sec" id="brand">
+    <p class="sg-kicker">01 — Brand</p>
+    <h2 class="sg-h2">Eldur is Icelandic for <em style="font-style:italic;color:var(--orange)">fire</em>.</h2>
+    <p class="sg-lead">A hot orange-on-black system for a B2B agency that installs AI agents. Confident, warm, technical. The wordmark is set in Kamura; everything else is Basier Circle. Orange (<code class="sg-code">--orange</code>) is the single accent — used sparingly against deep black and clean light-gray surfaces.</p>
+    <div class="sg-row">
+      <div class="sg-stage sg-stage--dark" style="flex:1; min-width:260px;">
+        <span class="sg-label" style="color:rgba(255,255,255,.4)">Wordmark on black</span>
+        <div style="font-family:var(--font-heading); font-size:40px; color:#fff; letter-spacing:.02em;">Eldur Studio</div>
+      </div>
+      <div class="sg-stage sg-stage--light" style="flex:1; min-width:260px;">
+        <span class="sg-label">Wordmark on light</span>
+        <div style="font-family:var(--font-heading); font-size:40px; color:var(--black); letter-spacing:.02em;">Eldur Studio</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ COLOR ============ -->
+  <section class="sg-sec" id="color">
+    <p class="sg-kicker">02 — Color</p>
+    <h2 class="sg-h2">Palette &amp; tokens</h2>
+    <p class="sg-lead">Every color is a CSS variable in <code class="sg-code">:root</code>. Reach for the token, never a raw hex. The flame gradient is reserved for the loudest moments (hero install, key CTAs, the timeline spine).</p>
+    <div class="sg-swatches" id="swatches"></div>
+    <div class="sg-block" style="margin-top:28px">
+      <span class="sg-label">--gradient (flame)</span>
+      <div style="height:64px; border-radius:var(--radius); background:var(--gradient);"></div>
+    </div>
+  </section>
+
+  <!-- ============ TYPE ============ -->
+  <section class="sg-sec" id="type">
+    <p class="sg-kicker">03 — Typography</p>
+    <h2 class="sg-h2">Type scale</h2>
+    <p class="sg-lead">Two families: <strong>Kamura</strong> (serif display — wordmark only) and <strong>Basier Circle</strong> (everything else, weights 400–700). Headlines run tight (<code class="sg-code">-0.03em</code>); body is a comfortable 1.65.</p>
+    <div class="sg-type">
+      <div class="sg-type__row">
+        <div class="sg-type__meta">Hero headline<br>Basier 700<br>clamp 38–62px</div>
+        <div style="font-size:clamp(34px,4vw,52px); font-weight:700; line-height:1.08; letter-spacing:-0.03em;">Put an AI agent to work this week</div>
+      </div>
+      <div class="sg-type__row">
+        <div class="sg-type__meta">Section title<br>Basier 700<br>clamp 28–42px</div>
+        <div style="font-size:clamp(26px,3vw,38px); font-weight:700; line-height:1.12; letter-spacing:-0.025em;">Agents that earn their seat</div>
+      </div>
+      <div class="sg-type__row">
+        <div class="sg-type__meta">Lead<br>Basier 400<br>18px / 1.6</div>
+        <div style="font-size:18px; line-height:1.6; color:#4a4a4a; max-width:560px;">We design, build, and install custom agents into your stack — monitored, qualified, and reporting from day one.</div>
+      </div>
+      <div class="sg-type__row">
+        <div class="sg-type__meta">Body<br>Basier 400<br>16px / 1.65</div>
+        <div style="font-size:16px; line-height:1.65; color:#333; max-width:560px;">The workhorse paragraph size. Used in cards, FAQ answers, and long-form copy across the site. Readable, unhurried, never cramped.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SPACING + RADII ============ -->
+  <section class="sg-sec" id="space">
+    <p class="sg-kicker">04 — Spacing &amp; Radii</p>
+    <h2 class="sg-h2">Rhythm &amp; corners</h2>
+    <p class="sg-lead">Generous vertical rhythm — sections breathe at 96px (64px compact). Three corner radii cover everything; the pill is now reserved for tags only.</p>
+    <div class="sg-block">
+      <span class="sg-label">Corner radii</span>
+      <div class="sg-radii">
+        <div class="sg-radius" style="border-radius:12px">12px<br>default</div>
+        <div class="sg-radius" style="border-radius:20px">20px<br>cards</div>
+        <div class="sg-radius" style="border-radius:100px; width:120px">100px<br>tags only</div>
+      </div>
+    </div>
+    <table class="sg-table">
+      <thead><tr><th>Token</th><th>Value</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><code>--radius</code></td><td>12px</td><td>Buttons, inputs, install CTA, callouts</td></tr>
+        <tr><td><code>--radius-lg</code></td><td>20px</td><td>Cards, panels, modals</td></tr>
+        <tr><td><code>--max-w</code></td><td>1160px</td><td>Page container</td></tr>
+        <tr><td><code>.section</code></td><td>96px</td><td>Vertical section padding (64px compact)</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ============ BUTTONS ============ -->
+  <section class="sg-sec" id="buttons">
+    <p class="sg-kicker">05 — Buttons</p>
+    <h2 class="sg-h2">Buttons <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· updated</span></h2>
+    <p class="sg-lead">The pill is retired. Buttons are now a confident <strong>12px rounded rectangle</strong> — bigger (16/30 padding, 17px → wait 16px/700), they <strong>lift 2px</strong> on hover with a flame glow, and a trailing icon nudges right. New <code class="sg-code">.btn--gradient</code> for flame moments.</p>
+
+    <div class="sg-block">
+      <span class="sg-label">Before → after</span>
+      <div class="sg-stage sg-stage--light">
+        <div class="sg-row" style="gap:32px">
+          <div style="text-align:center">
+            <span style="display:inline-flex; align-items:center; gap:8px; padding:14px 28px; border-radius:100px; background:var(--orange); color:#fff; font-family:var(--font); font-size:15px; font-weight:600;">Schedule a call</span>
+            <div style="font-family:ui-monospace,monospace; font-size:10px; color:#999; margin-top:10px; text-transform:uppercase; letter-spacing:.1em;">Old · 100px pill</div>
+          </div>
+          <div style="font-size:24px; color:var(--orange);">→</div>
+          <div style="text-align:center">
+            <a class="btn btn--primary" href="javascript:void(0)">Schedule a call <span class="btn__ico" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h11M9.5 4.5L14 9l-4.5 4.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a>
+            <div style="font-family:ui-monospace,monospace; font-size:10px; color:var(--orange); margin-top:10px; text-transform:uppercase; letter-spacing:.1em;">New · 12px · lifts</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      <span class="sg-label">Variants — on dark</span>
+      <div class="sg-stage sg-stage--dark">
+        <div class="sg-row">
+          <a class="btn btn--primary" href="javascript:void(0)">Primary</a>
+          <a class="btn btn--gradient" href="javascript:void(0)">Gradient</a>
+          <a class="btn btn--ghost" href="javascript:void(0)">View packages</a>
+          <a class="btn btn--outline-white" href="javascript:void(0)">Outline</a>
+          <a class="btn btn--white" href="javascript:void(0)">On orange</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      <span class="sg-label">Nav button (compact)</span>
+      <div class="sg-stage sg-stage--dark">
+        <div class="sg-row"><a class="btn btn--nav" href="javascript:void(0)">Book a call</a></div>
+      </div>
+    </div>
+
+    <table class="sg-table">
+      <thead><tr><th>Class</th><th>Use</th></tr></thead>
+      <tbody>
+        <tr><td><code>.btn--primary</code></td><td>Main action — orange fill, flame glow on hover</td></tr>
+        <tr><td><code>.btn--gradient</code></td><td>Loud moments — flame orange→red <em>(new)</em></td></tr>
+        <tr><td><code>.btn--ghost</code></td><td>Secondary on dark (e.g. “View packages”)</td></tr>
+        <tr><td><code>.btn--outline-white</code></td><td>Tertiary on dark</td></tr>
+        <tr><td><code>.btn--white</code></td><td>On orange / CTA blocks</td></tr>
+        <tr><td><code>.btn--nav</code></td><td>Compact nav CTA (keeps small size)</td></tr>
+      </tbody>
+    </table>
+    <p class="sg-note">Wrap a trailing icon in <code>&lt;span class="btn__ico"&gt;</code> so it nudges on hover.</p>
+  </section>
+
+  <!-- ============ INSTALL AGENT ============ -->
+  <section class="sg-sec" id="install">
+    <p class="sg-kicker">06 — Install Agent</p>
+    <h2 class="sg-h2">Install Agent CTA <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· new</span></h2>
+    <p class="sg-lead">The hero call-to-action. A bot with personality plus a built-in install animation: the flame gradient sweeps left→right, a percentage counts up, then it settles into “Agent installed ✓” and the bot bounces. <strong>Click a button below to play it.</strong></p>
+
+    <div class="sg-block">
+      <span class="sg-label">Hero pairing — primary + secondary</span>
+      <div class="sg-stage sg-stage--dark">
+        <div class="sg-row">
+          <button class="ia2 ia2--dark" data-install-agent>
+            <span class="ia2-fill"></span>
+            <span class="ia2-bot"></span>
+            <span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span>
+          </button>
+          <a class="btn btn--ghost" href="javascript:void(0)">View packages</a>
+        </div>
+        <p class="sg-note" style="color:rgba(255,255,255,.5)">Direction B (default <code style="color:#ff9a4d">.ia2--dark</code>): black button, flame gradient fill.</p>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      <span class="sg-label">Variants</span>
+      <div class="sg-stage sg-stage--dark">
+        <div class="sg-row">
+          <button class="ia2 ia2--solid" data-install-agent><span class="ia2-fill"></span><span class="ia2-bot"></span><span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span></button>
+          <button class="ia2 ia2--outline" data-install-agent><span class="ia2-fill"></span><span class="ia2-bot"></span><span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="sg-block">
+      <span class="sg-label">States (driven via the JS API)</span>
+      <div class="sg-stage sg-stage--dark">
+        <div class="sg-row" style="gap:18px">
+          <button class="ia2 ia2--dark" id="sg-state-idle"><span class="ia2-fill"></span><span class="ia2-bot"></span><span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span></button>
+          <button class="ia2 ia2--dark" id="sg-state-installing"><span class="ia2-fill"></span><span class="ia2-bot"></span><span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span></button>
+          <button class="ia2 ia2--dark" id="sg-state-done"><span class="ia2-fill"></span><span class="ia2-bot"></span><span class="ia2-label"><span class="ia2-main">Install agent</span><span class="ia2-sub">Self-service guided setup</span></span></button>
+        </div>
+        <p class="sg-note" style="color:rgba(255,255,255,.5)">idle · installing (frozen mid-sweep) · done</p>
+      </div>
+    </div>
+
+    <table class="sg-table">
+      <thead><tr><th>State</th><th>Main</th><th>Sub</th></tr></thead>
+      <tbody>
+        <tr><td>idle</td><td>Install agent</td><td>Self-service guided setup</td></tr>
+        <tr><td>installing</td><td>Installing…</td><td>Provisioning your agent</td></tr>
+        <tr><td>done</td><td>Agent installed</td><td>Setup complete</td></tr>
+      </tbody>
+    </table>
+
+    <div class="sg-pre"><span class="c">&lt;!-- Hero: opens Stripe on click (no animation) --&gt;</span>
+&lt;a class=<span class="k">"ia2 ia2--dark"</span> data-install-agent data-href href=<span class="k">"…stripe…"</span>&gt;…&lt;/a&gt;
+
+<span class="c">// Setup page (post-payment): drive it from your code</span>
+EldurInstallAgent.setState(el, <span class="k">'installing'</span>); <span class="c">// provisioning</span>
+EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class="c">// guided setup complete</span></div>
+    <p class="sg-note">Real flow: <strong>hero = Stripe link</strong> → checkout → on success route to the setup page, which renders the <em>controlled</em> button and calls <code>setState('installing')</code> then <code>setState('done')</code>. A plain <code>&lt;button data-install-agent&gt;</code> with no <code>data-href</code>/<code>data-controlled</code> self-demos on click. Honors <code>prefers-reduced-motion</code>.</p>
+  </section>
+
+  <!-- ============ CARDS ============ -->
+  <section class="sg-sec" id="cards">
+    <p class="sg-kicker">07 — Cards</p>
+    <h2 class="sg-h2">Cards</h2>
+    <p class="sg-lead">Calm at rest. White (or <code class="sg-code">--dark</code> on black sections) with a hairline border and 20px radius. On hover the border turns orange; link cards now also lift.</p>
+    <div class="sg-block">
+      <span class="sg-label">outline · dark</span>
+      <div class="cards cards--2">
+        <div class="card card--outline"><p><strong>Outline card.</strong> The default content surface — hairline border, white fill, generous 32px padding.</p></div>
+        <div class="card card--dark"><h3>Dark card</h3><p>For black sections. Muted body, <em>yellow</em> emphasis when needed.</p></div>
+      </div>
+    </div>
+    <div class="sg-block">
+      <span class="sg-label">rest → hover (left is live — hover it; right is pinned to the hover state)</span>
+      <div class="cards cards--2">
+        <a class="card card--outline card--link" href="#cards"><p class="card__eyebrow">Resource</p><h3 class="card__title">Link card (live)</h3><p class="card__excerpt">Hover me — the border turns orange and the whole card lifts 3px.</p></a>
+        <div class="sg-pin"><a class="card card--outline card--link" href="#cards"><p class="card__eyebrow">Resource</p><h3 class="card__title">Link card (pinned hover)</h3><p class="card__excerpt">Orange border + 3px lift + soft orange shadow.</p></a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ AGENT CARDS ============ -->
+  <section class="sg-sec" id="agent">
+    <p class="sg-kicker">08 — Agent Cards</p>
+    <h2 class="sg-h2">Agent cards <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· updated</span></h2>
+    <p class="sg-lead">The icon tile now does the agent-bot <strong>wiggle on hover</strong> and the card lifts — the one sanctioned bit of personality, carried over from the Install Agent bot. <strong>Hover a card.</strong></p>
+    <div class="sg-stage sg-stage--light">
+      <div class="cards cards--3" id="agent-cards"></div>
+    </div>
+    <div class="sg-block">
+      <span class="sg-label">hover state (pinned)</span>
+      <div class="sg-stage sg-stage--light">
+        <div class="sg-pin" style="max-width:320px">
+          <div class="card card--agent"><div class="agent__icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2.5" y="4" width="17" height="13" rx="4" stroke="#ff7a00" stroke-width="2"/><circle cx="8" cy="10.5" r="1.4" fill="#ff7a00"/><circle cx="14" cy="10.5" r="1.4" fill="#ff7a00"/><path d="M11 4V1.6M11 1.6a1.3 1.3 0 1 0 0-.01" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/></svg></div><h3>Pinned hover</h3><p>Orange border + soft orange shadow + 3px lift. The icon wiggle plays only on a real pointer hover.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PACKAGES ============ -->
+  <section class="sg-sec" id="packages">
+    <p class="sg-kicker">09 — Packages</p>
+    <h2 class="sg-h2">Pricing tiers</h2>
+    <p class="sg-lead">Package cards live on black. The featured tier swaps to an orange border over a warm tint.</p>
+    <div class="sg-stage sg-stage--dark">
+      <div class="cards cards--2">
+        <div class="card card--package">
+          <div class="card__number">01</div>
+          <h3>Single Agent</h3>
+          <div class="card__tag">2–3 weeks</div>
+          <ul><li>One agent, fully installed</li><li>Monitored + reporting</li><li>30-day tuning window</li></ul>
+        </div>
+        <div class="card card--package card--package-featured">
+          <div class="card__number">02</div>
+          <h3>Agent System</h3>
+          <div class="card__tag">Most popular</div>
+          <ul><li>2–3 orchestrated agents</li><li>Cross-agent reporting</li><li>Quarterly optimization</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BITS ============ -->
+  <section class="sg-sec" id="bits">
+    <p class="sg-kicker">10 — Chips · Highlight</p>
+    <h2 class="sg-h2">Small components</h2>
+    <div class="sg-block">
+      <span class="sg-label">Chip (with left accent)</span>
+      <div class="sg-stage sg-stage--light">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:12px;">
+          <div class="chip"><strong>Auditable.</strong>&nbsp;Every decision the agent makes is logged.</div>
+          <div class="chip"><strong>Installed.</strong>&nbsp;Runs in your stack, not a dashboard.</div>
+        </div>
+      </div>
+    </div>
+    <div class="sg-block">
+      <span class="sg-label">Highlight callout</span>
+      <div class="highlight" style="margin-top:0">Agents don’t replace your team — they take the work no one had time for.</div>
+    </div>
+  </section>
+
+  <!-- ============ TIMELINE ============ -->
+  <section class="sg-sec" id="timeline">
+    <p class="sg-kicker">11 — Timeline</p>
+    <h2 class="sg-h2">Process timeline</h2>
+    <div class="sg-stage sg-stage--light">
+      <div class="timeline">
+        <div class="timeline__step"><div class="timeline__dot"></div><div class="timeline__week">Week 1</div><div class="timeline__label">Map</div><div class="timeline__desc">We find the highest-leverage agent for your funnel.</div></div>
+        <div class="timeline__step"><div class="timeline__dot"></div><div class="timeline__week">Week 2–3</div><div class="timeline__label">Build</div><div class="timeline__desc">Designed, built, and tested against your real data.</div></div>
+        <div class="timeline__step"><div class="timeline__dot"></div><div class="timeline__week">Week 4</div><div class="timeline__label">Install</div><div class="timeline__desc">Live in your stack, monitored and reporting.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="sg-sec" id="faq">
+    <p class="sg-kicker">12 — FAQ</p>
+    <h2 class="sg-h2">FAQ (native accordion)</h2>
+    <div class="sg-stage" style="background:#fff">
+      <div class="faq">
+        <details class="faq__item" open><summary class="faq__q">How long until an agent is live?</summary><div class="faq__a"><p>Most single agents are installed within 2–3 weeks, including a tuning window against your real data.</p></div></details>
+        <details class="faq__item"><summary class="faq__q">Does it run in our stack?</summary><div class="faq__a"><p>Yes — agents are installed into your tools and workflows, not a separate dashboard you have to babysit.</p></div></details>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script src="/assets/install-agent.js"></script>
+<script>
+  // ---- color swatches ----
+  var COLORS = [
+    ['--black','#000000'],['--dark','#111111'],['--orange','#ff7a00'],['--red','#ee0f0f'],
+    ['--yellow','#ffc109'],['--white','#FFFFFF'],['--gray','#EFEFF1'],['--orange-dim','rgba(255,122,0,.08)']
+  ];
+  document.getElementById('swatches').innerHTML = COLORS.map(function(c){
+    var border = (c[0]==='--white'||c[0]==='--gray'||c[0]==='--orange-dim') ? 'border-bottom:1px solid var(--border)' : '';
+    return '<div class="sg-sw"><div class="sg-sw__chip" style="background:'+c[1]+';'+border+'"></div>'
+      + '<div class="sg-sw__meta"><div class="sg-sw__name">'+c[0]+'</div><div class="sg-sw__val">'+c[1]+'</div></div></div>';
+  }).join('');
+
+  // ---- agent cards (icon tile wiggles on hover) ----
+  var AGENTS = [
+    ['SEM Monitoring','Watches spend &amp; performance, flags anomalies, suggests optimizations.'],
+    ['Intake &amp; Qualify','Routes, enriches and classifies inbound leads with an auditable trail.'],
+    ['Reporting','Compiles clean, on-time performance reports your team can run.']
+  ];
+  var AICON = '<svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="2.5" y="4" width="17" height="13" rx="4" stroke="#ff7a00" stroke-width="2"/><circle cx="8" cy="10.5" r="1.4" fill="#ff7a00"/><circle cx="14" cy="10.5" r="1.4" fill="#ff7a00"/><path d="M11 4V1.6M11 1.6a1.3 1.3 0 1 0 0-.01" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/></svg>';
+  document.getElementById('agent-cards').innerHTML = AGENTS.map(function(a){
+    return '<div class="card card--agent"><div class="agent__icon">'+AICON+'</div><h3>'+a[0]+'</h3><p>'+a[1]+'</p></div>';
+  }).join('');
+
+  // ---- inject the bot SVG into every .ia2-bot ----
+  var BOT = '<span class="ia2bot"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" role="img" aria-label="install agent"><g class="ia2bot-all"><line x1="24" y1="12" x2="24" y2="6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g transform="translate(24 3)"><g class="ia2bot-tip"><path d="M0 -3.4 L1 -1 L3.4 0 L1 1 L0 3.4 L-1 1 L-3.4 0 L-1 -1 Z" fill="currentColor"/></g></g><rect x="5.6" y="20" width="3" height="9" rx="1.5" fill="currentColor"/><rect x="39.4" y="20" width="3" height="9" rx="1.5" fill="currentColor"/><rect x="9" y="12" width="30" height="26" rx="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><g class="ia2bot-look"><g class="ia2bot-eyes"><circle cx="18" cy="24" r="2.7" fill="currentColor"/><circle cx="30" cy="24" r="2.7" fill="currentColor"/></g><path d="M19.5 30.6 Q24 34 28.5 30.6" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="ia2bot-check" transform="translate(34 33)"><circle r="6.4" fill="currentColor"/><path d="M-3 0.2 L-0.8 2.4 L3.2 -2.2" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span>';
+  document.querySelectorAll('.ia2-bot').forEach(function(s){ s.innerHTML = BOT; });
+
+  // (re)mount install-agent behavior now that bots exist
+  if (window.EldurInstallAgent) window.EldurInstallAgent.init();
+
+  // ---- pin the three state demos ----
+  window.addEventListener('load', function(){
+    var EA = window.EldurInstallAgent; if (!EA) return;
+    var installing = document.getElementById('sg-state-installing');
+    var done = document.getElementById('sg-state-done');
+    // freeze "installing" as a clean static specimen at 60%
+    if (installing) {
+      installing._controlled = true;
+      installing.classList.add('is-installing');
+      installing.querySelector('.ia2-main').textContent = 'Installing…';
+      installing.querySelector('.ia2-sub').textContent = 'Provisioning your agent';
+      installing.querySelector('.ia2bot').classList.add('ia2bot--working');
+      var f = installing.querySelector('.ia2-fill');
+      f.style.transition = 'none'; f.style.transform = 'scaleX(0.6)';
+      var pct = document.createElement('span'); pct.className = 'ia2-pct'; pct.textContent = '60%';
+      installing.appendChild(pct);
+    }
+    if (done) { done._controlled = true; EA.setState(done, 'done'); }
+  });
+</script>
+</body>
+</html>
