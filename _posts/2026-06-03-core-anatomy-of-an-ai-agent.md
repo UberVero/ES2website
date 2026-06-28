@@ -256,8 +256,3 @@ Want a second pair of eyes on the agent you're designing? I'll walk through what
 
 
 ![ai-generated-image.png](/resources/images/blog/core-anatomy-of-an-ai-agent/img-2.webp)
-
-
-![image]()
-
-
