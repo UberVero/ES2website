@@ -10,7 +10,7 @@ tags:
   - "AI Agents"
   - "B2B Marketing"
   - "One-Person Team"
-image: "/resources/images/eldur-ai-agents-hero.png"
+image: "/resources/images/eldur-ai-agents-hero.webp"
 date: "2026-03-04"
 status: "published"
 notion_id: "31961616-8253-81d3-961d-c46441ed5f1f"
