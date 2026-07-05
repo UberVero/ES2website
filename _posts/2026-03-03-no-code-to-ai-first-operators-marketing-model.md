@@ -10,7 +10,7 @@ tags:
   - "AI Agents"
   - "B2B Marketing"
   - "One-Person Team"
-image: "/resources/images/ES2-hero-illustration@2x.png"
+image: "https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/ES2-hero-illustration%402x.png"
 date: "2026-03-03"
 status: "published"
 notion_id: "dd71d8c4-043a-4054-b2c1-6b9041a13856"
@@ -99,7 +99,7 @@ Companies do not need more vendors, and they definitely do not need more AI tool
 ## What did not change: durable systems still matter
 
 
-We have been building apps and automations for clients for five years. Before LLMs, those systems were not "AI" in any trendy sense. They were business logic plus automation tools like Zapier and Make, and those tools are still thriving, in many ways 10× more powerful than they were when we started.
+We have been building apps and automations for clients for five years. Before LLMs, those systems were not "AI" in any trendy sense. They were business logic plus automation tools like Zapier and Make, and those tools are still thriving, in many ways 10× more powerful than they were when we started. You can see examples of what we've shipped in our [case studies](/results/).
 
 
 The lesson from five years of shipping real systems is straightforward: **generating output is not the hard part. Scaling, measuring, and improving that output is.** We also learned to spot the difference between tools that look fast in demos and tools that can actually handle complexity, traffic, and maintenance in production.
