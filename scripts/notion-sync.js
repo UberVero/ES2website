@@ -292,6 +292,13 @@ async function processFeaturedImage(imageUrl, slug) {
   try {
     const { hostname, pathname } = new URL(imageUrl);
     if (hostname === 'raw.githubusercontent.com' && pathname.includes('/ES2website/')) {
+      // If a manually-converted WebP sibling already exists in the repo,
+      // prefer it — otherwise every sync would re-paste the old PNG link.
+      const repoRelativePath = pathname.split('/').filter(Boolean).slice(3).join('/');
+      const webpRelativePath = repoRelativePath.replace(/\.(png|jpe?g)$/i, '.webp');
+      if (webpRelativePath !== repoRelativePath && fs.existsSync(path.join(__dirname, '..', webpRelativePath))) {
+        return `/${webpRelativePath}`;
+      }
       return imageUrl;
     }
   } catch {
