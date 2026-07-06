@@ -10,7 +10,7 @@ tags:
   - "AI Agents"
   - "Automation"
   - "Strategy"
-image: "/resources/images/blog/core-anatomy-of-an-ai-agent/img-1.webp"
+image: "https://raw.githubusercontent.com/UberVero/ES2website/main/resources/images/eldur-ai-agents-hero.webp"
 date: "2026-06-03"
 status: "published"
 notion_id: "b6ee13a9-4c4a-4e1a-8086-9232273332cc"
