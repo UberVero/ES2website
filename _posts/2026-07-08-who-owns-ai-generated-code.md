@@ -2,6 +2,7 @@
 title: "Who Owns AI-Generated Code? A practical take for outsourcing AI-enabled development"
 slug: "who-owns-ai-generated-code"
 description: "You paid for the build, but do you own it? How AI changed IP in dev contracts, split into three buckets, and the two ways we handle it at Eldur Studio."
+key_quote: "You hire someone to build your site. You pay the invoice. The contract says 'all work is original and assigned to you.' You own it, right? Maybe not."
 author: "Veronica"
 post_type: "article"
 category: "AI & Automation"
