@@ -8,3 +8,10 @@ test-results/
 playwright-report/
 blob-report/
 playwright/.cache/
+
+# macOS
+.DS_Store
+
+# Claude Code internals
+.claude/scheduled_tasks.lock
+.claude/worktrees/

@@ -1,4 +1,43 @@
 {
+  "permissions": {
+    "allow": [
+      "mcp__dataforseo__dataforseo_labs_available_filters",
+      "mcp__dataforseo__dataforseo_labs_bulk_keyword_difficulty",
+      "mcp__dataforseo__dataforseo_labs_bulk_traffic_estimation",
+      "mcp__dataforseo__dataforseo_labs_google_competitors_domain",
+      "mcp__dataforseo__dataforseo_labs_google_domain_intersection",
+      "mcp__dataforseo__dataforseo_labs_google_domain_rank_overview",
+      "mcp__dataforseo__dataforseo_labs_google_historical_keyword_data",
+      "mcp__dataforseo__dataforseo_labs_google_historical_rank_overview",
+      "mcp__dataforseo__dataforseo_labs_google_historical_serp",
+      "mcp__dataforseo__dataforseo_labs_google_keyword_ideas",
+      "mcp__dataforseo__dataforseo_labs_google_keyword_overview",
+      "mcp__dataforseo__dataforseo_labs_google_keyword_suggestions",
+      "mcp__dataforseo__dataforseo_labs_google_keywords_for_site",
+      "mcp__dataforseo__dataforseo_labs_google_page_intersection",
+      "mcp__dataforseo__dataforseo_labs_google_ranked_keywords",
+      "mcp__dataforseo__dataforseo_labs_google_related_keywords",
+      "mcp__dataforseo__dataforseo_labs_google_relevant_pages",
+      "mcp__dataforseo__dataforseo_labs_google_serp_competitors",
+      "mcp__dataforseo__dataforseo_labs_google_subdomains",
+      "mcp__dataforseo__dataforseo_labs_google_top_searches",
+      "mcp__dataforseo__dataforseo_labs_search_intent",
+      "mcp__dataforseo__kw_data_dfs_trends_demography",
+      "mcp__dataforseo__kw_data_dfs_trends_explore",
+      "mcp__dataforseo__kw_data_dfs_trends_subregion_interests",
+      "mcp__dataforseo__kw_data_google_ads_locations",
+      "mcp__dataforseo__kw_data_google_ads_search_volume",
+      "mcp__dataforseo__kw_data_google_trends_categories",
+      "mcp__dataforseo__kw_data_google_trends_explore",
+      "mcp__dataforseo__serp_locations",
+      "mcp__dataforseo__serp_organic_live_advanced",
+      "mcp__dataforseo__serp_youtube_locations",
+      "mcp__dataforseo__serp_youtube_organic_live_advanced",
+      "mcp__dataforseo__serp_youtube_video_comments_live_advanced",
+      "mcp__dataforseo__serp_youtube_video_info_live_advanced",
+      "mcp__dataforseo__serp_youtube_video_subtitles_live_advanced"
+    ]
+  },
   "hooks": {
     "SessionStart": [
       {
