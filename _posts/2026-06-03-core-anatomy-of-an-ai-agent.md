@@ -1,7 +1,7 @@
 ---
 title: "The Core Anatomy of an AI Agent"
 slug: "core-anatomy-of-an-ai-agent"
-description: "Every AI agent comes down to three parts: a brain, memory, and tools. Here's how they fit together, where they break, and how to design them for work you can trust."
+description: "Strip away the frameworks and every AI agent comes down to three parts: a brain, memory, and tools. Here's how they fit together, where they break, and how to design them for work you can actually trust."
 key_quote: "Without tools, the smartest model in the world is still just a very confident writer."
 author: "Veronica"
 post_type: "article"
