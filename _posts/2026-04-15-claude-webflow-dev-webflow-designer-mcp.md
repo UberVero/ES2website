@@ -1,7 +1,7 @@
 ---
 title: "Can Claude be your Webflow dev? A look at the updated MCP"
 slug: "claude-webflow-dev-webflow-designer-mcp"
-description: "An honest assessment of the new Webflow MCP after a real attempt to add a new testimonial slide — what it’s great at, where it breaks, and how to use it without wasting cycles."
+description: "An honest assessment of the Webflow MCP after a real attempt to add a testimonial slide: what it’s great at, where it breaks, and how to use it without wasting cycles."
 author: "Veronica"
 post_type: "article"
 category: "Guides"

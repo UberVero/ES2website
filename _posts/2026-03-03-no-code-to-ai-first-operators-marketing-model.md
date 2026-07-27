@@ -1,7 +1,7 @@
 ---
 title: "The new Eldur Studio: From No-Code to AI-First Operators (And Why Marketing Needs a New Model)"
 slug: "no-code-to-ai-first-operators-marketing-model"
-description: "No-code made building software faster. AI made speed table stakes. The advantage now is judgment, measurement, and an operating model that turns AI into real execution."
+description: "No-code made building faster. AI made speed table stakes. The advantage now is judgment, measurement, and an operating model that turns AI into real execution."
 author: "Veronica"
 post_type: "article"
 category: "Announcement"
