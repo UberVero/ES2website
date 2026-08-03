@@ -199,6 +199,8 @@ I’ve been comparing weekly SEO audit results from Claude vs a Notion agent (se
 4. **It’s primarily personal productivity**
     - no need to “productize” the workflow inside Notion
 
+If you're building that kind of multi-step system for content specifically, see [The Multi-Agent Marketing Pyramid: Orchestrator + Specialists](https://eldur.studio/resources/multi-agent-marketing-pyramid/) for how the orchestration layer fits together.
+
 ## 7) My default recommendations (and a simple decision checklist)
 
 

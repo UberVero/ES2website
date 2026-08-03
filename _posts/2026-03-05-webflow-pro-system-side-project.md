@@ -50,6 +50,8 @@ This isn't a generic project management template with a Webflow logo on it. It's
 
     ![templates_and_segregation.gif](/resources/images/blog/webflow-pro-system-side-project/img-2.gif)
 
+If you're weighing whether to run automations like these natively in Notion or against something like Notion's own AI agents, see [Notion AI Agents vs. Cowork: Scheduled Task Automation Compared](https://eldur.studio/resources/notion-ai-agents-vs-cowork-comparison/).
+
 
 ## Why It Matters: Save Money, Save Time, Look Professional
 

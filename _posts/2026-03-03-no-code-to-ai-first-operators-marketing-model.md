@@ -104,6 +104,8 @@ We have been building apps and automations for clients for five years. Before LL
 
 The lesson from five years of shipping real systems is straightforward: **generating output is not the hard part. Scaling, measuring, and improving that output is.** We also learned to spot the difference between tools that look fast in demos and tools that can actually handle complexity, traffic, and maintenance in production.
 
+For a look at what this looks like in practice, see [how we enriched 400+ VC contacts in 2.2 hours](https://eldur.studio/resources/notion-crm-enrichment-explorium/) and [the pyramid architecture we use to run our own content system](https://eldur.studio/resources/multi-agent-marketing-pyramid/).
+
 
 A lot of agentic AI today has the same pitfalls that plagued the no-code wave: it works beautifully for prototypes, breaks under real-world edge cases, and becomes hard to debug and maintain at scale. There is a lot of noise in this space, and knowing how to parse the signal is the actual advantage.
 

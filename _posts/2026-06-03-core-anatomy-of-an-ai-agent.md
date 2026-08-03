@@ -129,6 +129,8 @@ For the model to call a tool safely, you have to describe it properly:
 - What it gives back
 - Permissions and limits on what it's allowed to do
 
+For a regulated example of what those permissions and limits look like in practice, see [Building HIPAA-compliant AI agents](https://eldur.studio/resources/building-hipaa-compliant-ai-agents/).
+
 This is exactly why the Model Context Protocol (MCP) is becoming a standard. It's a consistent way to expose tools and data sources to a model. If you've wired up an MCP server, you've felt the shift: integrations stop being a custom project for every app and start being something you plug in.
 
 
@@ -228,10 +230,10 @@ For the marketing-specific version of this, read [How AI Agents Are Changing B2B
 
 If that's the direction you're headed, these go deeper:
 
-- [How AI Agents Are Changing B2B Marketing (And What to Do About It)](https://app.notion.com/p/31961616825381d3961dc46441ed5f1f)
-- [The Multi-Agent Marketing Pyramid: Orchestrator + Specialists](https://app.notion.com/p/5b8c4555a94c499795102d961b141329)
-- [Notion AI Agents vs. Cowork: Scheduled Task Automation Compared](https://app.notion.com/p/b85cf81826dc42d9b8941b37b0dc1d12)
-- [Can Claude be your Webflow dev? A look at the updated MCP](https://app.notion.com/p/34361616825380798813c8491196b855):
+- [How AI Agents Are Changing B2B Marketing (And What to Do About It)](https://eldur.studio/resources/ai-agents-b2b-marketing/)
+- [The Multi-Agent Marketing Pyramid: Orchestrator + Specialists](https://eldur.studio/resources/multi-agent-marketing-pyramid/)
+- [Notion AI Agents vs. Cowork: Scheduled Task Automation Compared](https://eldur.studio/resources/notion-ai-agents-vs-cowork-comparison/)
+- [Can Claude be your Webflow dev? A look at the updated MCP](https://eldur.studio/resources/claude-webflow-dev-webflow-designer-mcp/)
 
 ---
 
