@@ -46,8 +46,6 @@ The confusion clears the moment you stop treating "the work" as a single thing.
 - **The tooling stays with the builder.** Their automation and MCP config are the factory, not the product. You don't need the factory, but you should get a license to whatever's baked into your deliverables so you can use them without worry.
 - **Methods built during the project are the real decision.** They can be assigned to you or licensed to you. Pick one on purpose, in writing. Silence here is where disputes live.
 
-The same discipline — scope things explicitly, decide on purpose, keep a record — applies to what your agents are allowed to do; see [Building HIPAA-compliant AI agents](https://eldur.studio/resources/building-hipaa-compliant-ai-agents/) for what that looks like when the stakes are regulatory.
-
 Two lines that now belong in any dev contract: a date boundary on "pre-existing IP" so it can't quietly absorb what's built on your project, and a warranty that any AI or third-party tools don't drag [restrictive licenses](https://www.bloomberglaw.com/external/document/X4H9CFB4000000/copyrights-professional-perspective-ip-issues-with-ai-code-gener) into your codebase.
 
 
