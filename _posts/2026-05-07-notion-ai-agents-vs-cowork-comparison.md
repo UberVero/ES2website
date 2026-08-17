@@ -9,7 +9,7 @@ tags:
   - "AI Agents"
   - "Notion"
   - "Automation"
-image: "/resources/images/blog/notion-ai-agents-vs-cowork-comparison/img-featured.webp"
+image: "https://eldur.studio/resources/images/blog/notion-ai-agents-vs-cowork-comparison/img-3.webp"
 date: "2026-05-07"
 status: "published"
 notion_id: "b85cf818-26dc-42d9-b894-1b37b0dc1d12"
