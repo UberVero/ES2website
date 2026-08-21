@@ -69,19 +69,37 @@ Not sure which one you need? That's the conversation worth having first. Take a 
 ## FAQ
 
 
-**Does AI-generated code qualify for copyright?**
+### Does my developer own the code an AI agent writes for my project?
+
+
+No, and that's actually good news for you. If an AI agent generated the code with little human authorship, no one has a clean copyright claim on it, including your developer. What you get from your developer is the deliverable, assigned to you on payment, plus whatever human-written glue code and configuration they added on top. The uncertainty is a reason to get the license language right, not a reason to worry someone else secretly owns your site.
+
+
+### Is AI-generated code protected by copyright in the US?
 
 
 This is a new topic, changing fast. At the moment, in the U.S. it doesn’t.  US copyright needs human authorship, so code produced by a model with little human input may not be protected, which means it can't be cleanly assigned either. Human review and editing strengthen the claim, but one must prove the uniqueness of the code and the inability of a model to replicate it.
 
 
-**Should I own my developer's tooling, especially if it’s custom for my project?**
+### What happens if my contract says "all work is original" but AI wrote most of the code?
+
+
+That clause is doing less than it looks like. "Original and assigned to you" assumes a human authored the work and can sign the rights over, but if AI wrote it with minimal human input, there may be no exclusive rights to assign in the first place. It's not fraud, it's boilerplate that hasn't caught up. Ask your developer directly which of the three buckets, deliverable, tooling, or methods, the AI-generated pieces fall into, and get that in writing instead of relying on old IP language.
+
+
+### Is AI-written code considered work made for hire?
+
+
+Not cleanly, no. Work-made-for-hire doctrine assumes a human employee or contractor is the author, and copyright law currently requires human authorship to begin with. If AI generated the code, there may be no authorship to attach a work-made-for-hire label to, which is exactly why an old "we assign all IP to you" clause can promise more than it can deliver.
+
+
+### Should I own my developer's tooling, especially if it’s custom for my project?
 
 
 Usually not, and you don't need to. Historically, dev tooling has been. You want the deliverable plus a license to any tooling baked into it. The automation and prompts are how a good builder stays fast, for you and for their next client.
 
 
-**Assign the methods, or license them?**
+### Should I assign the methods built during my project, or license them?
 
 
 Assign if you plan to build a product on them or want an asset that outlives any one developer. License if you just need to use and extend your own site. Either way, decide it in writing.
