@@ -32,7 +32,9 @@ Eldur Studio does not sell personal information. We may share limited informatio
 
 ## Retention and security
 
-We retain support correspondence and related business records only as long as reasonably necessary for support, security, legal, and operational purposes. No internet or email system can be guaranteed completely secure.
+We generally retain support correspondence for up to 24 months after the most recent message so we can resolve follow-up questions and identify recurring problems. We may retain records longer when required for legal, tax, fraud-prevention, or dispute-resolution purposes. Aggregate Fathom website analytics are retained for the life of Eldur Studio's analytics account unless deleted earlier. The workshop plugin itself does not create an Eldur-hosted copy of your workshop answers.
+
+No internet or email system can be guaranteed completely secure.
 
 ## Your choices
 
