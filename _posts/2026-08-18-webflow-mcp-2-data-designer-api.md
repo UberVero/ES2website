@@ -2,7 +2,7 @@
 title: "Webflow MCP 2.0: game changing release"
 slug: "webflow-mcp-2-data-designer-api"
 description: "In April the Webflow MCP couldn't duplicate a carousel slide. 2.0 fixed that and moved almost everything off the Designer. Here's what it does, and the one gap you have to build yourself."
-key_quote: "The Bridge App now does three things only. Without it your agent can build, but it cannot see what it built."
+key_quote: "The dream of never opening the Webflow Designer again just got real"
 author: "Veronica"
 post_type: "article"
 category: "AI & Automation"
@@ -10,6 +10,7 @@ tags:
   - "Webflow/No-Code"
   - "AI Agents"
   - "Automation"
+image: "/resources/images/blog/webflow-mcp-2-data-designer-api/img-1.webp"
 date: "2026-08-18"
 status: "published"
 notion_id: "35761616-8253-80df-b0da-ce62114600f2"
@@ -24,6 +25,10 @@ In April I tried to get Claude to add one testimonial to a Webflow carousel. Thi
 
 
 That verdict was right about the version that existed in April. It read the element tree and edited text, structural work was out of reach, and the canvas was the bottleneck. MCP 2.0 has shipped since, and the specific wall I hit is gone. So here is the retest, and the results are quite astonishing.
+
+
+
+![image.png](/resources/images/blog/webflow-mcp-2-data-designer-api/img-1.webp)
 
 
 ---
