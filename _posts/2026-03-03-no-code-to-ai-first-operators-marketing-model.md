@@ -63,7 +63,7 @@ Most teams do not need a roster of narrow experts who each own a tiny slice of t
 ### 2) AI raises the bar for what "good" looks like
 
 
-AI makes output easy, but it does not make outcomes automatic. If anything, it increases the need for someone who can set clear direction, supervise the machines, correct them with real domain knowledge, and build feedback loops that compound over time. One skilled AI-first operator, or a tight team, can now produce at the level of a full marketing department. But that only works if the work is organized around _systems_ rather than tasks.
+AI makes output easy, but it does not make outcomes automatic. If anything, it increases the need for someone who can set clear direction, supervise the machines, correct them with real domain knowledge, and build feedback loops that compound over time. One skilled AI-first operator, or a tight team, can now produce at the level of a full marketing department. But that only works if the work is organized around _systems_ rather than tasks. This is the role job descriptions are starting to describe — see [The rise of AI-first marketers](https://eldur.studio/resources/rise-of-ai-first-marketers/).
 
 
 ### 3) Agency economics do not map to this reality
@@ -90,7 +90,7 @@ The standard CMO and fractional CMO setup often fails at the same point: **accou
 ## New org chart, human + agents
 
 
-Companies do not need more vendors, and they definitely do not need more AI tools. What they need is an embedded, accountable operator who can turn AI into execution systems that actually move revenue.
+Companies do not need more vendors, and they definitely do not need more AI tools. What they need is an embedded, accountable operator who can turn AI into execution systems that actually move revenue — an orchestrator coordinating a small army of specialist agents, as laid out in [The Multi-Agent Marketing Pyramid](https://eldur.studio/resources/multi-agent-marketing-pyramid/).
 
 
 ---

@@ -66,6 +66,9 @@ If you strip away the hype, you’re deciding between two patterns:
 - Usually has better engineering affordances (logs, retries, versioning)
 - Often cheaper if you already pay a flat model subscription
 
+We built a four-agent Notion enrichment workflow on exactly this scheduled-runner pattern — [200 hours of LinkedIn research replaced with a 2-hour agent](https://eldur.studio/resources/notion-crm-enrichment-explorium/).
+
+
 During beta I built the same “skills + prompt” as both:
 
 - Notion AI agent workflows
@@ -115,7 +118,7 @@ That “it lives where the knowledge lives” benefit is real, especially for:
 
 - internal SOP helpers
 - recurring reporting against your own databases
-- content operations (briefs, audits, repurposing)
+- content operations (briefs, audits, repurposing) — the kind of system laid out in [The Multi-Agent Marketing Pyramid](https://eldur.studio/resources/multi-agent-marketing-pyramid/)
 
 ## 4) Reliability & maintenance: what breaks in the real world
 

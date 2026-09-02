@@ -18,7 +18,7 @@ render_with_liquid: false
 ---
 
 
-## The Webflow MCP 
+## The Webflow MCP
 
 
 In April I tried to get Claude to add one testimonial to a Webflow carousel. Thirty minutes later I was lost in Div Block 83, the slide still had not duplicated, and I wrote it up plainly: [Claude can't be your Webflow dev yet](https://eldur.studio/resources/claude-webflow-dev-webflow-designer-mcp/).
@@ -96,7 +96,7 @@ If you run your own Webflow site with no developer on staff, the practical shift
 - **Visual work is available, with a caveat.** Elements and styles no longer need the browser, but open the Bridge App when you want the agent to check its own work (or open browser and give computer access0.
 - **Site conventions get written once.** Naming and structure belong in Agent Instructions, not in every prompt.
 
-Still needing a human: responsive refactors, interaction design, and CMS architecture. The gap between AI-assisted and AI-viable narrowed substantially.
+Still needing a human: responsive refactors, interaction design, and CMS architecture — the kind of call behind [Scalapay's move to a headless CMS](https://eldur.studio/results/scalapay-webflow-directory-headless-cms/). The gap between AI-assisted and AI-viable narrowed substantially.
 
 
 
@@ -114,7 +114,7 @@ I still wouldn’t play with the prompt example given by Webflow’s blog:
 This is the groundwork for what Eldur Studio is launching next: Watchtower is a **website maintenance  AI agent for founders and small teams with no site person on staff.** It watches the site, fixes issues weekly, and handles two custom change requests a month from a plain-English email. There are a few things, but we’ve been quitely testing this and it’s surprisingly good and making design changes, fixing custom code, and cleaning up classes and components. 
 
 
-I am running a short list of free site audits before launch. Request a free audit at [webflow.edlur.studio](http://webflow.edlur.studio/) to see if you qualify.
+I am running a short list of free site audits before launch. Request a free audit at [webflow.eldur.studio](https://webflow.eldur.studio/) to see if you qualify.
 
 
 _— Veronica_

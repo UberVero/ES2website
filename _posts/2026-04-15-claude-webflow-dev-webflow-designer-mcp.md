@@ -60,7 +60,7 @@ MCP helps with the first two. It still struggles with the third.
 The task: add a new quote to the testimonial carousel on [webflow.eldur.studio](http://webflow.eldur.studio/).
 
 
-If this carousel were driven by a CMS, the story would be different: adding a quote becomes “add one new item” — not “duplicate a slide and hope you picked the right one.” That’s one more reason to move testimonials into a CMS even if it adds some setup work and a bit of complexity (and yes, you may end up relying on a small JavaScript snippet to get a true slider experience).
+If this carousel were driven by a CMS, the story would be different: adding a quote becomes “add one new item” — not “duplicate a slide and hope you picked the right one.” That’s one more reason to move testimonials into a CMS even if it adds some setup work and a bit of complexity (and yes, you may end up relying on a small JavaScript snippet to get a true slider experience). We took that path at scale for [Scalapay's merchant directory](https://eldur.studio/results/scalapay-webflow-directory-headless-cms/) — Webflow for the marketing pages, a headless CMS for the data.
 
 
 ### The work that went smoothly
@@ -122,6 +122,9 @@ Can Claude be your Webflow dev today? **Not just yet.**
 
 
 But can Claude make you faster and safer at routine Webflow content work? Yes, the new MCP comes with a bunch of pre-loaded skill for improving accessibility, SEO and CMS structure. Structural edits still belong in the Designer. For now.
+
+
+**Update:** Webflow shipped MCP 2.0 since this was written, and the wall I hit here is gone. Read the retest: [Webflow MCP 2.0: game changing release](https://eldur.studio/resources/webflow-mcp-2-data-designer-api/).
 
 
 _— Veronica_

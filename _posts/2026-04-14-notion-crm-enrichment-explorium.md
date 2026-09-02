@@ -41,6 +41,9 @@ The MCP connection to Claude was the surprise win. I could read and write data d
 We learned the batch size the hard way. Our first run tried 20 records at once, the MCP connection dropped mid-enrichment, and we spent an hour figuring out which records actually got written back. After that, 3–5 became a hard rule.
 
 
+Running this kind of workflow inside Notion instead of on an external runner is a real tradeoff — we compared both in [Notion AI Agents vs. Cowork](https://eldur.studio/resources/notion-ai-agents-vs-cowork-comparison/).
+
+
 ## Results
 
 - **Large, well-known firms**: 95%+ match rate

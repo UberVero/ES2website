@@ -39,7 +39,7 @@ The baseline pattern is the same as the [NoCode.tech](http://nocode.tech/) artic
 ## What changed with AI agents
 
 
-The temptation now is to add an agent to every workflow. In healthcare, that is only safe if you treat the agent like a new teammate.
+The temptation now is to add an agent to every workflow. In healthcare, that is only safe if you treat the agent like a new teammate. (If the moving parts here are unfamiliar, [The Core Anatomy of an AI Agent](https://eldur.studio/resources/core-anatomy-of-an-ai-agent/) covers the brain, memory, and tools this all sits on.)
 
 - Clear scope: what it can do, and what it cannot do.
 - Minimal access: which systems it can reach.
@@ -176,6 +176,9 @@ What is new:
 - A written agent policy that states what the agent is allowed to do, and what it must never do.
 - A playbook for exceptions. What happens when the agent is unsure or the data is incomplete?
 - Regular reviews: vendor terms, integration permissions, incident drills, and sampling of agent outputs.
+
+Vendor terms have another dimension once agents write code for you: [Who Owns AI-Generated Code?](https://eldur.studio/resources/who-owns-ai-generated-code/) covers the IP side.
+
 
 ## A simple reference architecture for agentic workflows
 

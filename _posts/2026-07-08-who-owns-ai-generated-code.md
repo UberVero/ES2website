@@ -105,6 +105,9 @@ Usually not, and you don't need to. Historically, dev tooling has been. You want
 Assign if you plan to build a product on them or want an asset that outlives any one developer. License if you just need to use and extend your own site. Either way, decide it in writing.
 
 
+The compliance version of this problem — what happens when agents touch regulated data — is in [Building HIPAA-compliant AI agents](https://eldur.studio/resources/building-hipaa-compliant-ai-agents/).
+
+
 _While I hold a Law degree and LLM, I’m not a practicing attorney. This is a practitioner's take, not legal advice. For anything you're signing, ask a local licensed lawyer._
 
 

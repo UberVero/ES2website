@@ -55,6 +55,9 @@ It’s not one - it’s a pyramid:
 You can start with 3 roles and add the rest as needed.
 
 
+If the premise here — one person, many agents — is new, [From No-Code to AI-First Operators](https://eldur.studio/resources/no-code-to-ai-first-operators-marketing-model/) is the thesis behind it, and [How AI Agents Are Changing B2B Marketing](https://eldur.studio/resources/ai-agents-b2b-marketing/) covers what it changes day to day.
+
+
 ![Multi-Agent Marketing Pyramid diagram](/resources/images/blog/multi-agent-marketing-pyramid/img-1.webp)
 
 
@@ -87,6 +90,9 @@ This is an editorial system with measurable throughput:
 - **Wednesday:** drafts
 - **Thursday:** QA + metadata + internal links
 - **Friday:** publish + distribution + weekly report
+
+Where these scheduled agents actually run — inside Notion or on an external runner — is its own decision: [Notion AI Agents vs. Cowork](https://eldur.studio/resources/notion-ai-agents-vs-cowork-comparison/).
+
 
 What makes it work:
 

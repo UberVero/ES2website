@@ -37,7 +37,7 @@ This is the part that stood out to me.
 Function Health is not hiring someone to occasionally prompt ChatGPT for copy ideas. The role describes a marketer who can use AI across campaign ideas, messaging, segmentation, experimentation, workflow design, testing, and iteration.
 
 
-That is a different operating model.
+That is a different operating model — the same shift I wrote about in [From No-Code to AI-First Operators](https://eldur.studio/resources/no-code-to-ai-first-operators-marketing-model/).
 
 
 The job still sits under growth marketing, but the work is moving closer to… systems design? Marketing ops? We are used to strong marketers based on judgment, taste, customer understanding, and product instinct. The new layer is the ability to turn that judgment into workflows other people can reuse.

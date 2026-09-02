@@ -39,6 +39,9 @@ Strip away the hype and an AI agent is a system that:
 The difference from a basic automation: agents handle ambiguity. They go beyond if/then rules and make judgment calls.
 
 
+Underneath, every one of them is the same three parts — a brain, memory, and tools. [The Core Anatomy of an AI Agent](https://eldur.studio/resources/core-anatomy-of-an-ai-agent/) breaks that down.
+
+
 ## Three places agents are replacing manual work right now
 
 
@@ -54,7 +57,7 @@ The difference from a basic automation: agents handle ambiguity. They go beyond 
 ## What this means for marketing teams
 
 
-Agents replace tasks, not people. But you can run a large number of them in parallel, and the math works in your favor. A solo operator with three well-designed agents can match the output of a team of five — on the work that agents are good at.
+Agents replace tasks, not people. But you can run a large number of them in parallel, and the math works in your favor. A solo operator with three well-designed agents can match the output of a team of five — on the work that agents are good at. [The Multi-Agent Marketing Pyramid](https://eldur.studio/resources/multi-agent-marketing-pyramid/) is how those agents fit together without turning into chaos.
 
 
 The trap is trying to automate everything at once. Start with one high-value, high-repetition workflow. Get it working. Then expand.
@@ -67,6 +70,6 @@ The trap is trying to automate everything at once. Start with one high-value, hi
 Map your last five workdays. Find the task you did most often that required the least judgment. That's your first agent.
 
 
-If you're not sure where to start, [book a call](https://www.notion.so/resources/) and I'll scope it with you in 30 minutes.
+If you're not sure where to start, [book a call](https://booking.akiflow.com/veronica-es-new) and I'll scope it with you in 30 minutes.
 
 

@@ -38,7 +38,7 @@ I needed one system that could handle the full lifecycle of a Webflow project â€
 ## What I Built
 
 
-I consolidated everything into Notion and started automating the repetitive stuff. Used it on real client work. Refined it through dozens of projects. When other Webflow designers saw it, they wanted it too.
+I consolidated everything into Notion and started automating the repetitive stuff. Used it on real client work. (The same Notion-plus-automation approach shows up in [our VC contact enrichment build](https://eldur.studio/resources/notion-crm-enrichment-explorium/) and in [Notion AI Agents vs. Cowork](https://eldur.studio/resources/notion-ai-agents-vs-cowork-comparison/).) Refined it through dozens of projects. When other Webflow designers saw it, they wanted it too.
 
 
 This isn't a generic project management template with a Webflow logo on it. It's purpose-built for how Webflow professionals actually work:
