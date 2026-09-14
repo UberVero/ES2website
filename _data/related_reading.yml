@@ -1,0 +1,24 @@
+# Kept outside synced post files so Notion updates preserve these editorial links.
+claude-webflow-dev-webflow-designer-mcp:
+  - title: "Who owns AI-generated code?"
+    url: /resources/who-owns-ai-generated-code/
+  - title: "The Webflow SEO checklist"
+    url: /resources/webflow-seo-checklist/
+webflow-mcp-2-data-designer-api:
+  - title: "Who owns AI-generated code?"
+    url: /resources/who-owns-ai-generated-code/
+  - title: "The Webflow SEO checklist"
+    url: /resources/webflow-seo-checklist/
+no-code-to-ai-first-operators-marketing-model:
+  - title: "Who owns AI-generated code?"
+    url: /resources/who-owns-ai-generated-code/
+who-owns-ai-generated-code:
+  - title: "Building with Claude and the Webflow MCP"
+    url: /resources/claude-webflow-dev-webflow-designer-mcp/
+  - title: "A lead enrichment agent with Explorium and Notion"
+    url: /results/people-enrichment-agent/
+ai-agents-b2b-marketing:
+  - title: "A lead enrichment agent with Explorium and Notion"
+    url: /results/people-enrichment-agent/
+  - title: "Custom AI agents for marketing and sales operations"
+    url: /#agents

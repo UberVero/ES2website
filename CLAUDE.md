@@ -52,6 +52,8 @@ The script (`scripts/notion-sync.js`) downloads and optimizes images (via `sharp
 
 Required GitHub secrets: `NOTION_API_KEY`, `NOTION_DATABASE_ID`.
 
+Editorial related-reading links live in `_data/related_reading.yml` and render through `_layouts/post.html`, so a Notion sync cannot overwrite them. Use existing post slugs as keys. The Webflow SEO checklist (`_posts/2026-09-14-webflow-seo-checklist.md`) is currently maintained in Git, without a `notion_id`; if it moves to Notion, keep its slug/date and add the real page ID rather than maintaining two copies.
+
 ## SEO audit (weekly)
 
 A weekly SEO audit runs as a scheduled Claude Code on the web session. It reviews the site and files `seo`-labeled GitHub issues for findings — and, importantly, for its own tool failures (that is the failure-alert mechanism; e.g. issue #38 reported a missing data source).
@@ -66,6 +68,12 @@ Common to both:
 - Tools used: `dataforseo_labs_google_domain_rank_overview`, `dataforseo_labs_google_ranked_keywords`.
 - First use of either path may surface a one-time approve/trust prompt for the server.
 - Manual fallback for ranking data: https://app.dataforseo.com.
+
+**Backlink timeseries diagnostics (#106):** `date_from` is supported by the [official endpoint](https://docs.dataforseo.com/v3/backlinks-timeseries_new_lost_summary-live/) and the legacy MCP tool. An `Invalid Field: 'date_from'` response alone does not prove the parameter name is unsupported. Inspect the actual request values and endpoint before changing the integration. Dates must be `YYYY-MM-DD`, start no earlier than `2019-01-30`, and satisfy `date_from <= date_to <= today`. Use the API server's current date; do not send timestamps or invent unavailable future data. Record the sanitized request, returned error, and connector version in the existing issue. Never include credentials.
+
+For an exact seven-day comparison, use `group_range: "day"` and sum the returned days; `week` expands to full calendar weeks. Keep a static `backlinks_summary` snapshot labeled as a snapshot, never as evidence of weekly gains/losses. A failed timeseries call remains unresolved until a valid request succeeds in the live audit environment.
+
+**Audit issue hygiene:** Keep dated ranking/backlink snapshots as historical evidence. Avoid opening a fresh issue for an unchanged metric; add new evidence to the existing actionable issue. Report sampled AI mentions as coverage of the queried dataset, not proof that a site is absent from all AI answers. Existing FAQ markup should be checked in a rendered browser before proposing more; markup does not guarantee rankings or AI citations.
 
 **`.mcp.json` fallback specifics:** auth comes from the env var `DATAFORSEO_AUTH_B64` — base64 of the DataforSEO **API** `login:password` (not the dashboard login; the API Access dashboard provides a pre-encoded token), set in the **Claude Code web environment**, never committed (this repo is public — `.mcp.json` only references the var). It configures DataforSEO for any Claude Code session opened in this repo with that var set; it does not host the server (DataforSEO does). Claude Code supports remote `http` MCP servers natively; if the http transport ever fails, the `mcp-remote` npx bridge wrapping the same URL is the documented fallback.
 
