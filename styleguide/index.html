@@ -35,7 +35,7 @@ layout: null
 .sg-stage--light { background: var(--gray); border-color: transparent; }
 .sg-note { font-size: 13px; color: #777; line-height: 1.6; margin-top: 14px; }
 .sg-note code, .sg-code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; background: #f3f3f5; border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; color: #b8430f; }
-.sg-pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; background: #0e0e0e; color: #e6e6e6; border-radius: var(--radius); padding: 20px 22px; overflow-x: auto; margin-top: 16px; }
+.sg-pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; background: #0e0e0e; color: #e6e6e6; border-radius: var(--radius); padding: 20px 22px; overflow-x: auto; margin-top: 16px; white-space: pre; }
 .sg-pre .c { color: #ff9a4d; }
 .sg-pre .k { color: #ffc109; }
 
@@ -103,6 +103,8 @@ layout: null
     <a href="#install">Install Agent</a>
     <a href="#cards">Cards</a>
     <a href="#agent">Agent Cards</a>
+    <a href="#buy">Buyable Agent</a>
+    <a href="#quote">Testimonial</a>
     <a href="#packages">Packages</a>
     <a href="#bits">Chips · Highlight</a>
     <a href="#timeline">Timeline</a>
@@ -344,9 +346,152 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
     </div>
   </section>
 
+  <!-- ============ BUYABLE AGENT ============ -->
+  <section class="sg-sec" id="buy">
+    <p class="sg-kicker">09 — Buyable Agent</p>
+    <h2 class="sg-h2">Buyable agent cards <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· new</span></h2>
+    <p class="sg-lead">Agents you can install without a conversation. <code class="sg-code">.card--buy</code> sits between <code class="sg-code">.card--agent</code> (illustrative, unpriced) and <code class="sg-code">.card--package</code> (priced, but needs a conversation). <code class="sg-code">.buy-row</code> puts the priced spotlight beside the free ones, which use <code class="sg-code">.card--try</code>. Both reuse <code class="sg-code">.agent__icon</code> and <code class="sg-code">.ia2</code>. Side by side above 900px, stacked below.</p>
+    <p class="sg-note" style="margin-top:0;margin-bottom:28px"><strong>Hierarchy is deliberate.</strong> The spotlight keeps the orange left edge, the larger price and the solid <code>.ia2--dark</code>; <code>.card--try</code> drops the edge and steps down to <code>.ia2--outline</code>. Adding an orange edge to a <code>.card--try</code> flattens the two and defeats the row.</p>
+    <div class="sg-stage sg-stage--light">
+      <div class="buy-row">
+      <div class="card card--buy">
+        <div class="buy__main">
+          <div class="buy__head">
+            <div class="agent__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8.2 20L9.6 11h2.8L13.8 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.8 11h8.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="11" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5.4 4.4l1.9 1.5M16.6 4.4l-1.9 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="buy__badge">Self-service</p>
+              <h3 class="buy__name">Watchtower <span class="badge-new">New</span></h3>
+            </div>
+          </div>
+          <p class="buy__body">An agent that keeps a Webflow site up to date. It checks the site every week, fixes what it safely can on a private copy, and waits for your approval before anything goes live. Two change requests a month, by email.</p>
+        </div>
+        <div class="buy__aside">
+          <div class="buy__price">$299<span class="buy__price-unit">/month</span></div>
+          <a class="ia2 ia2--dark" href="https://webflow.eldur.studio" target="_blank" rel="noopener"
+             data-install-agent data-href
+             data-label="Install Watchtower" data-sublabel="Start with a free audit">
+            <span class="ia2-fill"></span>
+            <span class="ia2-bot"></span>
+            <span class="ia2-label"><span class="ia2-main">Install Watchtower</span><span class="ia2-sub">Start with a free audit</span></span>
+          </a>
+        </div>
+      </div>
+
+        <div class="card card--try">
+          <div class="agent__icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2.5" y="3" width="17" height="11.5" rx="2.5" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M11 14.5V19M8 19h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              <path d="M6.5 11l2.5-3 2.2 2.2L15.5 6.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <p class="buy__badge">Free</p>
+          <h3 class="try__name">B2B Messaging Workshop</h3>
+          <p class="try__body">Build the messaging foundation your whole company can reuse. It guides you through company context, customer problems, competitive alternatives, personas, value, positioning, and proof: one focused question at a time.</p>
+          <div class="try__price">$0</div>
+          <a class="ia2 ia2--outline" href="https://chatgpt.com/plugins/plugins_6a8f237c51488191a3bb6c3accefc4b5" target="_blank" rel="noopener"
+             data-install-agent data-href
+             data-label="Install in Codex" data-sublabel="Free to install">
+            <span class="ia2-fill"></span>
+            <span class="ia2-bot"></span>
+            <span class="ia2-label"><span class="ia2-main">Install in Codex</span><span class="ia2-sub">Free to install</span></span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="sg-pre">&lt;div class=<span class="k">"buy-row"</span>&gt;
+
+  <span class="c">&lt;!-- priced spotlight --&gt;</span>
+  &lt;div class=<span class="k">"card card--buy"</span>&gt;
+    &lt;div class=<span class="k">"buy__main"</span>&gt;
+      &lt;div class=<span class="k">"buy__head"</span>&gt;
+        &lt;div class=<span class="k">"agent__icon"</span>&gt;…&lt;/div&gt;
+        &lt;div&gt;
+          &lt;p class=<span class="k">"buy__badge"</span>&gt;…&lt;/p&gt;
+          &lt;h3 class=<span class="k">"buy__name"</span>&gt;Watchtower &lt;span class=<span class="k">"badge-new"</span>&gt;New&lt;/span&gt;&lt;/h3&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class=<span class="k">"buy__body"</span>&gt;…&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=<span class="k">"buy__aside"</span>&gt;
+      &lt;div class=<span class="k">"buy__price"</span>&gt;$299&lt;span class=<span class="k">"buy__price-unit"</span>&gt;/month&lt;/span&gt;&lt;/div&gt;
+      &lt;a class=<span class="k">"ia2 ia2--dark"</span> data-install-agent data-href href=<span class="k">"…"</span>
+         data-label=<span class="k">"Install Watchtower"</span> data-sublabel=<span class="k">"Start with a free audit"</span>&gt;…&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  <span class="c">&lt;!-- free, one per extra agent --&gt;</span>
+  &lt;div class=<span class="k">"card card--try"</span>&gt;
+    &lt;div class=<span class="k">"agent__icon"</span>&gt;…&lt;/div&gt;
+    &lt;p class=<span class="k">"buy__badge"</span>&gt;Free&lt;/p&gt;
+    &lt;h3 class=<span class="k">"try__name"</span>&gt;…&lt;/h3&gt;
+    &lt;p class=<span class="k">"try__body"</span>&gt;…&lt;/p&gt;
+    &lt;div class=<span class="k">"try__price"</span>&gt;$0&lt;/div&gt;
+    &lt;a class=<span class="k">"ia2 ia2--outline"</span> data-install-agent data-href href=<span class="k">"…"</span>
+       data-label=<span class="k">"Install in Codex"</span> data-sublabel=<span class="k">"Free to install"</span>&gt;…&lt;/a&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</div>
+    <p class="sg-note"><strong>Set <code>data-label</code> and <code>data-sublabel</code>.</strong> On mount, <code>install-agent.js</code> rewrites <code>.ia2-main</code> / <code>.ia2-sub</code> from those attributes, falling back to “Install agent” — so custom copy written only into the markup gets overwritten. The icon uses <code>currentColor</code> and is tinted by the component, not a hard-coded hex.</p>
+    <p class="sg-note"><code>.buy-row</code> is a <code>1.5fr / 1fr</code> grid. A second <code>.card--try</code> needs the columns widening (<code>1.5fr 1fr 1fr</code>) or it will squeeze the spotlight; past three, move the free agents to their own <code>.cards</code> row below.</p>
+    <div class="sg-block" style="margin-top:32px">
+      <span class="sg-label">badge-new — on a light and a dark surface</span>
+      <div class="sg-row">
+        <div class="sg-stage sg-stage--light" style="flex:1;min-width:220px">
+          <span style="font-size:19px;font-weight:700">Watchtower <span class="badge-new">New</span></span>
+        </div>
+        <div class="sg-stage sg-stage--dark" style="flex:1;min-width:220px">
+          <span style="font-size:19px;font-weight:700;color:#fff">Watchtower <span class="badge-new">New</span></span>
+        </div>
+      </div>
+      <p class="sg-note">The label is <code>color: inherit</code>, so it takes the surrounding text colour and works on both surfaces unchanged. Orange text at 10px would sit near 2.9:1 against this tint and fail contrast, so the brand lives in the fill and the ring instead.</p>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section class="sg-sec" id="quote">
+    <p class="sg-kicker">10 — Testimonial</p>
+    <h2 class="sg-h2">Quote card <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· new</span></h2>
+    <p class="sg-lead">Deliberately plain. <code class="sg-code">.quote</code> adds only an attribution block to <code class="sg-code">.card--outline</code>, so it inherits the surface, border and hover already in the system. No avatars, no logos, no carousel: the quote is the content.</p>
+    <div class="sg-stage sg-stage--light">
+      <div class="cards cards--2">
+        <figure class="card card--outline quote">
+          <blockquote class="quote__text">“We had a tight timeline and Eldur Studio helped us find the best solution and launch on time, without sacrificing results.”</blockquote>
+          <figcaption class="quote__by">
+            <span class="quote__name">Jay Crystal</span>
+            <span class="quote__role">CEO, Configure 8</span>
+          </figcaption>
+        </figure>
+        <figure class="card card--outline quote">
+          <blockquote class="quote__text">“Eldur Studio helped us stretch Webflow’s limits and has proven to be a fast and trustworthy partner. The quality of the work has been consistently great, the team is collaborative and has often helped us take our idea to the next level.”</blockquote>
+          <figcaption class="quote__by">
+            <span class="quote__name">Mirco Mattevi</span>
+            <span class="quote__role">CPO, Scalapay</span>
+          </figcaption>
+        </figure>
+      </div>
+    </div>
+    <div class="sg-pre">&lt;figure class=<span class="k">"card card--outline quote"</span>&gt;
+  &lt;blockquote class=<span class="k">"quote__text"</span>&gt;“…”&lt;/blockquote&gt;
+  &lt;figcaption class=<span class="k">"quote__by"</span>&gt;
+    &lt;span class=<span class="k">"quote__name"</span>&gt;Name&lt;/span&gt;
+    &lt;span class=<span class="k">"quote__role"</span>&gt;Title, Company&lt;/span&gt;
+  &lt;/figcaption&gt;
+&lt;/figure&gt;</div>
+    <p class="sg-note"><strong>Note the two quotes above are different lengths but the names still line up.</strong> <code>.quote__by</code> uses <code>margin-top: auto</code>, so the attribution is pinned to the bottom of the card whatever the quote does. Use <code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code>, not a bare <code>div</code>: it is the correct pairing for a quote and its source, and screen readers announce the attribution with the quote.</p>
+  </section>
+
   <!-- ============ PACKAGES ============ -->
   <section class="sg-sec" id="packages">
-    <p class="sg-kicker">09 — Packages</p>
+    <p class="sg-kicker">11 — Packages</p>
     <h2 class="sg-h2">Pricing tiers</h2>
     <p class="sg-lead">Package cards live on black. The featured tier swaps to an orange border over a warm tint.</p>
     <div class="sg-stage sg-stage--dark">
@@ -369,7 +514,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ BITS ============ -->
   <section class="sg-sec" id="bits">
-    <p class="sg-kicker">10 — Chips · Highlight</p>
+    <p class="sg-kicker">12 — Chips · Highlight</p>
     <h2 class="sg-h2">Small components</h2>
     <div class="sg-block">
       <span class="sg-label">Chip (with left accent)</span>
@@ -388,7 +533,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ TIMELINE ============ -->
   <section class="sg-sec" id="timeline">
-    <p class="sg-kicker">11 — Timeline</p>
+    <p class="sg-kicker">13 — Timeline</p>
     <h2 class="sg-h2">Process timeline</h2>
     <div class="sg-stage sg-stage--light">
       <div class="timeline">
@@ -401,7 +546,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ FAQ ============ -->
   <section class="sg-sec" id="faq">
-    <p class="sg-kicker">12 — FAQ</p>
+    <p class="sg-kicker">14 — FAQ</p>
     <h2 class="sg-h2">FAQ (native accordion)</h2>
     <div class="sg-stage" style="background:#fff">
       <div class="faq">
