@@ -1259,10 +1259,111 @@ img, svg {
   color: #6a6a6a;
 }
 
+/* "New" pill. The brand carries in the tint and the orange ring, while
+   the label inherits the surrounding text colour so it stays readable
+   on light and dark alike. Orange text at 10px would sit near 2.9:1
+   against this tint and fail contrast. */
+.badge-new {
+  display: inline-block;
+  margin-left: 9px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--orange-dim);
+  border: 1px solid rgba(255, 122, 0, 0.35);
+  color: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  line-height: 1.5;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* ============================================
+   SELF-SERVE ROW
+   The priced spotlight plus the smaller free
+   agents beside it. The spotlight keeps its
+   weight through size, the orange edge and the
+   solid .ia2; the others step down to an
+   outline CTA.
+   ============================================ */
+.buy-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+}
+
+/* The free counterpart to .card--buy: same language, less weight.
+   No orange edge — that stays the spotlight's alone. */
+.card--try {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  padding: 32px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card--try:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+}
+
+.card--try .agent__icon {
+  margin-bottom: 0;
+  color: var(--orange);
+}
+
+.try__name {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--black);
+}
+
+.try__body {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #3a3a3a;
+  flex: 1;
+}
+
+.try__price {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.try__price-unit {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #6a6a6a;
+}
+
+/* Side by side, the spotlight no longer owns the full page width, so
+   its price column would squeeze the description. Stack it instead. */
+@media (min-width: 901px) {
+  .buy-row .card--buy {
+    grid-template-columns: 1fr;
+    gap: 26px;
+    align-items: start;
+    align-content: start;
+  }
+}
+
 /* Stack before the price column starts squeezing the description.
    Declared here rather than in the shared 900px block above, which
    would lose to the base rules that follow it. */
 @media (max-width: 900px) {
+  .buy-row { grid-template-columns: 1fr; }
+
   .card--buy {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1272,9 +1373,55 @@ img, svg {
 
 @media (max-width: 640px) {
   .card--buy { padding: 24px; }
+  .card--try { padding: 24px; }
   .buy__price { font-size: 30px; }
   /* .ia2 is nowrap by design — trim its box so it fits a 375px phone. */
-  .card--buy .ia2 { min-width: 0; padding: 15px 20px; }
+  .card--buy .ia2,
+  .card--try .ia2 { min-width: 0; padding: 15px 20px; }
+}
+
+/* ============================================
+   TESTIMONIAL
+   A quote and who said it. Deliberately plain:
+   it is built on .card--outline so it inherits
+   the surface, border and hover, and adds only
+   the attribution block. Lives here rather than
+   in results.css because it is not case-study
+   furniture and the styleguide only loads
+   styles.css.
+   ============================================ */
+.quote {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quote__text {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #3a3a3a;
+}
+
+/* margin-top:auto pins the attribution to the bottom, so names line up
+   across a row of cards whose quotes differ in length. */
+.quote__by {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+}
+
+.quote__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--black);
+}
+
+.quote__role {
+  font-size: 13px;
+  color: #6a6a6a;
 }
 
 /* ============================================
