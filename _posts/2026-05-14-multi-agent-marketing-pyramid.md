@@ -1,7 +1,7 @@
 ---
 title: "The Multi-Agent Marketing Pyramid: Orchestrator + Specialists"
 slug: "multi-agent-marketing-pyramid"
-description: "A pragmatic architecture for agentic marketing: one orchestrator coordinating specialized agents (research, writing, QA, images, SEO, distribution) with a weekly feedback loop."
+description: "A pragmatic agentic marketing architecture: one orchestrator coordinating specialists for research, writing, QA, images, SEO, and distribution."
 key_quote: "The “one person marketing team” is not “one super-agent that does everything”. It’s a small army."
 author: "Veronica"
 post_type: "article"

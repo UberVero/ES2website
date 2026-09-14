@@ -1,7 +1,7 @@
 ---
 title: "Notion AI Agents vs. Cowork: Scheduled Task Automation Compared"
 slug: "notion-ai-agents-vs-cowork-comparison"
-description: "A head-to-head comparison of Notion's built-in AI agents and Cowork-style scheduled task runners. Token usage, cost per run, capabilities, and when to pick which."
+description: "A head-to-head comparison of Notion's AI agents and Cowork-style scheduled task runners — token usage, cost per run, and when to pick which."
 author: "Veronica"
 post_type: "guide"
 category: "AI & Automation"

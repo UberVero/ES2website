@@ -1,7 +1,7 @@
 ---
 title: "The rise of AI-first marketers"
 slug: "rise-of-ai-first-marketers"
-description: "I was reading Function Health’s Growth Marketing Manager role and thought it was ridiculous to require advanced AI expertise in skills that are less than a year old. Unicorn? Or the future?"
+description: "Is requiring advanced AI expertise in a marketing role a unicorn ask — or the new normal? A look at what AI-first marketers actually are."
 author: "Veronica"
 post_type: "article"
 category: "AI & Automation"
