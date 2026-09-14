@@ -35,7 +35,7 @@ layout: null
 .sg-stage--light { background: var(--gray); border-color: transparent; }
 .sg-note { font-size: 13px; color: #777; line-height: 1.6; margin-top: 14px; }
 .sg-note code, .sg-code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; background: #f3f3f5; border: 1px solid var(--border); border-radius: 6px; padding: 2px 6px; color: #b8430f; }
-.sg-pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; background: #0e0e0e; color: #e6e6e6; border-radius: var(--radius); padding: 20px 22px; overflow-x: auto; margin-top: 16px; }
+.sg-pre { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12.5px; line-height: 1.7; background: #0e0e0e; color: #e6e6e6; border-radius: var(--radius); padding: 20px 22px; overflow-x: auto; margin-top: 16px; white-space: pre; }
 .sg-pre .c { color: #ff9a4d; }
 .sg-pre .k { color: #ffc109; }
 
@@ -103,6 +103,7 @@ layout: null
     <a href="#install">Install Agent</a>
     <a href="#cards">Cards</a>
     <a href="#agent">Agent Cards</a>
+    <a href="#buy">Buyable Agent</a>
     <a href="#packages">Packages</a>
     <a href="#bits">Chips · Highlight</a>
     <a href="#timeline">Timeline</a>
@@ -344,9 +345,62 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
     </div>
   </section>
 
+  <!-- ============ BUYABLE AGENT ============ -->
+  <section class="sg-sec" id="buy">
+    <p class="sg-kicker">09 — Buyable Agent</p>
+    <h2 class="sg-h2">Buyable agent card <span style="font-size:14px; color:var(--orange); font-weight:700; letter-spacing:.06em; text-transform:uppercase; vertical-align:middle;">· new</span></h2>
+    <p class="sg-lead">One agent, one real price, one destination. <code class="sg-code">.card--buy</code> sits between <code class="sg-code">.card--agent</code> (illustrative, unpriced) and <code class="sg-code">.card--package</code> (priced, but needs a conversation). It reuses <code class="sg-code">.agent__icon</code> for the tile and <code class="sg-code">.ia2</code> for the CTA. Two columns on desktop, stacked under 900px.</p>
+    <div class="sg-stage sg-stage--light">
+      <div class="card card--buy">
+        <div class="buy__main">
+          <div class="buy__head">
+            <div class="agent__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8.2 20L9.6 11h2.8L13.8 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.8 11h8.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="11" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5.4 4.4l1.9 1.5M16.6 4.4l-1.9 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="buy__badge">Self-service</p>
+              <h3 class="buy__name">Watchtower</h3>
+            </div>
+          </div>
+          <p class="buy__body">An agent that keeps a Webflow site up to date. It checks the site every week, fixes what it safely can on a private copy, and waits for your approval before anything goes live. Two change requests a month, by email.</p>
+        </div>
+        <div class="buy__aside">
+          <div class="buy__price">$299<span class="buy__price-unit">/month</span></div>
+          <a class="ia2 ia2--dark" href="https://webflow.eldur.studio" target="_blank" rel="noopener"
+             data-install-agent data-href
+             data-label="Install Watchtower" data-sublabel="Start with a free audit">
+            <span class="ia2-fill"></span>
+            <span class="ia2-bot"></span>
+            <span class="ia2-label"><span class="ia2-main">Install Watchtower</span><span class="ia2-sub">Start with a free audit</span></span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sg-pre">&lt;div class=<span class="k">"card card--buy"</span>&gt;
+  &lt;div class=<span class="k">"buy__main"</span>&gt;
+    &lt;div class=<span class="k">"buy__head"</span>&gt;
+      &lt;div class=<span class="k">"agent__icon"</span>&gt;…&lt;/div&gt;
+      &lt;div&gt;&lt;p class=<span class="k">"buy__badge"</span>&gt;…&lt;/p&gt;&lt;h3 class=<span class="k">"buy__name"</span>&gt;…&lt;/h3&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;p class=<span class="k">"buy__body"</span>&gt;…&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=<span class="k">"buy__aside"</span>&gt;
+    &lt;div class=<span class="k">"buy__price"</span>&gt;$299&lt;span class=<span class="k">"buy__price-unit"</span>&gt;/month&lt;/span&gt;&lt;/div&gt;
+    &lt;a class=<span class="k">"ia2 ia2--dark"</span> data-install-agent data-href href=<span class="k">"…"</span>
+       data-label=<span class="k">"Install Watchtower"</span> data-sublabel=<span class="k">"Start with a free audit"</span>&gt;…&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</div>
+    <p class="sg-note"><strong>Set <code>data-label</code> and <code>data-sublabel</code>.</strong> On mount, <code>install-agent.js</code> rewrites <code>.ia2-main</code> / <code>.ia2-sub</code> from those attributes, falling back to “Install agent” — so custom copy written only into the markup gets overwritten. The icon uses <code>currentColor</code> and is tinted by the component, not a hard-coded hex.</p>
+  </section>
+
   <!-- ============ PACKAGES ============ -->
   <section class="sg-sec" id="packages">
-    <p class="sg-kicker">09 — Packages</p>
+    <p class="sg-kicker">10 — Packages</p>
     <h2 class="sg-h2">Pricing tiers</h2>
     <p class="sg-lead">Package cards live on black. The featured tier swaps to an orange border over a warm tint.</p>
     <div class="sg-stage sg-stage--dark">
@@ -369,7 +423,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ BITS ============ -->
   <section class="sg-sec" id="bits">
-    <p class="sg-kicker">10 — Chips · Highlight</p>
+    <p class="sg-kicker">11 — Chips · Highlight</p>
     <h2 class="sg-h2">Small components</h2>
     <div class="sg-block">
       <span class="sg-label">Chip (with left accent)</span>
@@ -388,7 +442,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ TIMELINE ============ -->
   <section class="sg-sec" id="timeline">
-    <p class="sg-kicker">11 — Timeline</p>
+    <p class="sg-kicker">12 — Timeline</p>
     <h2 class="sg-h2">Process timeline</h2>
     <div class="sg-stage sg-stage--light">
       <div class="timeline">
@@ -401,7 +455,7 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
 
   <!-- ============ FAQ ============ -->
   <section class="sg-sec" id="faq">
-    <p class="sg-kicker">12 — FAQ</p>
+    <p class="sg-kicker">13 — FAQ</p>
     <h2 class="sg-h2">FAQ (native accordion)</h2>
     <div class="sg-stage" style="background:#fff">
       <div class="faq">

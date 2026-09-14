@@ -12,6 +12,7 @@ layout: null
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.usefathom.com/script.js" data-site="FYROQRHW" defer></script>
   <script src="assets/tab-attention.js" defer></script>
+  <script src="assets/install-agent.js" defer></script>
   <link rel="canonical" href="https://eldur.studio/">
   <meta property="og:site_name" content="Eldur Studio">
   <meta property="og:type" content="website">
@@ -151,6 +152,7 @@ layout: null
         <span class="nav__wordmark">Eldur Studio</span>
       </a>
       <div class="nav__links">
+        <a href="/#watchtower" class="nav__link">Watchtower</a>
         <a href="/results/" class="nav__link">Results</a>
         <a href="/resources/" class="nav__link">Resources</a>
         <details class="nav__menu">
@@ -162,6 +164,7 @@ layout: null
             </span>
           </summary>
           <div class="nav__mobile-panel">
+            <a href="/#watchtower" class="nav__mobile-link">Watchtower</a>
             <a href="/results/" class="nav__mobile-link">Results</a>
             <a href="/resources/" class="nav__mobile-link">Resources</a>
             <a href="mailto:info@eldur.studio" class="nav__mobile-link nav__mobile-link--muted">
@@ -321,6 +324,45 @@ layout: null
           <div class="timeline__week">Weeks 4–6</div>
           <div class="timeline__label">Ship + train</div>
           <p class="timeline__desc">Deploy the first working agent, train your team to run and tune it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WATCHTOWER (buyable agent) -->
+  <section class="section" id="watchtower">
+    <div class="container">
+      <h2 class="section__title">Watchtower: proactive updates for Webflow sites</h2>
+      <p class="section__lead">The one agent you can install today, without talking to anyone first.</p>
+
+      <div class="card card--buy">
+        <div class="buy__main">
+          <div class="buy__head">
+            <div class="agent__icon">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M8.2 20L9.6 11h2.8L13.8 20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M6.8 11h8.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                <circle cx="11" cy="7.2" r="2.3" stroke="currentColor" stroke-width="1.8"/>
+                <path d="M5.4 4.4l1.9 1.5M16.6 4.4l-1.9 1.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="buy__badge">Self-service</p>
+              <h3 class="buy__name">Watchtower</h3>
+            </div>
+          </div>
+          <p class="buy__body">An agent that keeps a Webflow site up to date. It checks the site every week, fixes what it safely can on a private copy, and waits for your approval before anything goes live. Two change requests a month, by email.</p>
+        </div>
+        <div class="buy__aside">
+          <div class="buy__price">$299<span class="buy__price-unit">/month</span></div>
+          <a class="ia2 ia2--dark" href="https://webflow.eldur.studio" target="_blank" rel="noopener"
+             data-install-agent data-href
+             data-label="Install Watchtower" data-sublabel="Start with a free audit"
+             onclick="fathom.trackEvent('watchtower-install')">
+            <span class="ia2-fill"></span>
+            <span class="ia2-bot"><span class="ia2bot"><svg width="36" height="36" viewBox="0 0 48 48" fill="none" role="img" aria-label="install agent"><g class="ia2bot-all"><line x1="24" y1="12" x2="24" y2="6.5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><g transform="translate(24 3)"><g class="ia2bot-tip"><path d="M0 -3.4 L1 -1 L3.4 0 L1 1 L0 3.4 L-1 1 L-3.4 0 L-1 -1 Z" fill="currentColor"/></g></g><rect x="5.6" y="20" width="3" height="9" rx="1.5" fill="currentColor"/><rect x="39.4" y="20" width="3" height="9" rx="1.5" fill="currentColor"/><rect x="9" y="12" width="30" height="26" rx="8.5" fill="none" stroke="currentColor" stroke-width="2.4"/><g class="ia2bot-look"><g class="ia2bot-eyes"><circle cx="18" cy="24" r="2.7" fill="currentColor"/><circle cx="30" cy="24" r="2.7" fill="currentColor"/></g><path d="M19.5 30.6 Q24 34 28.5 30.6" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><g class="ia2bot-check" transform="translate(34 33)"><circle r="6.4" fill="currentColor"/><path d="M-3 0.2 L-0.8 2.4 L3.2 -2.2" fill="none" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></g></g></svg></span></span>
+            <span class="ia2-label"><span class="ia2-main">Install Watchtower</span><span class="ia2-sub">Start with a free audit</span></span>
+          </a>
         </div>
       </div>
     </div>
@@ -589,6 +631,7 @@ layout: null
         <p>Build the one-person marketing team.</p>
       </div>
       <nav class="footer__links" aria-label="Footer navigation">
+        <a href="/#watchtower">Watchtower</a>
         <a href="/results/">Results</a>
         <a href="/resources/">Resources</a>
         <a href="/support/">Support</a>

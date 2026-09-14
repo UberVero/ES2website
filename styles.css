@@ -1176,6 +1176,108 @@ img, svg {
 }
 
 /* ============================================
+   BUYABLE AGENT CARD
+   A shipped agent with a real price and a real
+   destination, so it must not read like either
+   neighbour: .card--agent is illustrative and has
+   no price, .card--package is priced but needs a
+   conversation. Pairs with .ia2 as the CTA.
+   ============================================ */
+.card--buy {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 44px;
+  align-items: center;
+  background: var(--white);
+  border: 1.5px solid var(--border);
+  border-left: 3px solid var(--orange);
+  padding: 40px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card--buy:hover {
+  border-color: var(--orange);
+  box-shadow: 0 8px 32px rgba(255, 122, 0, 0.09);
+}
+
+.buy__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+/* Reuse the agent icon, minus the bottom margin it needs when stacked. */
+.buy__head .agent__icon {
+  margin-bottom: 0;
+  flex-shrink: 0;
+  color: var(--orange);
+}
+
+.buy__badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--red);
+  margin-bottom: 5px;
+}
+
+.buy__name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--black);
+}
+
+.buy__body {
+  font-size: 16px;
+  line-height: 1.65;
+  color: #3a3a3a;
+  max-width: 56ch;
+}
+
+.buy__aside {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+.buy__price {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--black);
+}
+
+.buy__price-unit {
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0;
+  color: #6a6a6a;
+}
+
+/* Stack before the price column starts squeezing the description.
+   Declared here rather than in the shared 900px block above, which
+   would lose to the base rules that follow it. */
+@media (max-width: 900px) {
+  .card--buy {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card--buy { padding: 24px; }
+  .buy__price { font-size: 30px; }
+  /* .ia2 is nowrap by design — trim its box so it fits a 375px phone. */
+  .card--buy .ia2 { min-width: 0; padding: 15px 20px; }
+}
+
+/* ============================================
    TIMELINE
    ============================================ */
 .timeline {
@@ -1339,7 +1441,9 @@ details[open] > .faq__q::after {
 
 .footer__links {
   display: flex;
-  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px 28px;
 }
 
 .footer__links a {
