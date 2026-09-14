@@ -195,6 +195,17 @@
       </aside>
       {% endif %}
       {{ content }}
+      {% assign related = site.data.related_reading[page.slug] %}
+      {% if related %}
+      <aside aria-label="Related reading">
+        <h2>Related reading</h2>
+        <ul>
+          {% for item in related %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title | escape }}</a></li>
+          {% endfor %}
+        </ul>
+      </aside>
+      {% endif %}
     </div>
   </main>
 
