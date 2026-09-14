@@ -1,7 +1,7 @@
 ---
 title: "Webflow MCP 2.0: game changing release"
 slug: "webflow-mcp-2-data-designer-api"
-description: "Webflow MCP 2.0 fixed what 1.0 couldn't and moved almost everything off the Designer. Here's what changed and the one gap you still have to build yourself."
+description: "In April the Webflow MCP couldn't duplicate a carousel slide. 2.0 fixed that and moved almost everything off the Designer. Here's what it does, and the one gap you have to build yourself."
 key_quote: "The dream of never opening the Webflow Designer again just got real"
 author: "Veronica"
 post_type: "article"
