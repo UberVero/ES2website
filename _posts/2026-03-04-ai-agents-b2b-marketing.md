@@ -1,7 +1,7 @@
 ---
 title: "How AI Agents Are Changing B2B Marketing (And What to Do About It)"
 slug: "ai-agents-b2b-marketing"
-description: "Most B2B marketing teams are still doing things manually that AI agents can handle in seconds. Here's what's actually changing and how one-person teams can compete."
+description: "How lean B2B teams use AI agents for lead research, content, and technical SEO, with practical examples and a first workflow to automate."
 key_quote: "The best AI agent is the one that runs quietly in the background and surfaces only when something actually needs your attention."
 author: "Veronica"
 post_type: "article"
