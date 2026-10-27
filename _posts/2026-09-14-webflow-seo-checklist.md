@@ -3,6 +3,7 @@ title: "Webflow SEO checklist: what to check every week"
 slug: "webflow-seo-checklist"
 description: "A practical Webflow SEO checklist for broken links, alt text, metadata, images, and redirects, with a staging-first workflow for recurring maintenance."
 author: "Veronica"
+image: "/resources/images/watchtower-og-card.png"
 post_type: "guide"
 category: "Webflow/No-Code"
 tags:
@@ -94,6 +95,8 @@ Webflow can [generate a sitemap automatically](https://help.webflow.com/hc/en-us
 A manual checklist works if someone owns it and repeats it. Automation helps with repeated detection, collecting affected URLs, and preparing changes. Decisions such as replacing a deleted page or describing a product screenshot still need context.
 
 With **Watchtower**, our Webflow maintenance agent checks the site weekly and prepares fixes on staging for your approval. Its published scope includes broken links and empty alt text. The wider checklist above also includes checks that may require manual review; it is not a promise that every SEO issue can be fixed automatically.
+
+Watchtower supports Webflow only. The service costs **$299/month** and includes **two custom changes monthly**. You approve changes on staging before they reach production. A free prospect audit uses your public website; guest access is only needed when we start implementation.
 
 The workflow is straightforward: inspect, propose, review on staging, approve, publish, and verify. If you want to understand the tools behind this approach, see our articles on [Webflow MCP 2.0](/resources/webflow-mcp-2-data-designer-api/) and [building with Claude and the Webflow Designer MCP](/resources/claude-webflow-dev-webflow-designer-mcp/).
 
