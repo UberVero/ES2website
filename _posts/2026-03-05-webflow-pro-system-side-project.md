@@ -1,5 +1,5 @@
 ---
-title: "The Webflow Pro System: A mini-CRM born from Real Agency Work"
+title: "The Agency Pro System: A mini-CRM born from Real Agency Work"
 slug: "webflow-pro-system-side-project"
 description: "After five years running a Webflow consultancy, I built a Notion system to replace six tools. Here's what it does and why I'm sharing it."
 author: "Veronica"
@@ -46,7 +46,7 @@ This isn't a generic project management template with a Webflow logo on it. It's
 - **Full business dashboard.** Track your sales pipeline and revenue in one view. See which projects are profitable, forecast monthly income, and manage contacts — no separate CRM needed.
 - **Webflow-native project workflow.** Pre-filled tasks that reflect actual Webflow best practices, from design handoff to CMS setup to pre-launch QA. Clients get a clean view of progress. You keep internal tasks separate.
 - **Invoicing without the headaches.** Invoice tracking with automated reminders, all native to Notion. Connect your email and Slack, and you're done. No third-party integrations that break.
-- **Automations that do the boring work.** Scoping helper that generates proposals from your notes. Invoice prep that drafts line items from completed tasks. Weekly client updates compiled automatically. Risk flags before blocked work becomes a problem.
+- **Automations that do the boring work.** Reminders before task, project, and invoice due dates. A button that emails an overdue notice. Tasks created from meeting notes in one click. With Notion AI, a one-click postmortem draft for each project.
 
     ![templates_and_segregation.gif](/resources/images/blog/webflow-pro-system-side-project/img-2.gif)
 
@@ -77,7 +77,7 @@ This isn't a generic project management template with a Webflow logo on it. It's
 - Invoice tracking with automated reminders
 - Contract and proposal templates
 - Meeting notes automation
-- Scoping, invoicing, client update, and risk monitoring automations
+- Due-date reminders, overdue-notice emails, and a Notion AI postmortem draft
 - Client/internal task segregation with proper permissions
 
 ## Who This Is For
@@ -95,16 +95,13 @@ If you're managing multiple client projects, juggling proposals and invoices, an
 ## Download It
 
 
-The Webflow Pro System is live on the [**Notion marketplace**](https://www.notion.so/marketplace). I use it every day to run Eldur Studio. It's been tested on real client work, refined through dozens of projects, and built to scale with your business.
+The Agency Pro System is live on the [**Notion marketplace**](https://www.notion.so/marketplace). I use it every day to run Eldur Studio. It's been tested on real client work, refined through dozens of projects, and built to scale with your business.
 
 
 Most importantly, you can customize it to fit the way you work. As easy as writing in Notion.
 
 
-Use code **WEBFLOWEARLY** for 50% off.
-
-
-[**Get the Webflow Pro System →**](https://www.notion.com/templates/webflow-pro-system)
+[**Get the Agency Pro System →**](https://www.notion.com/templates/webflow-pro-system)
 
 
 _— Veronica_
