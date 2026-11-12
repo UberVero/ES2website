@@ -1,5 +1,7 @@
 /* Fathom values are in cents. The Watchtower click carries a nominal
-   $1 value, not purchase revenue; set its event currency to USD in Fathom. */
+   $1 value, not purchase revenue; set its event currency to USD in Fathom.
+   Legacy watchtower-install means an outbound click, not an installation.
+   schedule-call means a booking-page click, not a confirmed meeting. */
 (function () {
   'use strict';
 
@@ -16,6 +18,12 @@
     } else if (link.dataset.analyticsEvent) {
       var value = link.dataset.analyticsValue;
       track(link.dataset.analyticsEvent, value ? { _value: Number(value) } : undefined);
+    } else if (link.hostname === 'booking.akiflow.com' &&
+               link.pathname === '/veronica-es-new' &&
+               !link.hasAttribute('onclick')) {
+      // Homepage links already have an inline handler. Other shared nav,
+      // footer, and article links need the same signal without counting twice.
+      track('schedule-call');
     }
   });
 
