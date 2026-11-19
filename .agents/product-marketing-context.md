@@ -1,7 +1,7 @@
 # Product marketing context: Eldur Studio
 
-**Document version:** v3
-**Last updated:** 2026-11-18
+**Document version:** v4
+**Last updated:** 2026-11-19
 
 ## Current direction and source priority
 
@@ -101,7 +101,7 @@ Productization plans and launch targets describe intent. They are not evidence t
 
 **Conversion actions:** Match the action to the product. The current homepage links Watchtower to a free audit and the Messaging Workshop to installation in Codex. Booking a consulting call remains available but should not automatically be the primary action in every piece of copy.
 
-**Homepage status:** The local copy review is complete. Self-service products have the heading “Plug & Play Agents”; the audience/problem section and hero eyebrow were removed. Custom work retains its timeline, examples, and FAQ. The package cards and their tiered FAQ pricing list were removed, with a fixed-fee note and Schedule a call button added under Custom Agents. These are approved local edits; publication has not been authorized by this review.
+**Homepage status:** The local copy review is complete. Self-service products have the heading “Plug & Play Agents”; the audience/problem section and hero eyebrow were removed. Custom work retains its timeline, examples, and FAQ. The package cards and their tiered FAQ pricing list were removed. Fixed-fee wording is the Custom Agents introduction, with a Schedule a call button after its timeline. The About card contains Veronica’s supplied biography and social profiles; Case Studies uses a black background. Veronica authorized merging and deploying [PR #129](https://github.com/UberVero/ES2website/pull/129) on November 19, 2026. The README changelog and Notion release record track the release and its verification.
 
 ## Open decisions
 
@@ -111,6 +111,8 @@ Productization plans and launch targets describe intent. They are not evidence t
 These are review questions, not blockers to recording the direction Veronica has confirmed.
 
 ## Changelog
+
+- v4 (2026-11-19): Recorded release authorization, the final pricing placement, founder biography, Case Studies background, and the README release log.
 
 - v3 (2026-11-18): Recorded the completed homepage review, removal of tiered package pricing, and approved fixed-fee custom-agent wording.
 
