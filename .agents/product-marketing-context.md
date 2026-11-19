@@ -17,7 +17,7 @@ Use these sources in this order:
 
 The productization page includes earlier options: a Notion-native company ICP, a reason-we-lost agent, and a 2–4 week setup plus $300–$500/month model. These are historical exploration, not the selected Watchtower offer or a confirmed company-wide ICP. Its July decision and linked Watchtower briefing take precedence for that product.
 
-The older [Messaging framework 2026](https://app.notion.com/p/e0a02807fd474fdc9035e890f9122b30) remains background. Its consulting emphasis and package structure are not confirmation of the current strategy.
+The [Messaging framework 2026](https://app.notion.com/p/e0a02807fd474fdc9035e890f9122b30) now opens with a November 2026 current-direction section aligned with this context. Its earlier consulting framework and package structure are labeled historical and do not override that section.
 
 ## Product overview
 

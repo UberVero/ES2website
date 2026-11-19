@@ -110,7 +110,9 @@ ES2website/
 **Brand source (not in repo):**
 `~/Library/Mobile Documents/com~apple~CloudDocs/Eldur Studio/8020 Assets/`
 
-**Content source (not in repo):**
+**Current content sources:** the [product marketing context](.agents/product-marketing-context.md), its linked Notion sources, and the reviewed homepage. The Notion messaging framework’s November 2026 current-direction section takes precedence over its older consulting material.
+
+**Historical custom-services reference (not reverified, not in repo):**
 `~/Library/Mobile Documents/com~apple~CloudDocs/Eldur Studio/Eldur_Studio_Custom_AI_Agents_services.pdf`
 
 ---
