@@ -11,7 +11,7 @@
     "test:release": "playwright test --config playwright.release.config.js"
   },
   "dependencies": {
-    "@notionhq/client": "^5.26.0",
+    "@notionhq/client": "^5.31.1",
     "notion-to-md": "^3.1.1",
     "sharp": "^0.35.5"
   },
