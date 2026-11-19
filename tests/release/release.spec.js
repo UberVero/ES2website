@@ -5,7 +5,7 @@ const normalize = (text) => text.replace(/\s+/g, ' ').trim();
 
 async function screenshot(page, testInfo, name) {
   const path = testInfo.outputPath(`${name}.png`);
-  await page.screenshot({ path, fullPage: true, animations: 'disabled' });
+  await page.screenshot({ path, fullPage: true, scale: 'css', animations: 'disabled' });
   await testInfo.attach(name, { path, contentType: 'image/png' });
 }
 
@@ -84,10 +84,10 @@ test('homepage facts, structured answers, image, and keyboard controls agree', a
 
 test('product, booking, email, and social actions retain destinations and single analytics events', async ({ page, context }) => {
   await page.goto('/', { waitUntil: 'networkidle' });
-  await page.locator('#watchtower').scrollIntoViewIfNeeded();
+  await page.locator('#watchtower .section__title').scrollIntoViewIfNeeded();
   await expect.poll(() => page.evaluate(() => window.__releaseEvents.filter((event) => event.name === 'self-serve-agents-viewed').length)).toBe(1);
   await page.locator('.hero').scrollIntoViewIfNeeded();
-  await page.locator('#watchtower').scrollIntoViewIfNeeded();
+  await page.locator('#watchtower .section__title').scrollIntoViewIfNeeded();
 
   async function externalClick(locator, destination) {
     await expect(locator).toHaveAttribute('href', destination);
