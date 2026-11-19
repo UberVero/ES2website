@@ -1,0 +1,55 @@
+name: Release checks
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-check-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: npm
+      - run: npm ci
+      - name: Build the site with the GitHub Pages toolchain
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+      - name: Check public assets and the built release
+        run: |
+          npm run check:assets
+          npm run check:release-build
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium webkit
+      - name: Run the 48 watchdog checks and release smoke tests
+        run: npm run test:release
+      - name: Upload the built site for independent review
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-site
+          path: _site/
+          include-hidden-files: true
+          retention-days: 14
+      - name: Upload browser report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: release-browser-report
+          path: |
+            release-playwright-report/
+            release-test-results/
+          retention-days: 14
