@@ -1,6 +1,6 @@
 # Eldur Studio — Website
 
-Static marketing site for **Eldur Studio** — Custom AI Agents for B2B Growth.
+Static marketing site for **Eldur Studio**, focused on ready-to-use marketing agents and productized services. Watchtower and the free B2B Messaging Workshop lead the offer; fixed-fee custom agents remain available.
 
 **Live:** [eldur.studio](https://eldur.studio)
 **Repo:** [github.com/UberVero/ES2website](https://github.com/UberVero/ES2website)
@@ -22,7 +22,7 @@ Static marketing site for **Eldur Studio** — Custom AI Agents for B2B Growth.
 | Analytics | Fathom (site ID: `FYROQRHW`) |
 | Mobile watchdog | **Huginn** — Playwright suite run in GitHub Actions after every deploy |
 
-No build step for the marketing site. Blog sync uses Node.js (`scripts/notion-sync.js`).
+The homepage uses plain HTML/CSS, with Jekyll rendering the blog and latest-resource cards. Blog sync uses Node.js (`scripts/notion-sync.js`). Release checks test the complete Jekyll output.
 
 ---
 
@@ -110,7 +110,9 @@ ES2website/
 **Brand source (not in repo):**
 `~/Library/Mobile Documents/com~apple~CloudDocs/Eldur Studio/8020 Assets/`
 
-**Content source (not in repo):**
+**Current content sources:** the [product marketing context](.agents/product-marketing-context.md), its linked Notion sources, and the reviewed homepage. The Notion messaging framework’s November 2026 current-direction section takes precedence over its older consulting material.
+
+**Historical custom-services reference (not reverified, not in repo):**
 `~/Library/Mobile Documents/com~apple~CloudDocs/Eldur Studio/Eldur_Studio_Custom_AI_Agents_services.pdf`
 
 ---
@@ -126,7 +128,7 @@ python3 -m http.server 3000   # then visit http://localhost:3000/styleguide/
 ```
 
 The sections mirror the design system: **Brand · Color · Typography · Spacing & Radii · Buttons ·
-Install Agent · Cards · Agent Cards · Packages · Chips/Highlight · Timeline · FAQ**. The page links
+Install Agent · Cards · Agent Cards · Buyable Agents · Testimonials · About · Packages · Chips/Highlight · Timeline · FAQ**. The page links
 the real `/styles.css` and inlines only its own `sg-*` page chrome (page furniture — deliberately *not* part
 of the design system).
 
@@ -175,16 +177,19 @@ of the design system).
 
 ## Page sections
 
-1. **Nav** — Sticky, dark background, flame SVG wordmark, CTA button
-2. **Hero** — Headline + before/after org chart illustration
-3. **Who this is for** — 3 audience cards
-4. **Problem we solve** — 2 dark cards + highlight stat
-5. **How we work** — 3-step timeline
-6. **Packages** — 3 pricing tiers on dark background
-7. **Example agents** — 4 use-case cards
-8. **CTA** — Purple background, booking link
-9. **FAQ** — Native `<details>`/`<summary>` accordion
-10. **Footer** — Logo, tagline, nav links, email contact
+1. **Nav:** logo, product/results/resources links, and booking button.
+2. **Hero:** one-person marketing-team headline, org chart, booking, and product exploration.
+3. **Plug & Play Agents:** Watchtower and the free B2B Messaging Workshop.
+4. **Case Studies:** two project cards on a black background.
+5. **Custom Agents:** fixed-fee introduction, three-step timeline, and booking button.
+6. **Example agents:** six custom use cases.
+7. **About Eldur Studio:** Veronica’s biography, portrait, and social profiles.
+8. **Closing invitation:** booking and further-reading links.
+9. **FAQ:** native details/summary controls, with matching structured answers.
+10. **Latest resources:** Jekyll-generated article cards.
+11. **Footer:** logo, navigation, contact, and policy links.
+
+The homepage no longer presents an audience/problem section or tiered consulting packages.
 
 All "Schedule a call" links → `https://booking.akiflow.com/veronica-es-new`
 
@@ -246,13 +251,21 @@ Single `<script defer>` in `<head>`. Cookie-free, GDPR-compliant, no consent ban
 
 ## Deployment
 
-Push to `main` — that's it.
+GitHub Pages publishes from `main`. Work in a separate worktree and open a PR instead of pushing website changes directly to `main`.
 
-```bash
-git add .
-git commit -m "describe your change"
-git push
+The **Release checks** PR workflow builds the full site with the official GitHub Pages Jekyll action. It runs the original 48 mobile checks plus 12 desktop, tablet, and mobile Safari smoke checks. Browser tests intercept external traffic and stub Fathom so they do not create analytics events. The built site, screenshots, and browser report are retained as CI artifacts for 14 days.
+
+After the checks pass, obtain release approval and squash-merge. Verify the Pages deployment and live mobile watchdog before calling the release complete. If the release causes a regression, revert its squash commit and verify the replacement deployment, preserving unrelated Notion-synced posts.
+
+To inspect the CI build locally, download the `release-site` artifact into `_site/`, then run:
+
+```sh
+npm ci
+npm run check:release-build
+npm run test:release
 ```
+
+Review drafts in `docs/` stay out of the release commit. Jekyll also excludes review drafts, agent context, test files, and test reports from the public site. The style guide remains accessible and noindex, outside the sitemap.
 
 ---
 
@@ -360,6 +373,17 @@ See `DEPLOYMENT.md` for the full workflow.
 ---
 
 ## Changelog
+
+### 2026-11-19
+
+Release: [homepage refresh and release verification, PR #129](https://github.com/UberVero/ES2website/pull/129).
+
+- Shifted the homepage toward ready-to-use products, with fixed-fee custom work secondary; removed the audience/problem section and consulting packages.
+- Added Veronica’s biography and social profiles, plus a matching style-guide card; optimized the homepage portrait to a 43 KB, 640px WebP while retaining the original blog image.
+- Changed Case Studies to a black background and retained the light Custom Agents section.
+- Aligned FAQs and structured answers, restored the approved “a first agent” wording, and updated the chatbot summary without the old universal ICP or disputed case-study percentage.
+- Added a full Jekyll build and 60-check PR release gate, analytics-isolated browser tests, review artifacts, and explicit build exclusions.
+- Preserved the existing Pages deployment method, crawler policy, canonical URLs, and separate Webflow site.
 
 ### 2026-04-14
 - **Mobile hamburger menu** — CSS-only `<details>`-based hamburger sitting left of the CTA pill; opens a slide-down panel with Results, Resources, and the email row. Fixes nav overflow on iPhone Safari.

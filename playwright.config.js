@@ -10,6 +10,7 @@ const BASE_URL = process.env.BASE_URL || 'https://eldur.studio';
 
 export default defineConfig({
   testDir: './tests',
+  testIgnore: '**/release/**',
   timeout: 30_000,
   expect: { timeout: 8_000 },
   fullyParallel: true,

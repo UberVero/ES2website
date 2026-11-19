@@ -1,37 +1,65 @@
 # Eldur Studio
 
-Eldur Studio builds custom AI agents for B2B marketing and sales ops teams.
-We design, wire, and hand off agentic workflows — the client owns the system
-after we're done. No ongoing dependency on us, no SaaS subscription for the
-agent layer.
+Eldur Studio builds proactive AI agents for specific marketing jobs.
+Its primary offers are ready-to-use agents and productized services,
+including Watchtower and the free B2B Messaging Workshop plugin for Codex.
+Custom agent builds are also available for work that needs a tailored scope.
 
-## What we do
+## Ready-to-use offers
 
-- Lead qualification and enrichment agents (Explorium, Apollo, Clay integrations)
-- Content publishing automation (Notion → Jekyll, multi-channel distribution)
-- CRM hygiene and enrichment pipelines (Notion, HubSpot, Salesforce)
-- Ad monitoring and alerting agents
-- Competitive intelligence monitoring
-- Custom Notion CRMs for relationship-heavy B2B teams
+### Watchtower
 
-## Who we work with
+Watchtower is an agent-assisted maintenance and change-request service for
+existing Webflow websites. It checks a site each week and prepares supported
+maintenance fixes on a preview site. Customers review changes and approve
+them before anything goes live.
 
-10–50 person B2B companies with marketing teams of 1–3 people who want to
-compete with larger teams without hiring. We're the right fit when you have
-a clear ICP, some existing tooling, and want systems that run themselves.
+The plan costs $299 per month and includes two custom change requests each
+month by email. It suits non-technical owners who want their Webflow site
+maintained without operating Webflow Designer themselves. Subscription
+onboarding requires site access; the free audit inspects public pages
+without Webflow account access. Watchtower currently supports Webflow.
+
+Product details and free audit: https://webflow.eldur.studio/
+
+### B2B Messaging Workshop
+
+The B2B Messaging Workshop is a free Codex plugin. It uses professional
+product marketing frameworks to guide users through who their product is
+for, the problems it solves, and why customers choose it. The plugin asks
+one question at a time and saves the answers as a reusable messaging document.
+
+It suits people working on product messaging who want a guided workshop
+they can use in Codex. It is a separate offer from Watchtower, not a website
+maintenance subscription.
+
+Install in Codex: https://chatgpt.com/plugins/plugins_6a8f237c51488191a3bb6c3accefc4b5
+
+## Custom agents
+
+Eldur Studio also builds custom agents for marketing and sales operations.
+Examples include lead qualification, CRM updates, ad monitoring, SEO content,
+and reporting. Custom projects are scoped to the client's business, with a
+fixed fee agreed before the build starts. The work includes connecting the
+agents to the client's tools and training the team to run them.
+
+Custom-build scope, ownership, and handoff apply to that project. They do not
+replace the setup requirements or ongoing subscription terms of a separate
+product such as Watchtower.
 
 ## Key pages
 
 - Homepage: https://eldur.studio/
 - Results / Case Studies: https://eldur.studio/results/
 - Resources / Blog: https://eldur.studio/resources/
+- About / Founder: https://eldur.studio/#about
 - Book a call: https://booking.akiflow.com/veronica-es-new
 - Contact: info@eldur.studio
 
 ## Notable case studies
 
-- Lead enrichment agent (Explorium + Notion + Pipedream): 400+ contacts, 85%
-  match rate, 98% time reduction vs manual LinkedIn research.
+- Lead enrichment agent (Explorium + Notion + Pipedream): contact research
+  and enrichment in a Notion CRM.
   https://eldur.studio/results/people-enrichment-agent/
 - Scalapay merchant directory (Webflow + Sanity headless CMS, thousands of
   listings with Algolia search).
@@ -39,5 +67,6 @@ a clear ICP, some existing tooling, and want systems that run themselves.
 
 ## Founder
 
-Veronica Picciafuoco — founder, builder, and the person you'll work with.
+Veronica Picciafuoco, founder, builder, and the person you'll work with on a
+custom project.
 LinkedIn: https://www.linkedin.com/in/veronicapicciafuoco

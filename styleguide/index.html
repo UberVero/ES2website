@@ -1,5 +1,6 @@
 ---
 layout: null
+sitemap: false
 ---
 <!DOCTYPE html>
 <html lang="en">
@@ -105,6 +106,7 @@ layout: null
     <a href="#agent">Agent Cards</a>
     <a href="#buy">Buyable Agent</a>
     <a href="#quote">Testimonial</a>
+    <a href="#about">About</a>
     <a href="#packages">Packages</a>
     <a href="#bits">Chips · Highlight</a>
     <a href="#timeline">Timeline</a>
@@ -487,6 +489,32 @@ EldurInstallAgent.setState(el, <span class="k">'done'</span>);       <span class
   &lt;/figcaption&gt;
 &lt;/figure&gt;</div>
     <p class="sg-note"><strong>Note the two quotes above are different lengths but the names still line up.</strong> <code>.quote__by</code> uses <code>margin-top: auto</code>, so the attribution is pinned to the bottom of the card whatever the quote does. Use <code>&lt;figure&gt;</code> / <code>&lt;figcaption&gt;</code>, not a bare <code>div</code>: it is the correct pairing for a quote and its source, and screen readers announce the attribution with the quote.</p>
+  </section>
+
+  <!-- ============ ABOUT ============ -->
+  <section class="sg-sec" id="about">
+    <p class="sg-kicker">About</p>
+    <h2 class="sg-h2">Founder card</h2>
+    <p class="sg-lead">The portrait sits beside a short bio on desktop and above it on phones. The card reuses the shared outline surface, radius, type, and link colors.</p>
+    <div class="sg-stage sg-stage--light">
+      <article class="card card--outline about-card" aria-labelledby="veronica">
+        <img class="about-card__photo" src="/assets/headshot-veronica.webp" alt="Veronica Picciafuoco, founder of Eldur Studio" width="640" height="640" loading="lazy" decoding="async">
+        <div class="about-card__body">
+          <h3 class="about-card__name" id="veronica">Veronica Picciafuoco</h3>
+          <p class="about-card__role">Founder &amp; builder</p>
+          <div class="about-card__bio">
+            <p>I’m an ex-Amazon full-stack marketer with 10+ years of experience in tech, from startups to public corporations.</p>
+            <p>I believe we’ve crossed the chasm: small to mid-sized companies can run marketing with just one full-time hire, responsible for orchestrating AI agents that manage SEO, paid acquisition, rev ops, and brand assets.</p>
+            <p>I’ve been running Eldur Studio since 2021 with a small number of talented designers and developers. And a lot of bots. Bots do the work. I talk to people and orchestrate the bots. You’d work directly with me on any custom project.</p>
+          </div>
+          <nav class="about-card__links" aria-label="Veronica’s social profiles">
+            <a href="https://www.linkedin.com/in/veronicapicciafuoco" target="_blank" rel="me noopener noreferrer">LinkedIn <span aria-hidden="true">↗</span></a>
+            <a href="https://twitter.com/UberVero" target="_blank" rel="me noopener noreferrer">X / Twitter <span aria-hidden="true">↗</span></a>
+          </nav>
+        </div>
+      </article>
+    </div>
+    <p class="sg-note"><code>.about-card</code> extends <code>.card.card--outline</code>. Use a real portrait, a named heading, descriptive alternative text, and labeled social links. The image is square-cropped in CSS; the source file remains unchanged. Below 640px the layout becomes one column.</p>
   </section>
 
   <!-- ============ PACKAGES ============ -->

@@ -6,6 +6,8 @@ _site/
 # Playwright
 test-results/
 playwright-report/
+release-playwright-report/
+release-test-results/
 blob-report/
 playwright/.cache/
 
