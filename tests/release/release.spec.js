@@ -121,6 +121,20 @@ test('product, booking, email, and social actions retain destinations and single
   ]));
 });
 
+test('every booking link records one click across homepage, resources, posts, and case studies', async ({ page }) => {
+  for (const path of paths.filter((path) => path !== '/styleguide/')) {
+    await page.goto(path, { waitUntil: 'networkidle' });
+    const counts = await page.locator('a[href="https://booking.akiflow.com/veronica-es-new"]').evaluateAll((links) => links.map((link) => {
+      const before = window.__releaseEvents.filter((event) => event.name === 'schedule-call').length;
+      link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+      link.click();
+      return window.__releaseEvents.filter((event) => event.name === 'schedule-call').length - before;
+    }));
+    expect(counts.length, path).toBeGreaterThan(0);
+    expect(counts, path).toEqual(counts.map(() => 1));
+  }
+});
+
 test('product facts and links remain available without JavaScript', async ({ browser, baseURL }, testInfo) => {
   const context = await browser.newContext({ javaScriptEnabled: false, viewport: testInfo.project.use.viewport });
   await isolateContext(context, baseURL);

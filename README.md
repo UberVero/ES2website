@@ -374,6 +374,12 @@ See `DEPLOYMENT.md` for the full workflow.
 
 ## Changelog
 
+### 2026-11-23
+
+- Extended `schedule-call` click tracking to every page using the shared analytics script, including resource listings, posts, results, and case studies.
+- Removed duplicate-prone homepage booking handlers and added a browser regression check for every booking link on the sampled page templates. Booking clicks remain distinct from confirmed meetings.
+
+
 ### 2026-11-19
 
 Release: [homepage refresh and release verification, PR #129](https://github.com/UberVero/ES2website/pull/129).

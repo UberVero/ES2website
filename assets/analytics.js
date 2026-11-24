@@ -13,6 +13,8 @@
     if (!link) return;
     if (/^mailto:/i.test(link.getAttribute('href') || '')) {
       track('email-contact-click');
+    } else if (/^https:\/\/booking\.akiflow\.com\/veronica-es-new(?:[/?#]|$)/i.test(link.getAttribute('href') || '')) {
+      track('schedule-call');
     } else if (link.dataset.analyticsEvent) {
       var value = link.dataset.analyticsValue;
       track(link.dataset.analyticsEvent, value ? { _value: Number(value) } : undefined);
