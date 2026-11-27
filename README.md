@@ -269,6 +269,46 @@ Review drafts in `docs/` stay out of the release commit. Jekyll also excludes re
 
 ---
 
+## Watchtower form relay
+
+When someone fills out the Watchtower free audit form on
+[webflow.eldur.studio](https://webflow.eldur.studio), Webflow sends that
+submission to a small Cloudflare Worker named `watchtower-webflow-relay`.
+The Worker checks that the request really came from Webflow, then passes
+it on to Veronica's Grok Bot routine "Watchtower audit requests (instant)".
+
+That routine logs the person as a lead in the Notion database "Watchtower
+Leads and customers". It skips a row if that email is already there, skips
+obvious test entries, and alerts Veronica when there is a real new request.
+
+The routine webhook cannot accept Webflow's signature format directly,
+so this relay sits in between. It verifies Webflow's signature and
+forwards only valid submissions with a Bearer token the routine accepts.
+
+It runs on Cloudflare's Workers free plan.
+
+**Public URL:** https://watchtower-webflow-relay.eldur.workers.dev
+
+**Backup:** on weekdays, a twice-daily check of Watchtower form emails in
+info@eldur.studio (around 9am and 4pm Pacific Time) still logs a lead if
+this relay misses a submission.
+
+### Technical notes
+
+- Accepts POST only. Other methods return 405.
+- Verifies `x-webflow-timestamp` and `x-webflow-signature`: HMAC-SHA256
+  hex digest of `` `${timestamp}:${rawBody}` ``, 5-minute window,
+  constant-time compare. Invalid or stale requests return 401.
+- Forwards the raw JSON body to the Grok Bot routine webhook with
+  `Authorization: Bearer` and returns 200 immediately. The destination
+  URL is private configuration and is not listed here.
+- Worker secrets (set in the Cloudflare dashboard, not in this repo):
+  - `WEBFLOW_SECRET`: Webflow webhook signing key. Update this if the
+    Webflow webhook is recreated in Webflow.
+  - `ROUTINE_TOKEN`: Bearer token for the routine webhook.
+
+---
+
 ## Huginn — mobile layout watchdog
 
 Named after Odin's raven, who flies out over the world each day and reports back what he saw. Huginn is a little robot that visits eldur.studio on four simulated phones after every deploy and tells us if anything on mobile has regressed. Mobile is where our layout problems usually hide, and humans never catch them until a week later.
@@ -373,6 +413,10 @@ See `DEPLOYMENT.md` for the full workflow.
 ---
 
 ## Changelog
+
+### 2026-11-27
+
+- Documented the Watchtower form relay in this README.
 
 ### 2026-11-23
 
